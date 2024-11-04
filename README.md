@@ -19,7 +19,7 @@
 3. run the program:
    
 # run the server:
-   java -cp "out:libs/gson-2.11.0.jar" SOMSServerJava.ServerProgram
+   java -cp "out:libs/gson-2.11.0.jar" SOMSServerJava.SOMS
 
 # run the client:
    java -cp "out:libs/gson-2.11.0.jar" SOMSClientJava.ClientProgram

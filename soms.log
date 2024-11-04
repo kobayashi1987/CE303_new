@@ -1,0 +1,124 @@
+Nov 04, 2024 10:28:36 PM SOMSServerJava.SOMS loadUsers
+WARNING: users.json not found. Starting with empty user list.
+Nov 04, 2024 10:28:36 PM SOMSServerJava.SOMS loadAccounts
+WARNING: accounts.json not found. Starting with empty account list.
+Nov 04, 2024 10:29:00 PM SOMSServerJava.SOMS loadUsers
+WARNING: users.json not found. Starting with empty user list.
+Nov 04, 2024 10:29:00 PM SOMSServerJava.SOMS loadAccounts
+WARNING: accounts.json not found. Starting with empty account list.
+Nov 04, 2024 10:29:00 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 10:29:00 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 10:30:24 PM SOMSServerJava.SOMS loadUsers
+WARNING: users.json not found. Starting with empty user list.
+Nov 04, 2024 10:30:24 PM SOMSServerJava.SOMS loadAccounts
+WARNING: accounts.json not found. Starting with empty account list.
+Nov 04, 2024 10:30:24 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 10:30:24 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 10:30:32 PM SOMSServerJava.SOMS startServer
+INFO: Client connected: /127.0.0.1
+Nov 04, 2024 10:36:53 PM SOMSServerJava.SOMS loadUsers
+INFO: Users loaded successfully.
+Nov 04, 2024 10:36:53 PM SOMSServerJava.SOMS loadAccounts
+INFO: Accounts loaded successfully.
+Nov 04, 2024 10:36:53 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 10:36:53 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 10:37:48 PM SOMSServerJava.SOMS startServer
+INFO: Client connected: /127.0.0.1
+Nov 04, 2024 10:37:54 PM SOMSServerJava.SOMS authenticateUser
+WARNING: Failed authentication attempt for userID: 
+Nov 04, 2024 10:37:54 PM SOMSServerJava.SOMS removeClient
+INFO: Client disconnected: /127.0.0.1
+Nov 04, 2024 10:38:00 PM SOMSServerJava.SOMS loadUsers
+INFO: Users loaded successfully.
+Nov 04, 2024 10:38:00 PM SOMSServerJava.SOMS loadAccounts
+INFO: Accounts loaded successfully.
+Nov 04, 2024 10:38:00 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 10:38:00 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 10:38:06 PM SOMSServerJava.SOMS startServer
+INFO: Client connected: /127.0.0.1
+Nov 04, 2024 10:38:39 PM SOMSServerJava.SOMS loadUsers
+INFO: Users loaded successfully.
+Nov 04, 2024 10:38:39 PM SOMSServerJava.SOMS loadAccounts
+INFO: Accounts loaded successfully.
+Nov 04, 2024 10:38:39 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 10:38:39 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 10:38:45 PM SOMSServerJava.SOMS startServer
+INFO: Client connected: /127.0.0.1
+Nov 04, 2024 10:42:18 PM SOMSServerJava.SOMS authenticateUser
+WARNING: Failed authentication attempt for userID: 
+Nov 04, 2024 10:42:18 PM SOMSServerJava.SOMS removeClient
+INFO: Client disconnected: /127.0.0.1
+Nov 04, 2024 10:42:19 PM SOMSServerJava.SOMS startServer
+INFO: Client connected: /127.0.0.1
+Nov 04, 2024 10:49:26 PM SOMSServerJava.SOMS loadUsers
+INFO: Users loaded successfully.
+Nov 04, 2024 10:49:26 PM SOMSServerJava.SOMS loadAccounts
+INFO: Accounts loaded successfully.
+Nov 04, 2024 10:49:26 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 10:49:26 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 10:49:34 PM SOMSServerJava.SOMS startServer
+INFO: Client connected: /127.0.0.1
+Nov 04, 2024 10:49:48 PM SOMSServerJava.SOMS authenticateUser
+INFO: User authenticated: john_doe
+Nov 04, 2024 10:49:48 PM SOMSServerJava.SOMS showTopSellers
+INFO: Top sellers sent to client.
+Nov 04, 2024 11:05:03 PM SOMSServerJava.SOMS loadUsers
+INFO: Users loaded successfully.
+Nov 04, 2024 11:05:03 PM SOMSServerJava.SOMS loadAccounts
+INFO: Accounts loaded successfully.
+Nov 04, 2024 11:05:03 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 11:05:03 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 11:05:12 PM SOMSServerJava.SOMS startServer
+INFO: Client connected: /127.0.0.1
+Nov 04, 2024 11:05:35 PM SOMSServerJava.SOMS authenticateUser
+INFO: User authenticated: john_doe
+Nov 04, 2024 11:05:35 PM SOMSServerJava.SOMS showTopSellers
+INFO: Top sellers sent to client.
+Nov 04, 2024 11:06:40 PM SOMSServerJava.SOMS loadUsers
+INFO: Users loaded successfully.
+Nov 04, 2024 11:06:40 PM SOMSServerJava.SOMS loadAccounts
+INFO: Accounts loaded successfully.
+Nov 04, 2024 11:06:40 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 11:06:40 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 11:06:47 PM SOMSServerJava.SOMS startServer
+INFO: Client connected: /127.0.0.1
+Nov 04, 2024 11:06:56 PM SOMSServerJava.SOMS authenticateUser
+INFO: User authenticated: john_doe
+Nov 04, 2024 11:06:56 PM SOMSServerJava.SOMS showTopSellers
+INFO: Top sellers sent to client.
+Nov 04, 2024 11:21:23 PM SOMSServerJava.SOMS loadUsers
+INFO: Loaded 10 users.
+Nov 04, 2024 11:21:23 PM SOMSServerJava.SOMS loadAccounts
+INFO: Loaded 10 accounts.
+Nov 04, 2024 11:21:23 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 04, 2024 11:21:23 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 04, 2024 11:21:27 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:55317
+Nov 04, 2024 11:21:50 PM SOMSServerJava.ClientHandler sendTopSellers
+INFO: Top sellers sent to client.
+Nov 04, 2024 11:22:08 PM SOMSServerJava.ClientHandler processCommand
+INFO: User john_doe viewed credits.
+Nov 04, 2024 11:22:14 PM SOMSServerJava.ClientHandler processCommand
+INFO: User john_doe bought item: Item1
+Nov 04, 2024 11:22:20 PM SOMSServerJava.ClientHandler processCommand
+INFO: User john_doe topped up $500.
+Nov 04, 2024 11:22:27 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:55317

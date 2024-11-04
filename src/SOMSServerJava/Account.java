@@ -1,98 +1,66 @@
 package SOMSServerJava;
 
 public class Account {
-    private final int clientId;            // Immutable client ID associated with the account
-    private final int accountNumber;       // Immutable account number
-    private int balance;                   // Mutable balance field, access controlled for thread safety
+    private final int customerId;
+    private final int accountNumber;
+    private int balance;
 
-    /**
-     * Creates an Account instance with a specific client ID, account number, and initial balance.
-     *
-     * @param clientId the ID of the client who owns this account
-     * @param accountNumber the unique number assigned to this account
-     * @param initialBalance the initial balance for the account
-     * @throws IllegalArgumentException if the initial balance is negative
-     */
-    public Account(int clientId, int accountNumber, int initialBalance) {
-        if (initialBalance < 0) {
-            throw new IllegalArgumentException("Initial balance cannot be negative.");
-        }
-        this.clientId = clientId;
+    public Account(int customerId, int accountNumber, int initialBalance) {
+        this.customerId = customerId;
         this.accountNumber = accountNumber;
         this.balance = initialBalance;
     }
 
-    /**
-     * Gets the client ID associated with this account.
-     *
-     * @return the client ID
-     */
-    public int getClientId() {
-        return clientId;
-    }
-
-    /**
-     * Gets the account number.
-     *
-     * @return the account number
-     */
+    // Getter for account number
     public int getAccountNumber() {
         return accountNumber;
     }
 
-    /**
-     * Gets the current balance of the account.
-     *
-     * @return the current balance
-     */
+    // Getter for customer ID
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    // Getter for balance
     public synchronized int getBalance() {
         return balance;
     }
 
-    /**
-     * Sets the balance to a new amount.
-     *
-     * @param newBalance the new balance amount
-     * @throws IllegalArgumentException if the new balance is negative
-     */
+    // Setter for balance with basic validation
     public synchronized void setBalance(int newBalance) {
-        if (newBalance < 0) {
-            throw new IllegalArgumentException("Balance cannot be set to a negative value.");
+        if (newBalance >= 0) {
+            this.balance = newBalance;
+        } else {
+            throw new IllegalArgumentException("Balance cannot be negative.");
         }
-        this.balance = newBalance;
     }
 
-    /**
-     * Increases the account balance by a specified amount.
-     *
-     * @param amount the amount to add to the balance
-     * @throws IllegalArgumentException if the amount is negative
-     */
+    // Method to deposit an amount to the account balance
     public synchronized void deposit(int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Deposit amount cannot be negative.");
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Deposit amount must be positive.");
         }
         this.balance += amount;
     }
 
-    /**
-     * Decreases the account balance by a specified amount.
-     *
-     * @param amount the amount to subtract from the balance
-     * @throws IllegalArgumentException if the amount is negative or if it exceeds the current balance
-     */
-    public synchronized void withdraw(int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Withdrawal amount cannot be negative.");
+    // Method to withdraw an amount from the account balance
+    public synchronized void withdraw(int amount) throws IllegalArgumentException {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Withdrawal amount must be positive.");
         }
-        if (amount > this.balance) {
-            throw new IllegalArgumentException("Insufficient balance for the withdrawal.");
+        if (amount > balance) {
+            throw new IllegalArgumentException("Insufficient balance for withdrawal.");
         }
         this.balance -= amount;
     }
 
+    // Provides a string representation of the account
     @Override
     public String toString() {
-        return String.format("Account[ClientID=%d, AccountNumber=%d, Balance=%d]", clientId, accountNumber, balance);
+        return "Account{" +
+                "customerId=" + customerId +
+                ", accountNumber=" + accountNumber +
+                ", balance=" + balance +
+                '}';
     }
 }

@@ -1,79 +1,114 @@
 package SOMSServerJava;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
-import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+/**
+ * ClientHandler handles communication with a connected client.
+ */
 public class ClientHandler implements Runnable {
-    private final Socket socket;
-    private final SOMS soms;
-    private final Gson gson = new GsonBuilder().create();
+    private static final Logger logger = Logger.getLogger(ClientHandler.class.getName());
+    private final Socket clientSocket;
+    private final Map<String, User> users;
+    private final Map<Integer, Account> accounts;
 
-    public ClientHandler(Socket socket, SOMS soms) {
-        this.socket = socket;
-        this.soms = soms;
+    public ClientHandler(Socket socket, Map<String, User> users, Map<Integer, Account> accounts) {
+        this.clientSocket = socket;
+        this.users = users;
+        this.accounts = accounts;
     }
 
     @Override
     public void run() {
-        int clientId = 0;
-        try (Scanner reader = new Scanner(socket.getInputStream());
-             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true)) {
+        try (
+                // Initialize PrintWriter with autoFlush set to true
+                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        ) {
+            logger.info("Client connected: " + clientSocket.getRemoteSocketAddress());
 
-            clientId = Integer.parseInt(reader.nextLine().trim());
-            List<Integer> accounts = soms.getListOfAccounts(clientId);
-            if (accounts.isEmpty()) {
-                writer.println(gson.toJson("ERROR: Client ID not found or no accounts associated."));
-                socket.close();
-                return;
-            }
-            writer.println(gson.toJson("SUCCESS"));
+            // Send welcome message
+            out.println("Welcome to SOMS Server!");
 
-            while (true) {
-                String command = reader.nextLine().trim();
-                String[] commandParts = command.split(" ");
+            // Handle authentication
+            String userID = in.readLine();
+            String password = in.readLine();
 
-                try {
-                    switch (commandParts[0].toLowerCase()) {
-                        case "accounts":
-                            writer.println(gson.toJson(accounts));
-                            break;
+            if (authenticate(userID, password)) {
+                out.println("Authentication successful.");
+                sendTopSellers(out);
 
-                        case "balance":
-                            if (commandParts.length < 2) {
-                                writer.println(gson.toJson("ERROR: Missing account number for balance check."));
-                                break;
-                            }
-                            int accountNumber = Integer.parseInt(commandParts[1]);
-                            writer.println(gson.toJson(soms.getAccountBalance(clientId, accountNumber)));
-                            break;
-
-                        case "transfer":
-                            if (commandParts.length < 4) {
-                                writer.println(gson.toJson("ERROR: Insufficient parameters for transfer."));
-                                break;
-                            }
-                            int fromAccount = Integer.parseInt(commandParts[1]);
-                            int toAccount = Integer.parseInt(commandParts[2]);
-                            int amount = Integer.parseInt(commandParts[3]);
-                            soms.transfer(clientId, fromAccount, toAccount, amount);
-                            writer.println(gson.toJson("SUCCESS"));
-                            break;
-
-                        default:
-                            writer.println(gson.toJson("ERROR: Unknown command."));
-                            break;
+                // Handle client commands
+                String command;
+                while ((command = in.readLine()) != null) {
+                    processCommand(command, out, userID);
+                    if (command.equalsIgnoreCase("exit")) {
+                        out.println("Goodbye!");
+                        break;
                     }
-                } catch (Exception e) {
-                    writer.println(gson.toJson("ERROR: " + e.getMessage()));
                 }
+            } else {
+                out.println("Authentication failed. Invalid userID or password.");
             }
-        } catch (Exception e) {
-            System.out.println("Client " + clientId + " disconnected.");
+
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Client handler error: ", e);
+        } finally {
+            try {
+                clientSocket.close();
+                logger.info("Client disconnected: " + clientSocket.getRemoteSocketAddress());
+            } catch (IOException e) {
+                logger.log(Level.SEVERE, "Error closing client socket: ", e);
+            }
+        }
+    }
+
+    private boolean authenticate(String userID, String password) {
+        if (users.containsKey(userID)) {
+            User user = users.get(userID);
+            return user.getPassword().equals(password);
+        }
+        return false;
+    }
+
+    private void sendTopSellers(PrintWriter out) {
+        // Example top sellers list
+        String topSellers = "Top Sellers: [Item1, Item2, Item3]";
+        out.println(topSellers);
+        logger.info("Top sellers sent to client.");
+    }
+
+    private void processCommand(String command, PrintWriter out, String userID) {
+        // Example command processing
+        switch (command.toLowerCase()) {
+            case "view credits":
+                int accountNumber = users.get(userID).getAccountNumber();
+                Account account = accounts.get(accountNumber);
+                out.println("Your current balance: $" + account.getBalance());
+                logger.info("User " + userID + " viewed credits.");
+                break;
+            case "buy item1":
+                // Example buy operation
+                out.println("You have bought: Item1");
+                logger.info("User " + userID + " bought item: Item1");
+                break;
+            case "top up 500":
+                // Example top up operation
+                account = accounts.get(users.get(userID).getAccountNumber());
+                account.setBalance(account.getBalance() + 500);
+                out.println("Top up successful. New balance: $" + account.getBalance());
+                logger.info("User " + userID + " topped up $500.");
+                break;
+            case "exit":
+                // Exit command handled in the run loop
+                break;
+            default:
+                out.println("Unknown command.");
+                logger.info("User " + userID + " entered unknown command: " + command);
+                break;
         }
     }
 }

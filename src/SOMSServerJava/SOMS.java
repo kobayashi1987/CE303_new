@@ -1,98 +1,100 @@
 package SOMSServerJava;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.*;
+
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
+/**
+ * SOMS is the main server class that listens for client connections
+ * and delegates each connection to a ClientHandler.
+ */
 public class SOMS {
-    private final Map<Integer, Account> accounts = new TreeMap<>();
-    private static final String DATABASE_FILE = "soms_database.json";
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final int PORT = 12345;
+    private static final Logger logger = Logger.getLogger(SOMS.class.getName());
+    private final Map<String, User> users = new ConcurrentHashMap<>();
+    private final Map<Integer, Account> accounts = new ConcurrentHashMap<>();
 
-    // Load existing accounts from a JSON file
-    public SOMS() {
-        loadDatabase();
+    public static void main(String[] args) {
+        SOMS server = new SOMS();
+        server.startServer();
     }
 
-    public void createAccount(int clientId, int accountNumber, int initialBalance) {
-        Account account = new Account(clientId, accountNumber, initialBalance); // Pass initial balance directly
-        accounts.put(accountNumber, account);
-        saveDatabase();
-    }
+    public void startServer() {
+        setupLogger();
 
-    public List<Integer> getListOfAccounts(int clientId) {
-        List<Integer> accountNumbers = new ArrayList<>();
-        for (Account account : accounts.values()) {
-            if (account.getClientId() == clientId) {
-                accountNumbers.add(account.getAccountNumber());
-            }
-        }
-        return accountNumbers;
-    }
+        // Load users and accounts from JSON files
+        loadUsers("users.json");
+        loadAccounts("accounts.json");
 
-    public int getAccountBalance(int clientId, int accountNumber) throws Exception {
-        Account account = accounts.get(accountNumber);
-        if (account == null) throw new Exception("Account not found.");
-        if (account.getClientId() != clientId) {
-            throw new Exception("Unauthorized access to account balance.");
-        }
-        return account.getBalance();
-    }
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            logger.info("Server starting on port " + PORT);
+            logger.info("Server started. Waiting for clients...");
 
-    public void transfer(int clientId, int fromAccount, int toAccount, int amount) throws Exception {
-        synchronized (accounts) {
-            Account sourceAccount = accounts.get(fromAccount);
-            Account targetAccount = accounts.get(toAccount);
-
-            if (sourceAccount == null || targetAccount == null) {
-                throw new Exception("One or both accounts not found.");
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                ClientHandler handler = new ClientHandler(clientSocket, users, accounts);
+                Thread clientThread = new Thread(handler);
+                clientThread.start();
             }
 
-            if (sourceAccount.getClientId() != clientId) {
-                throw new Exception("Unauthorized transfer request.");
-            }
-
-            if (sourceAccount.getBalance() < amount) {
-                throw new Exception("Insufficient funds.");
-            }
-
-            if (amount <= 0) {
-                throw new Exception("Transfer amount must be positive.");
-            }
-
-            // Perform the transfer
-            sourceAccount.setBalance(sourceAccount.getBalance() - amount);
-            targetAccount.setBalance(targetAccount.getBalance() + amount);
-            saveDatabase();  // Save updated balances
-        }
-    }
-
-    // Save accounts to JSON file
-    private void saveDatabase() {
-        try (FileWriter writer = new FileWriter(DATABASE_FILE)) {
-            gson.toJson(accounts, writer);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Server error: ", e);
         }
     }
 
-    // Load accounts from JSON file
-    private void loadDatabase() {
-        try (FileReader reader = new FileReader(DATABASE_FILE)) {
-            Type type = new TypeToken<TreeMap<Integer, Account>>() {}.getType();
-            Map<Integer, Account> loadedAccounts = gson.fromJson(reader, type);
-            if (loadedAccounts != null) accounts.putAll(loadedAccounts);
+    private void loadUsers(String filename) {
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(filename)) {
+            Map<String, User> loadedUsers = gson.fromJson(reader, new TypeToken<Map<String, User>>() {}.getType());
+            if (loadedUsers != null) {
+                users.putAll(loadedUsers);
+                logger.info("Loaded " + loadedUsers.size() + " users.");
+            }
         } catch (IOException e) {
-            System.out.println("No existing database found, starting fresh.");
+            logger.log(Level.SEVERE, "Error loading users: ", e);
+        }
+    }
+
+    private void loadAccounts(String filename) {
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(filename)) {
+            Map<String, Account> loadedAccounts = gson.fromJson(reader, new TypeToken<Map<String, Account>>() {}.getType());
+            if (loadedAccounts != null) {
+                for (Map.Entry<String, Account> entry : loadedAccounts.entrySet()) {
+                    accounts.put(Integer.parseInt(entry.getKey()), entry.getValue());
+                }
+                logger.info("Loaded " + loadedAccounts.size() + " accounts.");
+            }
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error loading accounts: ", e);
+        }
+    }
+
+    private void setupLogger() {
+        try {
+            LogManager.getLogManager().reset();
+            Logger rootLogger = Logger.getLogger("");
+
+            // Console handler
+            ConsoleHandler consoleHandler = new ConsoleHandler();
+            consoleHandler.setLevel(Level.INFO);
+            rootLogger.addHandler(consoleHandler);
+
+            // File handler
+            FileHandler fileHandler = new FileHandler("soms.log", true);
+            fileHandler.setLevel(Level.INFO);
+            fileHandler.setFormatter(new SimpleFormatter());
+            rootLogger.addHandler(fileHandler);
+
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Failed to setup logger: ", e);
         }
     }
 }
