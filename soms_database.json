@@ -1,0 +1,22 @@
+{
+  "1001": {
+    "clientId": 1,
+    "accountNumber": 1001,
+    "balance": 500
+  },
+  "1002": {
+    "clientId": 1,
+    "accountNumber": 1002,
+    "balance": 1000
+  },
+  "2001": {
+    "clientId": 2,
+    "accountNumber": 2001,
+    "balance": 750
+  },
+  "3001": {
+    "clientId": 3,
+    "accountNumber": 3001,
+    "balance": 1200
+  }
+}
