@@ -14,11 +14,13 @@ public class ClientHandler implements Runnable {
     private final Socket clientSocket;
     private final Map<String, User> users;
     private final Map<Integer, Account> accounts;
+    private final Map<String, Double> availableItems;
 
     public ClientHandler(Socket socket, Map<String, User> users, Map<Integer, Account> accounts) {
         this.clientSocket = socket;
         this.users = users;
         this.accounts = accounts;
+        this.availableItems = SOMSUtils.getAvailableItems();
     }
 
     @Override
@@ -66,6 +68,13 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Authenticates the user based on userID and password.
+     *
+     * @param userID   The userID entered by the client.
+     * @param password The password entered by the client.
+     * @return True if authentication is successful, else false.
+     */
     private boolean authenticate(String userID, String password) {
         if (users.containsKey(userID)) {
             User user = users.get(userID);
@@ -74,41 +83,177 @@ public class ClientHandler implements Runnable {
         return false;
     }
 
+    /**
+     * Sends the list of top sellers to the client.
+     *
+     * @param out The PrintWriter to send messages to the client.
+     */
     private void sendTopSellers(PrintWriter out) {
         // Example top sellers list
-        String topSellers = "Top Sellers: [Item1, Item2, Item3]";
+        String topSellers = "Top Sellers: " + String.join(", ", availableItems.keySet());
         out.println(topSellers);
         logger.info("Top sellers sent to client.");
     }
 
+    /**
+     * Processes commands sent by the client.
+     *
+     * @param command The command received from the client.
+     * @param out     The PrintWriter to send responses to the client.
+     * @param userID  The userID of the authenticated client.
+     */
     private void processCommand(String command, PrintWriter out, String userID) {
-        // Example command processing
-        switch (command.toLowerCase()) {
-            case "view credits":
-                int accountNumber = users.get(userID).getAccountNumber();
-                Account account = accounts.get(accountNumber);
-                out.println("Your current balance: $" + account.getBalance());
-                logger.info("User " + userID + " viewed credits.");
+        if (command == null || command.trim().isEmpty()) {
+            out.println("Invalid command.");
+            logger.warning("Received empty command from user: " + userID);
+            return;
+        }
+
+        String[] tokens = command.trim().split("\\s+", 2);
+        String action = tokens[0].toLowerCase();
+
+        switch (action) {
+            case "view":
+                if (tokens.length < 2) {
+                    out.println("Usage: view [credits]");
+                } else if (tokens[1].equalsIgnoreCase("credits")) {
+                    viewCredits(out, userID);
+                } else {
+                    out.println("Unknown view command. Usage: view [credits]");
+                }
                 break;
-            case "buy item1":
-                // Example buy operation
-                out.println("You have bought: Item1");
-                logger.info("User " + userID + " bought item: Item1");
+
+            case "buy":
+                if (tokens.length < 2) {
+                    out.println("Usage: buy [item]");
+                } else {
+                    buyItem(out, userID, tokens[1]);
+                }
                 break;
-            case "top up 500":
-                // Example top up operation
-                account = accounts.get(users.get(userID).getAccountNumber());
-                account.setBalance(account.getBalance() + 500);
-                out.println("Top up successful. New balance: $" + account.getBalance());
-                logger.info("User " + userID + " topped up $500.");
+
+            case "top":
+                if (tokens.length < 2) {
+                    out.println("Usage: top up [amount]");
+                } else {
+                    String[] subTokens = tokens[1].split("\\s+", 2);
+                    if (subTokens.length < 2 || !subTokens[0].equalsIgnoreCase("up")) {
+                        out.println("Usage: top up [amount]");
+                    } else {
+                        try {
+                            double amount = Double.parseDouble(subTokens[1]);
+                            topUpAmount(out, userID, amount);
+                        } catch (NumberFormatException e) {
+                            out.println("Invalid amount. Please enter a numeric value.");
+                            logger.warning("Invalid top up amount from user: " + userID + " - " + subTokens[1]);
+                        }
+                    }
+                }
                 break;
+
             case "exit":
-                // Exit command handled in the run loop
+                // Handled in the run loop
                 break;
+
             default:
                 out.println("Unknown command.");
-                logger.info("User " + userID + " entered unknown command: " + command);
+                logger.warning("Received unknown command from user: " + userID + " - " + command);
                 break;
         }
+    }
+
+    /**
+     * Displays the current balance of the user's account.
+     *
+     * @param out    The PrintWriter to send messages to the client.
+     * @param userID The userID of the authenticated client.
+     */
+    private void viewCredits(PrintWriter out, String userID) {
+        int accountNumber = users.get(userID).getAccountNumber();
+        Account account = accounts.get(accountNumber);
+        if (account != null) {
+            out.println("Your current balance: $" + String.format("%.2f", account.getBalance()));
+            logger.info("User " + userID + " viewed credits. Balance: $" + account.getBalance());
+        } else {
+            out.println("Account not found.");
+            logger.severe("Account not found for userID: " + userID);
+        }
+    }
+
+    /**
+     * Processes the purchase of an item by the user.
+     *
+     * @param out    The PrintWriter to send messages to the client.
+     * @param userID The userID of the authenticated client.
+     * @param item   The item to be purchased.
+     */
+    private void buyItem(PrintWriter out, String userID, String item) {
+        String formattedItem = capitalizeFirstLetter(item.trim());
+        if (!availableItems.containsKey(formattedItem)) {
+            out.println("Item \"" + formattedItem + "\" is not available for purchase.");
+            logger.warning("User " + userID + " attempted to buy unavailable item: " + formattedItem);
+            return;
+        }
+
+        double itemPrice = availableItems.get(formattedItem);
+        int accountNumber = users.get(userID).getAccountNumber();
+        Account account = accounts.get(accountNumber);
+
+        if (account == null) {
+            out.println("Account not found.");
+            logger.severe("Account not found for userID: " + userID);
+            return;
+        }
+
+        synchronized (account) {
+            if (account.getBalance() >= itemPrice) {
+                account.setBalance(account.getBalance() - itemPrice);
+                out.println("You have successfully purchased: " + formattedItem + " for $" + String.format("%.2f", itemPrice));
+                logger.info("User " + userID + " purchased item: " + formattedItem + " for $" + String.format("%.2f", itemPrice));
+            } else {
+                out.println("Insufficient balance to purchase: " + formattedItem);
+                logger.warning("User " + userID + " has insufficient balance for item: " + formattedItem);
+            }
+        }
+    }
+
+    /**
+     * Processes the top-up of the user's account by a specified amount.
+     *
+     * @param out     The PrintWriter to send messages to the client.
+     * @param userID  The userID of the authenticated client.
+     * @param amount  The amount to top up.
+     */
+    private void topUpAmount(PrintWriter out, String userID, double amount) {
+        if (amount <= 0) {
+            out.println("Top-up amount must be positive.");
+            logger.warning("User " + userID + " attempted to top up a non-positive amount: $" + amount);
+            return;
+        }
+
+        int accountNumber = users.get(userID).getAccountNumber();
+        Account account = accounts.get(accountNumber);
+
+        if (account == null) {
+            out.println("Account not found.");
+            logger.severe("Account not found for userID: " + userID);
+            return;
+        }
+
+        synchronized (account) {
+            account.setBalance(account.getBalance() + amount);
+            out.println("Top-up successful. New balance: $" + String.format("%.2f", account.getBalance()));
+            logger.info("User " + userID + " topped up $" + String.format("%.2f", amount) + ". New balance: $" + String.format("%.2f", account.getBalance()));
+        }
+    }
+
+    /**
+     * Capitalizes the first letter of a string.
+     *
+     * @param str The input string.
+     * @return The string with the first letter capitalized.
+     */
+    private String capitalizeFirstLetter(String str) {
+        if (str == null || str.isEmpty()) return str;
+        return str.substring(0,1).toUpperCase() + str.substring(1).toLowerCase();
     }
 }

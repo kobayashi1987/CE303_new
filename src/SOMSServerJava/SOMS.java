@@ -1,6 +1,5 @@
 package SOMSServerJava;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -26,12 +25,31 @@ public class SOMS {
         server.startServer();
     }
 
+    /**
+     * Starts the server, loads user and account data, validates consistency,
+     * and listens for client connections.
+     */
     public void startServer() {
         setupLogger();
 
-        // Load users and accounts from JSON files
-        loadUsers("users.json");
-        loadAccounts("accounts.json");
+        // Load users and accounts using SOMSUtils
+        Map<String, User> loadedUsers = SOMSUtils.loadUsers("users.json");
+        Map<Integer, Account> loadedAccounts = SOMSUtils.loadAccounts("accounts.json");
+
+        if (loadedUsers == null || loadedAccounts == null) {
+            logger.severe("Failed to load users or accounts. Server is shutting down.");
+            return;
+        }
+
+        users.putAll(loadedUsers);
+        accounts.putAll(loadedAccounts);
+
+        // Validate consistency between users and accounts
+        boolean isConsistent = SOMSUtils.validateUserAccountConsistency(users, accounts);
+        if (!isConsistent) {
+            logger.severe("User and account data are inconsistent. Server is shutting down.");
+            return;
+        }
 
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             logger.info("Server starting on port " + PORT);
@@ -49,34 +67,9 @@ public class SOMS {
         }
     }
 
-    private void loadUsers(String filename) {
-        Gson gson = new Gson();
-        try (FileReader reader = new FileReader(filename)) {
-            Map<String, User> loadedUsers = gson.fromJson(reader, new TypeToken<Map<String, User>>() {}.getType());
-            if (loadedUsers != null) {
-                users.putAll(loadedUsers);
-                logger.info("Loaded " + loadedUsers.size() + " users.");
-            }
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error loading users: ", e);
-        }
-    }
-
-    private void loadAccounts(String filename) {
-        Gson gson = new Gson();
-        try (FileReader reader = new FileReader(filename)) {
-            Map<String, Account> loadedAccounts = gson.fromJson(reader, new TypeToken<Map<String, Account>>() {}.getType());
-            if (loadedAccounts != null) {
-                for (Map.Entry<String, Account> entry : loadedAccounts.entrySet()) {
-                    accounts.put(Integer.parseInt(entry.getKey()), entry.getValue());
-                }
-                logger.info("Loaded " + loadedAccounts.size() + " accounts.");
-            }
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error loading accounts: ", e);
-        }
-    }
-
+    /**
+     * Sets up the logger to log messages to both the console and a file.
+     */
     private void setupLogger() {
         try {
             LogManager.getLogManager().reset();

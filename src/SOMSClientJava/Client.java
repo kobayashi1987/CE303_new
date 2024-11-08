@@ -14,6 +14,11 @@ public class Client implements AutoCloseable {
     private final PrintWriter writer;
     private final BufferedReader reader;
 
+    /**
+     * Initializes the client by connecting to the server and setting up I/O streams.
+     *
+     * @throws IOException If an I/O error occurs when creating the socket or streams.
+     */
     public Client() throws IOException {
         this.socket = new Socket(HOST, PORT);
         this.writer = new PrintWriter(socket.getOutputStream(), true); // autoFlush=true
@@ -39,6 +44,9 @@ public class Client implements AutoCloseable {
         return reader.readLine();
     }
 
+    /**
+     * Closes the client connection and associated resources.
+     */
     @Override
     public void close() {
         try {

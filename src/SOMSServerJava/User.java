@@ -1,10 +1,16 @@
 package SOMSServerJava;
 
+/**
+ * User represents a user in the system with credentials and account information.
+ */
 public class User {
     private String userID;
     private String password;
-    private String role; // e.g., customer, admin
+    private String role;
     private int accountNumber;
+
+    // Constructors
+    public User() {}
 
     public User(String userID, String password, String role, int accountNumber) {
         this.userID = userID;
@@ -13,43 +19,36 @@ public class User {
         this.accountNumber = accountNumber;
     }
 
-    // Getters and setters
-
+    // Getters and Setters
     public String getUserID() {
         return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public void setRole(String role) {
         this.role = role;
     }
 
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
+    public int getAccountNumber() {
+        return accountNumber;
     }
 
-    // Provides a string representation of the user
-    @Override
-    public String toString() {
-        return "User{" +
-                "userID='" + userID + '\'' +
-                ", role='" + role + '\'' +
-                ", accountNumber=" + accountNumber +
-                '}';
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

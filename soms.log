@@ -122,3 +122,63 @@ Nov 04, 2024 11:22:20 PM SOMSServerJava.ClientHandler processCommand
 INFO: User john_doe topped up $500.
 Nov 04, 2024 11:22:27 PM SOMSServerJava.ClientHandler run
 INFO: Client disconnected: /127.0.0.1:55317
+Nov 08, 2024 11:04:16 PM SOMSServerJava.SOMS loadUsers
+INFO: Loaded 10 users.
+Nov 08, 2024 11:04:16 PM SOMSServerJava.SOMS loadAccounts
+INFO: Loaded 10 accounts.
+Nov 08, 2024 11:04:16 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 08, 2024 11:04:16 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 08, 2024 11:04:23 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:59882
+Nov 08, 2024 11:04:50 PM SOMSServerJava.ClientHandler sendTopSellers
+INFO: Top sellers sent to client.
+Nov 08, 2024 11:05:13 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith viewed credits.
+Nov 08, 2024 11:05:18 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith entered unknown command: top up 251
+Nov 08, 2024 11:05:40 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith entered unknown command: buy Item2
+Nov 08, 2024 11:06:25 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith viewed credits.
+Nov 08, 2024 11:06:30 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith entered unknown command: top up 1
+Nov 08, 2024 11:06:40 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith bought item: Item1
+Nov 08, 2024 11:06:49 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith topped up $500.
+Nov 08, 2024 11:06:54 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith entered unknown command: top up 600
+Nov 08, 2024 11:07:04 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith topped up $500.
+Nov 08, 2024 11:07:08 PM SOMSServerJava.ClientHandler processCommand
+INFO: User jane_smith entered unknown command: top up 50
+Nov 08, 2024 11:07:17 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:59882
+Nov 08, 2024 11:13:34 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 08, 2024 11:13:34 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 08, 2024 11:13:34 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 08, 2024 11:13:34 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 08, 2024 11:13:34 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 08, 2024 11:13:38 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:59910
+Nov 08, 2024 11:13:49 PM SOMSServerJava.ClientHandler sendTopSellers
+INFO: Top sellers sent to client.
+Nov 08, 2024 11:14:04 PM SOMSServerJava.ClientHandler viewCredits
+INFO: User john_doe viewed credits. Balance: $1000.0
+Nov 08, 2024 11:15:09 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User john_doe topped up $1.00. New balance: $1001.00
+Nov 08, 2024 11:15:14 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User john_doe topped up $22.00. New balance: $1023.00
+Nov 08, 2024 11:15:24 PM SOMSServerJava.ClientHandler buyItem
+WARNING: User john_doe attempted to buy unavailable item: Item 2
+Nov 08, 2024 11:15:29 PM SOMSServerJava.ClientHandler buyItem
+INFO: User john_doe purchased item: Item2 for $150.00
+Nov 08, 2024 11:15:49 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:59910

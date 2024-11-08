@@ -1,7 +1,7 @@
 {
   "john_doe": {
     "userID": "john_doe",
-    "password": "securepassword123",
+    "password": "123",
     "role": "customer",
     "accountNumber": 1001
   },
@@ -12,8 +12,8 @@
     "accountNumber": 1002
   },
   "jane_smith": {
-    "userID": "jane_smith",
-    "password": "janespassword",
+    "userID": "buyer2",
+    "password": "123",
     "role": "customer",
     "accountNumber": 1003
   },
