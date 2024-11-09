@@ -86,9 +86,27 @@ public class ClientHandler implements Runnable {
     private void handleCustomer(PrintWriter out, BufferedReader in, User user) throws IOException {
         displayAvailableItems(out);
 
+        // Send Customer Command Panel before entering command loop
+        out.println("Available Commands for Customers:");
+        out.println("1. view credits - View your account balance.");
+        out.println("2. view items - Display available items for purchase.");
+        out.println("3. buy [itemName] [quantity] - Purchase a specified quantity of an item.");
+        out.println("4. top up [amount] - Add funds to your account.");
+        out.println("5. view history - View your purchase history.");
+        out.println("6. exit - Exit the application.");
+        out.println("---END---"); // Delimiter to signal end of message
+
         String command;
         while ((command = in.readLine()) != null) {
+            // Ignore empty commands to prevent processing unintended inputs
+            if (command.trim().isEmpty()) {
+                out.println("Invalid command.");
+                out.println("---END---");
+                continue;
+            }
+
             processCustomerCommand(command, out, user);
+
             if (command.equalsIgnoreCase("exit")) {
                 out.println("Goodbye!");
                 out.println("---END---");
@@ -98,6 +116,8 @@ public class ClientHandler implements Runnable {
     }
 
     private void processCustomerCommand(String command, PrintWriter out, User user) {
+        logger.info("Processing command from user " + user.getUserID() + ": " + command);
+
         if (command == null || command.trim().isEmpty()) {
             out.println("Invalid command.");
             out.println("---END---");
@@ -128,6 +148,7 @@ public class ClientHandler implements Runnable {
                         default:
                             out.println("Unknown view command. Usage: view [credits|items|history]");
                             out.println("---END---");
+                            logger.warning("Unknown sub-action for view command from user: " + user.getUserID() + " - " + subAction);
                             break;
                     }
                 }
@@ -143,7 +164,7 @@ public class ClientHandler implements Runnable {
                         // Default quantity to 1
                         String itemName = buyParams[0];
                         makePurchase(out, user, itemName, 1);
-                    } else if (buyParams.length >=2 ) {
+                    } else if (buyParams.length >= 2) {
                         String itemName = buyParams[0];
                         try {
                             int quantity = Integer.parseInt(buyParams[1]);
@@ -182,6 +203,10 @@ public class ClientHandler implements Runnable {
                 }
                 break;
 
+            case "view history":
+                viewPurchaseHistory(out, user);
+                break;
+
             case "exit":
                 // Handled in the run loop
                 break;
@@ -193,7 +218,6 @@ public class ClientHandler implements Runnable {
                 break;
         }
     }
-
     private void viewCredits(PrintWriter out, User user) {
         int accountNumber = user.getAccountNumber();
         Account account = accounts.get(accountNumber);
@@ -359,9 +383,25 @@ public class ClientHandler implements Runnable {
     }
 
     private void handleSeller(PrintWriter out, BufferedReader in, User user) throws IOException {
+        // Send Seller Command Panel before entering command loop
+        out.println("Available Commands for Sellers:");
+        out.println("1. add [itemName] [price] [quantity] - Add or update an item in inventory.");
+        out.println("2. complete [purchaseId] [delivered|unfulfilled] - Mark a purchase as delivered or unfulfilled.");
+        out.println("3. view transactions - View all your transaction history.");
+        out.println("4. exit - Exit the application.");
+        out.println("---END---"); // Delimiter to signal end of message
+
         String command;
         while ((command = in.readLine()) != null) {
+            // Ignore empty commands to prevent processing unintended inputs
+            if (command.trim().isEmpty()) {
+                out.println("Invalid command.");
+                out.println("---END---");
+                continue;
+            }
+
             processSellerCommand(command, out, user);
+
             if (command.equalsIgnoreCase("exit")) {
                 out.println("Goodbye!");
                 out.println("---END---");
@@ -371,6 +411,8 @@ public class ClientHandler implements Runnable {
     }
 
     private void processSellerCommand(String command, PrintWriter out, User user) {
+        logger.info("Processing command from seller " + user.getUserID() + ": " + command);
+
         if (command == null || command.trim().isEmpty()) {
             out.println("Invalid command.");
             out.println("---END---");
@@ -396,7 +438,7 @@ public class ClientHandler implements Runnable {
                         try {
                             double price = Double.parseDouble(addParams[1]);
                             int quantity = Integer.parseInt(addParams[2]);
-                            addItem(out, itemName, price, quantity, user); // Pass 'user' as parameter
+                            addItem(out, itemName, price, quantity, user);
                         } catch (NumberFormatException e) {
                             out.println("Invalid price or quantity. Please enter numeric values.");
                             out.println("---END---");
@@ -445,6 +487,7 @@ public class ClientHandler implements Runnable {
                     } else {
                         out.println("Unknown view command. Usage: view transactions");
                         out.println("---END---");
+                        logger.warning("Unknown sub-action for view command from seller: " + user.getUserID() + " - " + subAction);
                     }
                 }
                 break;
@@ -460,7 +503,6 @@ public class ClientHandler implements Runnable {
                 break;
         }
     }
-
     private void addItem(PrintWriter out, String itemName, double price, int quantity, User user) {
         if (price <= 0 || quantity <= 0) {
             out.println("Price and quantity must be positive.");

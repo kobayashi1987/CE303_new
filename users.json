@@ -7,7 +7,7 @@
   },
   "charlie_black": {
     "userID": "charlie_black",
-    "password": "charliespwd",
+    "password": "123",
     "role": "customer",
     "accountNumber": 1007
   },
@@ -48,15 +48,15 @@
     "accountNumber": 1010
   },
   "admin_user": {
-    "userID": "admin_user",
-    "password": "adminpassword",
+    "userID": "seller1",
+    "password": "123",
     "role": "seller",
     "accountNumber": 1002
   },
   "alice_green": {
-    "userID": "alice_green",
-    "password": "alicespassword",
-    "role": "customer",
+    "userID": "seller2",
+    "password": "123",
+    "role": "seller",
     "accountNumber": 1005
   }
 }
