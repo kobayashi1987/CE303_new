@@ -8,16 +8,16 @@
       "purchaseDate": "2024-04-27T14:30",
       "sellerID": "admin_user",
       "totalCost": 200.0,
-      "status": "pending"
+      "status": "fulfilled"
     },
     "2": {
       "userID": "john_doe",
       "itemName": "Item1",
       "quantity": 2,
       "purchaseDate": "2024-11-09T16:58:43.570256",
-      "sellerID": "admin_user",
+      "sellerID": "unfulfilled",
       "totalCost": 200.0,
-      "status": "pending"
+      "status": "unfulfilled"
     }
   }
 }

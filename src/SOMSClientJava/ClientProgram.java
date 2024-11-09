@@ -3,6 +3,8 @@ package SOMSClientJava;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.*;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.SimpleFormatter;
 
 public class ClientProgram {
     private static final Logger logger = Logger.getLogger(ClientProgram.class.getName());
@@ -16,7 +18,7 @@ public class ClientProgram {
             logger.info("Connected to the server.");
 
             // Welcome message
-            String welcome = client.readResponse();
+            String welcome = readMultiLineResponse(client);
             if (welcome != null) {
                 System.out.println(welcome);
             }
@@ -30,26 +32,29 @@ public class ClientProgram {
             String password = scanner.nextLine();
             client.sendCommand(password);
 
-            String authResponse = client.readResponse();
+            // Read authentication response
+            String authResponse = readMultiLineResponse(client);
             if (authResponse != null) {
                 System.out.println(authResponse);
             }
 
-            if (authResponse == null || !authResponse.equalsIgnoreCase("Authentication successful.")) {
+            if (authResponse == null || !authResponse.trim().equalsIgnoreCase("Authentication successful.")) {
                 System.out.println("Exiting application.");
                 return;
             }
 
-            // Role prompt
-            String rolePrompt = client.readResponse();
+            // Read role prompt
+            String rolePrompt = readMultiLineResponse(client);
             if (rolePrompt != null && !rolePrompt.isEmpty()) {
                 System.out.println(rolePrompt);
             }
 
-            // Initial available items
-            String initialResponse = readMultiLineResponse(client);
-            if (initialResponse != null && !initialResponse.isEmpty()) {
-                System.out.println(initialResponse);
+            // If customer, display available items
+            if (rolePrompt != null && rolePrompt.contains("Customer")) {
+                String initialResponse = readMultiLineResponse(client);
+                if (initialResponse != null && !initialResponse.isEmpty()) {
+                    System.out.println(initialResponse);
+                }
             }
 
             // Command loop

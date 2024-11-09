@@ -3,20 +3,21 @@ package SOMSServerJava;
 import java.time.LocalDateTime;
 
 /**
- * Purchase represents a purchase made by a customer.
+ * Purchase represents a transaction made by a customer.
  */
 public class Purchase {
     private String userID;
     private String itemName;
     private int quantity;
     private LocalDateTime purchaseDate;
-    private String sellerID;
+    private String sellerID; // "pending" initially
     private double totalCost;
-    private String status; // "pending", "completed"
+    private String status; // "pending", "fulfilled", "unfulfilled"
 
-    // Constructors
+    // Default constructor for GSON
     public Purchase() {}
 
+    // Parameterized constructor
     public Purchase(String userID, String itemName, int quantity, LocalDateTime purchaseDate,
                     String sellerID, double totalCost, String status) {
         this.userID = userID;
@@ -25,10 +26,11 @@ public class Purchase {
         this.purchaseDate = purchaseDate;
         this.sellerID = sellerID;
         this.totalCost = totalCost;
-        this.status = status;
+        setStatus(status);
     }
 
     // Getters and Setters
+
     public String getUserID() {
         return userID;
     }
@@ -41,11 +43,6 @@ public class Purchase {
         return itemName;
     }
 
-    /**
-     * Sets the name of the purchased item.
-     *
-     * @param itemName The item's name.
-     */
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
@@ -54,11 +51,6 @@ public class Purchase {
         return quantity;
     }
 
-    /**
-     * Sets the quantity purchased.
-     *
-     * @param quantity The quantity.
-     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -67,11 +59,6 @@ public class Purchase {
         return purchaseDate;
     }
 
-    /**
-     * Sets the date and time of the purchase.
-     *
-     * @param purchaseDate The purchase date and time.
-     */
     public void setPurchaseDate(LocalDateTime purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
@@ -80,11 +67,6 @@ public class Purchase {
         return sellerID;
     }
 
-    /**
-     * Sets the seller's userID.
-     *
-     * @param sellerID The seller's userID.
-     */
     public void setSellerID(String sellerID) {
         this.sellerID = sellerID;
     }
@@ -93,15 +75,15 @@ public class Purchase {
         return totalCost;
     }
 
-    /**
-     * Sets the total cost of the purchase.
-     *
-     * @param totalCost The total cost.
-     */
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
 
+    /**
+     * Gets the current status of the purchase.
+     *
+     * @return The status ("pending", "fulfilled", "unfulfilled").
+     */
     public String getStatus() {
         return status;
     }
@@ -109,9 +91,16 @@ public class Purchase {
     /**
      * Sets the status of the purchase.
      *
-     * @param status The status ("pending" or "completed").
+     * @param status The new status ("pending", "fulfilled", "unfulfilled").
+     * @throws IllegalArgumentException if the status is invalid.
      */
     public void setStatus(String status) {
-        this.status = status;
+        if (status.equalsIgnoreCase("pending") ||
+                status.equalsIgnoreCase("fulfilled") ||
+                status.equalsIgnoreCase("unfulfilled")) {
+            this.status = status.toLowerCase();
+        } else {
+            throw new IllegalArgumentException("Invalid status. Must be 'pending', 'fulfilled', or 'unfulfilled'.");
+        }
     }
 }

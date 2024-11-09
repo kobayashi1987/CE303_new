@@ -50,7 +50,7 @@
   "admin_user": {
     "userID": "admin_user",
     "password": "adminpassword",
-    "role": "admin",
+    "role": "seller",
     "accountNumber": 1002
   },
   "alice_green": {

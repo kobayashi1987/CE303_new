@@ -324,3 +324,203 @@ Nov 09, 2024 4:58:51 PM SOMSServerJava.ClientHandler viewPurchaseHistory
 INFO: User john_doe viewed purchase history.
 Nov 09, 2024 4:58:55 PM SOMSServerJava.ClientHandler run
 INFO: Client disconnected: /127.0.0.1:53751
+Nov 09, 2024 10:23:20 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 09, 2024 10:23:20 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 09, 2024 10:23:20 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 09, 2024 10:23:20 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 09, 2024 10:23:20 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 09, 2024 10:23:20 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 09, 2024 10:23:20 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 09, 2024 10:23:33 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50640
+Nov 09, 2024 10:24:10 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50640
+Nov 09, 2024 10:24:25 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50658
+Nov 09, 2024 10:24:44 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50658
+Nov 09, 2024 10:34:41 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 09, 2024 10:34:41 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 09, 2024 10:34:41 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 09, 2024 10:34:41 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 09, 2024 10:34:41 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 09, 2024 10:34:41 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 09, 2024 10:34:41 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 09, 2024 10:34:47 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50906
+Nov 09, 2024 10:34:52 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50906
+Nov 09, 2024 10:36:15 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 09, 2024 10:36:15 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 09, 2024 10:36:15 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 09, 2024 10:36:15 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 09, 2024 10:36:15 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 09, 2024 10:36:15 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 09, 2024 10:36:15 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 09, 2024 10:36:28 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50971
+Nov 09, 2024 10:36:34 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50971
+Nov 09, 2024 10:37:14 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 09, 2024 10:37:14 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 09, 2024 10:37:14 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 09, 2024 10:37:14 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 09, 2024 10:37:14 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 09, 2024 10:37:14 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 09, 2024 10:37:14 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 09, 2024 10:37:21 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50993
+Nov 09, 2024 10:37:25 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50993
+Nov 09, 2024 10:38:56 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 09, 2024 10:38:56 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 09, 2024 10:38:56 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 09, 2024 10:38:56 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 09, 2024 10:38:56 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 09, 2024 10:38:56 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 09, 2024 10:38:56 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 09, 2024 10:39:00 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51030
+Nov 09, 2024 10:39:03 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51030
+Nov 09, 2024 10:42:50 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 09, 2024 10:42:50 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 09, 2024 10:42:50 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 09, 2024 10:42:50 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 09, 2024 10:42:50 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 09, 2024 10:42:50 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 09, 2024 10:42:50 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 09, 2024 10:42:53 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51123
+Nov 09, 2024 10:43:15 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51123
+Nov 09, 2024 10:43:18 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51134
+Nov 09, 2024 10:43:31 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51134
+Nov 09, 2024 10:43:35 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51141
+Nov 09, 2024 10:44:22 PM SOMSServerJava.ClientHandler run
+WARNING: User admin_user has an unknown role: admin
+Nov 09, 2024 10:44:22 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51141
+Nov 09, 2024 10:44:40 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51166
+Nov 09, 2024 10:44:47 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51166
+Nov 09, 2024 10:55:43 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 09, 2024 10:55:43 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 09, 2024 10:55:43 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 09, 2024 10:55:43 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 09, 2024 10:55:43 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 09, 2024 10:55:43 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 09, 2024 10:55:43 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 09, 2024 10:55:47 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51407
+Nov 09, 2024 10:56:23 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51407
+Nov 09, 2024 10:56:26 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51421
+Nov 09, 2024 10:56:33 PM SOMSServerJava.ClientHandler run
+WARNING: User admin_user has an unknown role: admin
+Nov 09, 2024 10:56:33 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51421
+Nov 09, 2024 10:56:56 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 09, 2024 10:56:56 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 09, 2024 10:56:56 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 09, 2024 10:56:56 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 09, 2024 10:56:56 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 09, 2024 10:56:56 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 09, 2024 10:56:56 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 09, 2024 10:57:01 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51435
+Nov 09, 2024 10:58:16 PM SOMSServerJava.ClientHandler addItem
+INFO: Seller admin_user added new item: Item6 with price: $300.0 and quantity: 25
+Nov 09, 2024 10:58:16 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 09, 2024 10:58:16 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 09, 2024 10:58:16 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 09, 2024 10:58:16 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 09, 2024 10:58:30 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller admin_user viewed transaction history.
+Nov 09, 2024 10:58:52 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 09, 2024 10:58:53 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 09, 2024 10:58:53 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 09, 2024 10:58:53 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 09, 2024 10:58:53 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Seller admin_user fulfilled purchase ID: 1 and transferred $200.0 to their account.
+Nov 09, 2024 10:59:25 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 09, 2024 10:59:25 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 09, 2024 10:59:25 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 09, 2024 10:59:25 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 09, 2024 10:59:25 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Seller admin_user marked purchase ID: 2 as unfulfilled and returned $200.0 to customer john_doe.
+Nov 09, 2024 10:59:31 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51435
