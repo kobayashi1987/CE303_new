@@ -3,7 +3,7 @@ package SOMSServerJava;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.*;
 
@@ -19,6 +19,8 @@ public class SOMS {
     private static final Logger logger = Logger.getLogger(SOMS.class.getName());
     private final Map<String, User> users = new ConcurrentHashMap<>();
     private final Map<Integer, Account> accounts = new ConcurrentHashMap<>();
+    private final Map<String, Item> items = new ConcurrentHashMap<>();
+    private final Map<String, Map<Integer, Purchase>> purchases = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
         SOMS server = new SOMS();
@@ -26,8 +28,8 @@ public class SOMS {
     }
 
     /**
-     * Starts the server, loads user and account data, validates consistency,
-     * and listens for client connections.
+     * Starts the server, loads user, account, item, and purchase data,
+     * validates consistency, and listens for client connections.
      */
     public void startServer() {
         setupLogger();
@@ -35,14 +37,18 @@ public class SOMS {
         // Load users and accounts using SOMSUtils
         Map<String, User> loadedUsers = SOMSUtils.loadUsers("users.json");
         Map<Integer, Account> loadedAccounts = SOMSUtils.loadAccounts("accounts.json");
+        Map<String, Item> loadedItems = SOMSUtils.loadItems("items.json");
+        Map<String, Map<Integer, Purchase>> loadedPurchases = SOMSUtils.loadPurchases("purchases.json");
 
-        if (loadedUsers == null || loadedAccounts == null) {
-            logger.severe("Failed to load users or accounts. Server is shutting down.");
+        if (loadedUsers == null || loadedAccounts == null || loadedItems == null || loadedPurchases == null) {
+            logger.severe("Failed to load necessary data. Server is shutting down.");
             return;
         }
 
         users.putAll(loadedUsers);
         accounts.putAll(loadedAccounts);
+        items.putAll(loadedItems);
+        purchases.putAll(loadedPurchases);
 
         // Validate consistency between users and accounts
         boolean isConsistent = SOMSUtils.validateUserAccountConsistency(users, accounts);
@@ -57,7 +63,7 @@ public class SOMS {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                ClientHandler handler = new ClientHandler(clientSocket, users, accounts);
+                ClientHandler handler = new ClientHandler(clientSocket, users, accounts, items, purchases);
                 Thread clientThread = new Thread(handler);
                 clientThread.start();
             }

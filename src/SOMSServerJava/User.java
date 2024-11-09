@@ -1,12 +1,12 @@
 package SOMSServerJava;
 
 /**
- * User represents a user in the system with credentials and account information.
+ * User represents a user in the system with credentials, role, and account information.
  */
 public class User {
     private String userID;
     private String password;
-    private String role;
+    private String role; // "customer" or "seller"
     private int accountNumber;
 
     // Constructors
@@ -32,6 +32,7 @@ public class User {
         return password;
     }
 
+    // Note: In a production environment, passwords should be hashed.
     public void setPassword(String password) {
         this.password = password;
     }
@@ -40,8 +41,17 @@ public class User {
         return role;
     }
 
+    /**
+     * Sets the role of the user. Must be either "customer" or "seller".
+     *
+     * @param role The role to set.
+     */
     public void setRole(String role) {
-        this.role = role;
+        if (role.equalsIgnoreCase("customer") || role.equalsIgnoreCase("seller")) {
+            this.role = role.toLowerCase();
+        } else {
+            throw new IllegalArgumentException("Invalid role. Must be 'customer' or 'seller'.");
+        }
     }
 
     public int getAccountNumber() {

@@ -1,39 +1,9 @@
 {
-  "john_doe": {
-    "userID": "john_doe",
-    "password": "123",
-    "role": "customer",
-    "accountNumber": 1001
-  },
-  "admin_user": {
-    "userID": "admin_user",
-    "password": "adminpassword",
-    "role": "admin",
-    "accountNumber": 1002
-  },
   "jane_smith": {
     "userID": "buyer2",
     "password": "123",
     "role": "customer",
     "accountNumber": 1003
-  },
-  "mike_brown": {
-    "userID": "mike_brown",
-    "password": "mikespassword",
-    "role": "customer",
-    "accountNumber": 1004
-  },
-  "alice_green": {
-    "userID": "alice_green",
-    "password": "alicespassword",
-    "role": "customer",
-    "accountNumber": 1005
-  },
-  "bob_white": {
-    "userID": "bob_white",
-    "password": "bobssecurepwd",
-    "role": "customer",
-    "accountNumber": 1006
   },
   "charlie_black": {
     "userID": "charlie_black",
@@ -41,11 +11,29 @@
     "role": "customer",
     "accountNumber": 1007
   },
+  "john_doe": {
+    "userID": "john_doe",
+    "password": "123",
+    "role": "customer",
+    "accountNumber": 1001
+  },
   "david_yellow": {
     "userID": "david_yellow",
     "password": "davidssecurepwd",
     "role": "customer",
     "accountNumber": 1008
+  },
+  "mike_brown": {
+    "userID": "mike_brown",
+    "password": "mikespassword",
+    "role": "customer",
+    "accountNumber": 1004
+  },
+  "bob_white": {
+    "userID": "bob_white",
+    "password": "bobssecurepwd",
+    "role": "customer",
+    "accountNumber": 1006
   },
   "eve_purple": {
     "userID": "eve_purple",
@@ -58,5 +46,17 @@
     "password": "frankspwd",
     "role": "customer",
     "accountNumber": 1010
+  },
+  "admin_user": {
+    "userID": "admin_user",
+    "password": "adminpassword",
+    "role": "admin",
+    "accountNumber": 1002
+  },
+  "alice_green": {
+    "userID": "alice_green",
+    "password": "alicespassword",
+    "role": "customer",
+    "accountNumber": 1005
   }
 }

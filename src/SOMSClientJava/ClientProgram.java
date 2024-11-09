@@ -4,15 +4,10 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.*;
 
-/**
- * ClientProgram handles user interactions, sends commands to the server,
- * and displays server responses.
- */
 public class ClientProgram {
     private static final Logger logger = Logger.getLogger(ClientProgram.class.getName());
 
     public static void main(String[] args) {
-        // Setup logger
         setupLogger();
 
         try (Client client = new Client();
@@ -20,7 +15,7 @@ public class ClientProgram {
 
             logger.info("Connected to the server.");
 
-            // Initial server welcome message
+            // Welcome message
             String welcome = client.readResponse();
             if (welcome != null) {
                 System.out.println(welcome);
@@ -45,10 +40,16 @@ public class ClientProgram {
                 return;
             }
 
-            // If authenticated, receive top sellers
-            String topSellers = client.readResponse();
-            if (topSellers != null && !topSellers.isEmpty()) {
-                System.out.println(topSellers);
+            // Role prompt
+            String rolePrompt = client.readResponse();
+            if (rolePrompt != null && !rolePrompt.isEmpty()) {
+                System.out.println(rolePrompt);
+            }
+
+            // Initial available items
+            String initialResponse = readMultiLineResponse(client);
+            if (initialResponse != null && !initialResponse.isEmpty()) {
+                System.out.println(initialResponse);
             }
 
             // Command loop
@@ -57,7 +58,7 @@ public class ClientProgram {
                 System.out.print("Enter a command: ");
                 String command = scanner.nextLine();
                 client.sendCommand(command);
-                response = client.readResponse();
+                response = readMultiLineResponse(client);
                 if (response != null) {
                     System.out.println(response);
                 }
@@ -73,23 +74,30 @@ public class ClientProgram {
         }
     }
 
-    /**
-     * Configures the logger to log severe messages to the console.
-     */
+    private static String readMultiLineResponse(Client client) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = client.readResponse()) != null) {
+            if (line.equals("---END---")) {
+                break;
+            }
+            sb.append(line).append("\n");
+        }
+        return sb.toString().trim();
+    }
+
     private static void setupLogger() {
         Logger rootLogger = Logger.getLogger("");
-        rootLogger.setLevel(Level.SEVERE); // Set the root logger level
+        rootLogger.setLevel(Level.SEVERE);
 
-        // Remove default handlers to prevent duplicate logging
         Handler[] handlers = rootLogger.getHandlers();
         for (Handler handler : handlers) {
             rootLogger.removeHandler(handler);
         }
 
-        // Add console handler
         ConsoleHandler consoleHandler = new ConsoleHandler();
-        consoleHandler.setLevel(Level.SEVERE); // Set handler level
-        consoleHandler.setFormatter(new SimpleFormatter()); // Optional: set a formatter
+        consoleHandler.setLevel(Level.SEVERE);
+        consoleHandler.setFormatter(new SimpleFormatter());
         rootLogger.addHandler(consoleHandler);
     }
 }
