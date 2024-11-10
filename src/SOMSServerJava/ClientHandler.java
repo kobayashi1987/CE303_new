@@ -33,6 +33,7 @@ public class ClientHandler implements Runnable {
         ) {
             logger.info("Client connected: " + clientSocket.getRemoteSocketAddress());
 
+            // Send Welcome Message
             out.println("Welcome to SOMS Server!");
             out.println("---END---");
 
@@ -45,11 +46,11 @@ public class ClientHandler implements Runnable {
                 out.println("---END---");
 
                 User user = users.get(userID);
-                if (user.getRole().equals("customer")) {
+                if (user.getRole().equalsIgnoreCase("customer")) {
                     out.println("You are logged in as a Customer.");
                     out.println("---END---");
                     handleCustomer(out, in, user);
-                } else if (user.getRole().equals("seller")) {
+                } else if (user.getRole().equalsIgnoreCase("seller")) {
                     out.println("You are logged in as a Seller.");
                     out.println("---END---");
                     handleSeller(out, in, user);
@@ -86,7 +87,7 @@ public class ClientHandler implements Runnable {
     private void handleCustomer(PrintWriter out, BufferedReader in, User user) throws IOException {
         displayAvailableItems(out);
 
-        // Send Customer Command Panel before entering command loop
+        // Send Customer Command Panel
         out.println("Available Commands for Customers:");
         out.println("1. view credits - View your account balance.");
         out.println("2. view items - Display available items for purchase.");
@@ -94,11 +95,11 @@ public class ClientHandler implements Runnable {
         out.println("4. top up [amount] - Add funds to your account.");
         out.println("5. view history - View your purchase history.");
         out.println("6. exit - Exit the application.");
-        out.println("---END---"); // Delimiter to signal end of message
+        out.println("---END---"); // End of command panel
 
         String command;
         while ((command = in.readLine()) != null) {
-            // Ignore empty commands to prevent processing unintended inputs
+            // Ignore empty commands
             if (command.trim().isEmpty()) {
                 out.println("Invalid command.");
                 out.println("---END---");
@@ -118,106 +119,99 @@ public class ClientHandler implements Runnable {
     private void processCustomerCommand(String command, PrintWriter out, User user) {
         logger.info("Processing command from user " + user.getUserID() + ": " + command);
 
-        if (command == null || command.trim().isEmpty()) {
+        String trimmedCommand = command.trim();
+        if (trimmedCommand.isEmpty()) {
             out.println("Invalid command.");
             out.println("---END---");
-            logger.warning("Received empty command from user: " + user.getUserID());
             return;
         }
 
-        String[] tokens = command.trim().split("\\s+", 2);
-        String action = tokens[0].toLowerCase();
+        String[] parts = trimmedCommand.split("\\s+", 2);
+        String action = parts[0].toLowerCase();
 
         switch (action) {
             case "view":
-                if (tokens.length < 2) {
+                if (parts.length < 2) {
                     out.println("Usage: view [credits|items|history]");
                     out.println("---END---");
-                } else {
-                    String subAction = tokens[1].toLowerCase();
-                    switch (subAction) {
-                        case "credits":
-                            viewCredits(out, user);
-                            break;
-                        case "items":
-                            displayAvailableItems(out);
-                            break;
-                        case "history":
-                            viewPurchaseHistory(out, user);
-                            break;
-                        default:
-                            out.println("Unknown view command. Usage: view [credits|items|history]");
-                            out.println("---END---");
-                            logger.warning("Unknown sub-action for view command from user: " + user.getUserID() + " - " + subAction);
-                            break;
-                    }
+                    break;
+                }
+                String subAction = parts[1].toLowerCase();
+                switch (subAction) {
+                    case "credits":
+                        viewCredits(out, user);
+                        break;
+                    case "items":
+                        displayAvailableItems(out);
+                        break;
+                    case "history":
+                        viewPurchaseHistory(out, user);
+                        break;
+                    default:
+                        out.println("Unknown view command. Usage: view [credits|items|history]");
+                        out.println("---END---");
+                        logger.warning("Unknown sub-action for view command from user: " + user.getUserID() + " - " + subAction);
+                        break;
                 }
                 break;
 
             case "buy":
-                if (tokens.length < 2) {
+                if (parts.length < 2) {
                     out.println("Usage: buy [itemName] [quantity]");
                     out.println("---END---");
-                } else {
-                    String[] buyParams = tokens[1].split("\\s+");
-                    if (buyParams.length == 1) {
-                        // Default quantity to 1
-                        String itemName = buyParams[0];
-                        makePurchase(out, user, itemName, 1);
-                    } else if (buyParams.length >= 2) {
-                        String itemName = buyParams[0];
-                        try {
-                            int quantity = Integer.parseInt(buyParams[1]);
-                            makePurchase(out, user, itemName, quantity);
-                        } catch (NumberFormatException e) {
-                            out.println("Invalid quantity. Please enter a numeric value.");
-                            out.println("---END---");
-                            logger.warning("Invalid quantity from user: " + user.getUserID() + " - " + buyParams[1]);
-                        }
-                    } else {
-                        out.println("Usage: buy [itemName] [quantity]");
-                        out.println("---END---");
-                    }
+                    break;
+                }
+                String[] buyParams = parts[1].split("\\s+");
+                if (buyParams.length < 2) {
+                    out.println("Usage: buy [itemName] [quantity]");
+                    out.println("---END---");
+                    break;
+                }
+                String itemName = buyParams[0];
+                String quantityStr = buyParams[1];
+                try {
+                    int quantity = Integer.parseInt(quantityStr);
+                    makePurchase(out, user, itemName, quantity);
+                } catch (NumberFormatException e) {
+                    out.println("Invalid quantity. Please enter a numeric value.");
+                    out.println("---END---");
                 }
                 break;
 
             case "top":
-                if (tokens.length < 2) {
+                if (parts.length < 2) {
                     out.println("Usage: top up [amount]");
                     out.println("---END---");
-                } else {
-                    String[] topParams = tokens[1].split("\\s+");
-                    if (topParams.length < 2 || !topParams[0].equalsIgnoreCase("up")) {
-                        out.println("Usage: top up [amount]");
-                        out.println("---END---");
-                    } else {
-                        try {
-                            double amount = Double.parseDouble(topParams[1]);
-                            topUpAmount(out, user, amount);
-                        } catch (NumberFormatException e) {
-                            out.println("Invalid amount. Please enter a numeric value.");
-                            out.println("---END---");
-                            logger.warning("Invalid top up amount from user: " + user.getUserID() + " - " + topParams[1]);
-                        }
-                    }
+                    break;
+                }
+                String[] topParams = parts[1].split("\\s+", 2);
+                if (topParams.length < 2 || !topParams[0].equalsIgnoreCase("up")) {
+                    out.println("Usage: top up [amount]");
+                    out.println("---END---");
+                    break;
+                }
+                String amountStr = topParams[1];
+                try {
+                    double amount = Double.parseDouble(amountStr);
+                    topUpAmount(out, user, amount);
+                } catch (NumberFormatException e) {
+                    out.println("Invalid amount. Please enter a numeric value.");
+                    out.println("---END---");
                 }
                 break;
 
-            case "view history":
-                viewPurchaseHistory(out, user);
-                break;
-
             case "exit":
-                // Handled in the run loop
+                // Handled in the loop
                 break;
 
             default:
                 out.println("Unknown command.");
                 out.println("---END---");
-                logger.warning("Received unknown command from user: " + user.getUserID() + " - " + command);
+                logger.warning("Unknown command from user: " + user.getUserID() + " - " + command);
                 break;
         }
     }
+
     private void viewCredits(PrintWriter out, User user) {
         int accountNumber = user.getAccountNumber();
         Account account = accounts.get(accountNumber);
@@ -259,7 +253,7 @@ public class ClientHandler implements Runnable {
             return;
         }
 
-        Item item = items.get(itemName);
+        Item item = getItemByName(itemName);
         if (item == null) {
             out.println("Item \"" + itemName + "\" does not exist.");
             out.println("---END---");
@@ -269,9 +263,9 @@ public class ClientHandler implements Runnable {
 
         synchronized (item) {
             if (item.getQuantityAvailable() < quantity) {
-                out.println("Insufficient quantity available for \"" + itemName + "\". Available: " + item.getQuantityAvailable());
+                out.println("Insufficient quantity available for \"" + item.getName() + "\". Available: " + item.getQuantityAvailable());
                 out.println("---END---");
-                logger.warning("User " + user.getUserID() + " attempted to purchase more than available for item: " + itemName);
+                logger.warning("User " + user.getUserID() + " attempted to purchase more than available for item: " + item.getName());
                 return;
             }
             item.reduceQuantity(quantity);
@@ -383,17 +377,17 @@ public class ClientHandler implements Runnable {
     }
 
     private void handleSeller(PrintWriter out, BufferedReader in, User user) throws IOException {
-        // Send Seller Command Panel before entering command loop
+        // Send Seller Command Panel
         out.println("Available Commands for Sellers:");
         out.println("1. add [itemName] [price] [quantity] - Add or update an item in inventory.");
         out.println("2. complete [purchaseId] [delivered|unfulfilled] - Mark a purchase as delivered or unfulfilled.");
         out.println("3. view transactions - View all your transaction history.");
         out.println("4. exit - Exit the application.");
-        out.println("---END---"); // Delimiter to signal end of message
+        out.println("---END---"); // End of command panel
 
         String command;
         while ((command = in.readLine()) != null) {
-            // Ignore empty commands to prevent processing unintended inputs
+            // Ignore empty commands
             if (command.trim().isEmpty()) {
                 out.println("Invalid command.");
                 out.println("---END---");
@@ -413,96 +407,122 @@ public class ClientHandler implements Runnable {
     private void processSellerCommand(String command, PrintWriter out, User user) {
         logger.info("Processing command from seller " + user.getUserID() + ": " + command);
 
-        if (command == null || command.trim().isEmpty()) {
+        String trimmedCommand = command.trim();
+        if (trimmedCommand.isEmpty()) {
             out.println("Invalid command.");
             out.println("---END---");
-            logger.warning("Received empty command from seller: " + user.getUserID());
             return;
         }
 
-        String[] tokens = command.trim().split("\\s+", 2);
-        String action = tokens[0].toLowerCase();
+        String[] parts = trimmedCommand.split("\\s+", 2);
+        String action = parts[0].toLowerCase();
 
         switch (action) {
             case "add":
-                if (tokens.length < 2) {
+                if (parts.length < 2) {
                     out.println("Usage: add [itemName] [price] [quantity]");
                     out.println("---END---");
-                } else {
-                    String[] addParams = tokens[1].split("\\s+");
-                    if (addParams.length < 3) {
-                        out.println("Usage: add [itemName] [price] [quantity]");
-                        out.println("---END---");
-                    } else {
-                        String itemName = addParams[0];
-                        try {
-                            double price = Double.parseDouble(addParams[1]);
-                            int quantity = Integer.parseInt(addParams[2]);
-                            addItem(out, itemName, price, quantity, user);
-                        } catch (NumberFormatException e) {
-                            out.println("Invalid price or quantity. Please enter numeric values.");
-                            out.println("---END---");
-                            logger.warning("Invalid add item parameters from seller: " + user.getUserID() + " - " + tokens[1]);
-                        }
-                    }
+                    break;
+                }
+                String[] addParams = parts[1].split("\\s+");
+                if (addParams.length < 3) {
+                    out.println("Usage: add [itemName] [price] [quantity]");
+                    out.println("---END---");
+                    break;
+                }
+                String itemName = addParams[0];
+                String priceStr = addParams[1];
+                String quantityStr = addParams[2];
+                try {
+                    double price = Double.parseDouble(priceStr);
+                    int quantity = Integer.parseInt(quantityStr);
+                    addItem(out, itemName, price, quantity, user);
+                } catch (NumberFormatException e) {
+                    out.println("Invalid price or quantity. Please enter numeric values.");
+                    out.println("---END---");
                 }
                 break;
 
             case "complete":
-                if (tokens.length < 2) {
+                if (parts.length < 2) {
                     out.println("Usage: complete [purchaseId] [delivered|unfulfilled]");
                     out.println("---END---");
-                } else {
-                    String[] completeParams = tokens[1].split("\\s+");
-                    if (completeParams.length < 2) {
-                        out.println("Usage: complete [purchaseId] [delivered|unfulfilled]");
+                    break;
+                }
+                String[] completeParams = parts[1].split("\\s+");
+                if (completeParams.length < 2) {
+                    out.println("Usage: complete [purchaseId] [delivered|unfulfilled]");
+                    out.println("---END---");
+                    break;
+                }
+                String purchaseIdStr = completeParams[0];
+                String status = completeParams[1].toLowerCase();
+                try {
+                    int purchaseId = Integer.parseInt(purchaseIdStr);
+                    if (!status.equals("delivered") && !status.equals("unfulfilled")) {
+                        out.println("Invalid status. Use 'delivered' or 'unfulfilled'.");
                         out.println("---END---");
-                    } else {
-                        try {
-                            int purchaseId = Integer.parseInt(completeParams[0]);
-                            String result = completeParams[1].toLowerCase();
-                            if (!result.equals("delivered") && !result.equals("unfulfilled")) {
-                                out.println("Invalid result. Use 'delivered' or 'unfulfilled'.");
-                                out.println("---END---");
-                            } else {
-                                completeTransaction(out, purchaseId, result, user);
-                            }
-                        } catch (NumberFormatException e) {
-                            out.println("Invalid purchase ID. Please enter a numeric value.");
-                            out.println("---END---");
-                            logger.warning("Invalid purchase ID from seller: " + user.getUserID() + " - " + tokens[1]);
-                        }
+                        break;
                     }
+                    completeTransaction(out, purchaseId, status, user);
+                } catch (NumberFormatException e) {
+                    out.println("Invalid purchase ID. Please enter a numeric value.");
+                    out.println("---END---");
                 }
                 break;
 
             case "view":
-                if (tokens.length < 2) {
+                if (parts.length < 2) {
                     out.println("Usage: view transactions");
                     out.println("---END---");
+                    break;
+                }
+                String subAction = parts[1].toLowerCase();
+                if (subAction.equals("transactions")) {
+                    viewTransactionHistory(out, user);
                 } else {
-                    String subAction = tokens[1].toLowerCase();
-                    if (subAction.equals("transactions")) {
-                        viewTransactionHistory(out, user);
-                    } else {
-                        out.println("Unknown view command. Usage: view transactions");
-                        out.println("---END---");
-                        logger.warning("Unknown sub-action for view command from seller: " + user.getUserID() + " - " + subAction);
-                    }
+                    out.println("Unknown view command. Usage: view transactions");
+                    out.println("---END---");
+                    logger.warning("Unknown sub-action for view command from seller: " + user.getUserID() + " - " + subAction);
                 }
                 break;
 
             case "exit":
-                // Handled in the run loop
+                // Handled in the loop
                 break;
 
             default:
                 out.println("Unknown command.");
                 out.println("---END---");
-                logger.warning("Received unknown command from seller: " + user.getUserID() + " - " + command);
+                logger.warning("Unknown command from seller: " + user.getUserID() + " - " + command);
                 break;
         }
     }
+
+    /**
+     * Retrieves an item by name, case-insensitively.
+     *
+     * @param itemName The name of the item to retrieve.
+     * @return The Item object if found; otherwise, null.
+     */
+    private Item getItemByName(String itemName) {
+        for (Map.Entry<String, Item> entry : items.entrySet()) {
+            if (entry.getKey().equalsIgnoreCase(itemName)) {
+                return entry.getValue();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Adds or updates an item in the inventory.
+     *
+     * @param out       PrintWriter to send responses to the client.
+     * @param itemName  Name of the item.
+     * @param price     Price of the item.
+     * @param quantity  Quantity of the item.
+     * @param user      The seller user performing the action.
+     */
     private void addItem(PrintWriter out, String itemName, double price, int quantity, User user) {
         if (price <= 0 || quantity <= 0) {
             out.println("Price and quantity must be positive.");
@@ -530,7 +550,15 @@ public class ClientHandler implements Runnable {
         out.println("---END---");
     }
 
-    private void completeTransaction(PrintWriter out, int purchaseId, String result, User seller) {
+    /**
+     * Completes a transaction by marking it as delivered or unfulfilled.
+     *
+     * @param out         PrintWriter to send responses to the client.
+     * @param purchaseId  ID of the purchase to complete.
+     * @param status      Status to mark the purchase as ("delivered" or "unfulfilled").
+     * @param user        The seller user performing the action.
+     */
+    private void completeTransaction(PrintWriter out, int purchaseId, String status, User user) {
         boolean found = false;
         String buyerID = null;
         Purchase purchase = null;
@@ -548,7 +576,7 @@ public class ClientHandler implements Runnable {
         if (!found || purchase == null) {
             out.println("Purchase ID not found.");
             out.println("---END---");
-            logger.warning("Seller " + seller.getUserID() + " attempted to complete non-existent purchase ID: " + purchaseId);
+            logger.warning("Seller " + user.getUserID() + " attempted to complete non-existent purchase ID: " + purchaseId);
             return;
         }
 
@@ -556,19 +584,19 @@ public class ClientHandler implements Runnable {
             if (!purchase.getStatus().equals("pending")) {
                 out.println("Purchase already processed.");
                 out.println("---END---");
-                logger.warning("Seller " + seller.getUserID() + " attempted to reprocess purchase ID: " + purchaseId);
+                logger.warning("Seller " + user.getUserID() + " attempted to reprocess purchase ID: " + purchaseId);
                 return;
             }
 
-            if (result.equals("delivered")) {
+            if (status.equals("delivered")) {
                 // Transfer funds to seller
                 double amount = purchase.getTotalCost();
-                int sellerAccountNumber = seller.getAccountNumber();
+                int sellerAccountNumber = user.getAccountNumber();
                 Account sellerAccount = accounts.get(sellerAccountNumber);
                 if (sellerAccount == null) {
                     out.println("Seller account not found.");
                     out.println("---END---");
-                    logger.severe("Seller " + seller.getUserID() + " account not found.");
+                    logger.severe("Seller " + user.getUserID() + " account not found.");
                     return;
                 }
 
@@ -578,15 +606,15 @@ public class ClientHandler implements Runnable {
 
                 // Update purchase status
                 purchase.setStatus("fulfilled");
-                purchase.setSellerID(seller.getUserID());
+                purchase.setSellerID(user.getUserID());
 
                 // Persist data
                 SOMSUtils.saveAllData(users, accounts, items, purchases);
 
                 out.println("Purchase ID " + purchaseId + " marked as delivered. $" + String.format("%.2f", amount) + " transferred to your account.");
                 out.println("---END---");
-                logger.info("Seller " + seller.getUserID() + " fulfilled purchase ID: " + purchaseId + " and transferred $" + amount + " to their account.");
-            } else if (result.equals("unfulfilled")) {
+                logger.info("Seller " + user.getUserID() + " fulfilled purchase ID: " + purchaseId + " and transferred $" + amount + " to their account.");
+            } else if (status.equals("unfulfilled")) {
                 // Return funds to customer
                 double amount = purchase.getTotalCost();
                 int customerAccountNumber = users.get(buyerID).getAccountNumber();
@@ -608,7 +636,7 @@ public class ClientHandler implements Runnable {
 
                 // Restore item quantity
                 synchronized (items) {
-                    Item item = items.get(purchase.getItemName());
+                    Item item = getItemByName(purchase.getItemName());
                     if (item != null) {
                         item.increaseQuantity(purchase.getQuantity());
                     }
@@ -619,7 +647,7 @@ public class ClientHandler implements Runnable {
 
                 out.println("Purchase ID " + purchaseId + " marked as unfulfilled. $" + String.format("%.2f", amount) + " returned to the customer.");
                 out.println("---END---");
-                logger.info("Seller " + seller.getUserID() + " marked purchase ID: " + purchaseId + " as unfulfilled and returned $" + amount + " to customer " + buyerID + ".");
+                logger.info("Seller " + user.getUserID() + " marked purchase ID: " + purchaseId + " as unfulfilled and returned $" + amount + " to customer " + buyerID + ".");
             }
         }
     }
@@ -638,7 +666,7 @@ public class ClientHandler implements Runnable {
             String buyerID = entry.getKey();
             for (Map.Entry<Integer, Purchase> purchaseEntry : entry.getValue().entrySet()) {
                 Purchase purchase = purchaseEntry.getValue();
-                if (purchase.getSellerID().equals(sellerID) || purchase.getSellerID().equals("unfulfilled")) {
+                if (purchase.getSellerID().equalsIgnoreCase(sellerID) || purchase.getSellerID().equalsIgnoreCase("unfulfilled")) {
                     sb.append(String.format("%-5d %-20s %-10d %-20s %-15s %-10.2f %-15s\n",
                             purchaseEntry.getKey(),
                             purchase.getItemName(),

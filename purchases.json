@@ -42,9 +42,27 @@
       "itemName": "Item7",
       "quantity": 2,
       "purchaseDate": "2024-11-09T23:47:43.649600",
-      "sellerID": "pending",
+      "sellerID": "seller1",
       "totalCost": 200.0,
-      "status": "pending"
+      "status": "fulfilled"
+    },
+    "6": {
+      "userID": "john_doe",
+      "itemName": "item8",
+      "quantity": 1,
+      "purchaseDate": "2024-11-10T21:51:32.608961",
+      "sellerID": "seller1",
+      "totalCost": 100.0,
+      "status": "fulfilled"
+    },
+    "7": {
+      "userID": "john_doe",
+      "itemName": "Item7",
+      "quantity": 1,
+      "purchaseDate": "2024-11-10T21:51:43.392902",
+      "sellerID": "unfulfilled",
+      "totalCost": 100.0,
+      "status": "unfulfilled"
     }
   }
 }

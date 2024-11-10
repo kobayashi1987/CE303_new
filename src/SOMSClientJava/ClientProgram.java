@@ -50,11 +50,17 @@ public class ClientProgram {
             }
 
             // If customer, display available items
-            if (rolePrompt != null && rolePrompt.contains("Customer")) {
+            if (rolePrompt != null && rolePrompt.toLowerCase().contains("customer")) {
                 String initialResponse = readMultiLineResponse(client);
                 if (initialResponse != null && !initialResponse.isEmpty()) {
                     System.out.println(initialResponse);
                 }
+            }
+
+            // Read Command Panel
+            String commandPanel = readMultiLineResponse(client);
+            if (commandPanel != null && !commandPanel.isEmpty()) {
+                System.out.println(commandPanel);
             }
 
             // Command loop
@@ -79,6 +85,13 @@ public class ClientProgram {
         }
     }
 
+    /**
+     * Reads multi-line responses from the server until the delimiter '---END---' is encountered.
+     *
+     * @param client The client instance to read responses from.
+     * @return The accumulated response as a single String.
+     * @throws IOException If an I/O error occurs.
+     */
     private static String readMultiLineResponse(Client client) throws IOException {
         StringBuilder sb = new StringBuilder();
         String line;
@@ -91,6 +104,9 @@ public class ClientProgram {
         return sb.toString().trim();
     }
 
+    /**
+     * Sets up the logger to log only severe messages to the console.
+     */
     private static void setupLogger() {
         Logger rootLogger = Logger.getLogger("");
         rootLogger.setLevel(Level.SEVERE);

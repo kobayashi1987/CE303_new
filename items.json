@@ -14,6 +14,11 @@
     "price": 300.0,
     "quantityAvailable": 10
   },
+  "item8": {
+    "name": "item8",
+    "price": 100.0,
+    "quantityAvailable": 99
+  },
   "Item6": {
     "name": "Item6",
     "price": 300.0,
@@ -28,6 +33,11 @@
     "name": "Item4",
     "price": 250.0,
     "quantityAvailable": 15
+  },
+  "item9": {
+    "name": "item9",
+    "price": 10.0,
+    "quantityAvailable": 100
   },
   "Item7": {
     "name": "Item7",

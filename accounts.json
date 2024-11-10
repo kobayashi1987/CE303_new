@@ -38,14 +38,14 @@
   "1002": {
     "customerId": 2,
     "accountNumber": 1002,
-    "balance": 5400.0,
+    "balance": 5700.0,
     "reservedFunds": 0.0
   },
   "1001": {
     "customerId": 1,
     "accountNumber": 1001,
     "balance": 846.0,
-    "reservedFunds": 400.0
+    "reservedFunds": 500.0
   },
   "1010": {
     "customerId": 10,
