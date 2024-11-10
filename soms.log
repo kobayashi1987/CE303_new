@@ -1158,3 +1158,563 @@ Nov 10, 2024 9:52:43 PM SOMSServerJava.ClientHandler processSellerCommand
 INFO: Processing command from seller seller1: exit
 Nov 10, 2024 9:52:43 PM SOMSServerJava.ClientHandler run
 INFO: Client disconnected: /127.0.0.1:51125
+Nov 10, 2024 10:24:22 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 10, 2024 10:24:23 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 10:24:23 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 10:24:23 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 10:24:23 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 10, 2024 10:24:23 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 10, 2024 10:24:23 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 10, 2024 10:24:27 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51498
+Nov 10, 2024 10:24:40 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view credits
+Nov 10, 2024 10:24:40 PM SOMSServerJava.ClientHandler viewCredits
+INFO: User john_doe viewed credits. Balance: $846.0
+Nov 10, 2024 10:24:46 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: top up 11
+Nov 10, 2024 10:24:46 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 10:24:46 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 10:24:46 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 10:24:46 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 10:24:46 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User john_doe topped up $11.00. New balance: $857.00
+Nov 10, 2024 10:24:51 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view items
+Nov 10, 2024 10:24:55 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: top up 10000
+Nov 10, 2024 10:24:55 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 10:24:55 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 10:24:55 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 10:24:55 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 10:24:55 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User john_doe topped up $10000.00. New balance: $10857.00
+Nov 10, 2024 10:25:02 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: buy Item4 10
+Nov 10, 2024 10:25:02 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 10:25:02 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 10:25:02 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 10:25:02 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 10:25:02 PM SOMSServerJava.ClientHandler makePurchase
+INFO: User john_doe reserved purchase: Item4 x10 for $2500.00
+Nov 10, 2024 10:25:08 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: buy Item5 10
+Nov 10, 2024 10:25:08 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 10:25:08 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 10:25:08 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 10:25:08 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 10:25:08 PM SOMSServerJava.ClientHandler makePurchase
+INFO: User john_doe reserved purchase: Item5 x10 for $3000.00
+Nov 10, 2024 10:25:11 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view history
+Nov 10, 2024 10:25:11 PM SOMSServerJava.ClientHandler viewPurchaseHistory
+INFO: User john_doe viewed purchase history.
+Nov 10, 2024 10:25:25 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view items
+Nov 10, 2024 10:25:36 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view history
+Nov 10, 2024 10:25:36 PM SOMSServerJava.ClientHandler viewPurchaseHistory
+INFO: User john_doe viewed purchase history.
+Nov 10, 2024 10:25:40 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: exit
+Nov 10, 2024 10:25:40 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51498
+Nov 10, 2024 10:25:47 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51499
+Nov 10, 2024 10:25:57 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller1: add Item10 100 100
+Nov 10, 2024 10:25:57 PM SOMSServerJava.ClientHandler addItem
+INFO: Seller seller1 added new item: Item10 with price: $100.0 and quantity: 100
+Nov 10, 2024 10:25:57 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 10:25:57 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 10:25:57 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 10:25:57 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 10:26:13 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller1: complete 8 delivered
+Nov 10, 2024 10:26:13 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 10:26:13 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 10:26:13 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 10:26:13 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 10:26:13 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Seller seller1 fulfilled purchase ID: 8 and transferred $2500.0 to their account.
+Nov 10, 2024 10:26:34 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller1: complete 9 unfulfilled
+Nov 10, 2024 10:26:34 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 10:26:34 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 10:26:34 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 10:26:34 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 10:26:34 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Seller seller1 marked purchase ID: 9 as unfulfilled and returned $3000.0 to customer john_doe.
+Nov 10, 2024 10:26:38 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller1: exit
+Nov 10, 2024 10:26:38 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51499
+Nov 10, 2024 11:07:39 PM SOMSServerJava.SOMSUtils loadUsers
+SEVERE: JSON syntax error while loading users: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+	at com.google.gson.Gson.fromJson(Gson.java:1372)
+	at com.google.gson.Gson.fromJson(Gson.java:1262)
+	at com.google.gson.Gson.fromJson(Gson.java:1230)
+	at SOMSServerJava.SOMSUtils.loadUsers(SOMSUtils.java:54)
+	at SOMSServerJava.SOMS.startServer(SOMS.java:38)
+	at SOMSServerJava.SOMS.main(SOMS.java:27)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+	at com.google.gson.stream.JsonReader.unexpectedTokenError(JsonReader.java:1768)
+	at com.google.gson.stream.JsonReader.beginArray(JsonReader.java:430)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:185)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:154)
+	at com.google.gson.Gson.fromJson(Gson.java:1361)
+	... 5 more
+
+Nov 10, 2024 11:07:39 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 11:07:39 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 11:07:39 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 11:07:39 PM SOMSServerJava.SOMS startServer
+SEVERE: Failed to load necessary data. Server is shutting down.
+Nov 10, 2024 11:07:47 PM SOMSServerJava.SOMSUtils loadUsers
+SEVERE: JSON syntax error while loading users: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+	at com.google.gson.Gson.fromJson(Gson.java:1372)
+	at com.google.gson.Gson.fromJson(Gson.java:1262)
+	at com.google.gson.Gson.fromJson(Gson.java:1230)
+	at SOMSServerJava.SOMSUtils.loadUsers(SOMSUtils.java:54)
+	at SOMSServerJava.SOMS.startServer(SOMS.java:38)
+	at SOMSServerJava.SOMS.main(SOMS.java:27)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+	at com.google.gson.stream.JsonReader.unexpectedTokenError(JsonReader.java:1768)
+	at com.google.gson.stream.JsonReader.beginArray(JsonReader.java:430)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:185)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:154)
+	at com.google.gson.Gson.fromJson(Gson.java:1361)
+	... 5 more
+
+Nov 10, 2024 11:07:47 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 11:07:47 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 11:07:47 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 11:07:47 PM SOMSServerJava.SOMS startServer
+SEVERE: Failed to load necessary data. Server is shutting down.
+Nov 10, 2024 11:08:57 PM SOMSServerJava.SOMSUtils loadUsers
+SEVERE: JSON syntax error while loading users: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+	at com.google.gson.Gson.fromJson(Gson.java:1372)
+	at com.google.gson.Gson.fromJson(Gson.java:1262)
+	at com.google.gson.Gson.fromJson(Gson.java:1230)
+	at SOMSServerJava.SOMSUtils.loadUsers(SOMSUtils.java:54)
+	at SOMSServerJava.SOMS.startServer(SOMS.java:38)
+	at SOMSServerJava.SOMS.main(SOMS.java:27)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 2 column 4 path $[0]
+See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
+	at com.google.gson.stream.JsonReader.unexpectedTokenError(JsonReader.java:1768)
+	at com.google.gson.stream.JsonReader.beginArray(JsonReader.java:430)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:185)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:154)
+	at com.google.gson.Gson.fromJson(Gson.java:1361)
+	... 5 more
+
+Nov 10, 2024 11:08:57 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 11:08:57 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 11:08:57 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 11:08:57 PM SOMSServerJava.SOMS startServer
+SEVERE: Failed to load necessary data. Server is shutting down.
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: buyer7 with accountNumber: 2007
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: buyer3 with accountNumber: 2003
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: buyer4 with accountNumber: 2004
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: buyer5 with accountNumber: 2005
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: buyer6 with accountNumber: 2006
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller9 with accountNumber: 2014
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller7 with accountNumber: 2012
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller8 with accountNumber: 2013
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller11 with accountNumber: 2016
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller10 with accountNumber: 2015
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: buyer1 with accountNumber: 2001
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: buyer2 with accountNumber: 2002
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller5 with accountNumber: 2010
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller6 with accountNumber: 2011
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller3 with accountNumber: 2008
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+SEVERE: No account found for userID: seller4 with accountNumber: 2009
+Nov 10, 2024 11:13:57 PM SOMSServerJava.SOMS startServer
+SEVERE: User and account data are inconsistent. Server is shutting down.
+Nov 10, 2024 11:15:16 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 10, 2024 11:15:16 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 11:15:16 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 11:15:16 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 11:15:16 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 10, 2024 11:15:16 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 10, 2024 11:15:16 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 10, 2024 11:15:28 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51583
+Nov 10, 2024 11:15:59 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view credits
+Nov 10, 2024 11:15:59 PM SOMSServerJava.ClientHandler viewCredits
+INFO: User john_doe viewed credits. Balance: $8357.0
+Nov 10, 2024 11:16:35 PM SOMSServerJava.ClientHandler run
+SEVERE: Client handler error: 
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:329)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:372)
+	at java.base/sun.nio.cs.StreamDecoder.lockedRead(StreamDecoder.java:215)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:169)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:188)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:160)
+	at java.base/java.io.BufferedReader.implReadLine(BufferedReader.java:370)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:347)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:436)
+	at SOMSServerJava.ClientHandler.handleCustomer(ClientHandler.java:146)
+	at SOMSServerJava.ClientHandler.run(ClientHandler.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Nov 10, 2024 11:16:35 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51583
+Nov 10, 2024 11:20:08 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 10, 2024 11:20:08 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 11:20:08 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 11:20:08 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 11:20:08 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 10, 2024 11:20:08 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 10, 2024 11:20:08 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 10, 2024 11:20:12 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51684
+Nov 10, 2024 11:20:28 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view credits
+Nov 10, 2024 11:20:28 PM SOMSServerJava.ClientHandler viewCredits
+INFO: User john_doe viewed credits. Balance: $8357.0
+Nov 10, 2024 11:20:31 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: top up 1
+Nov 10, 2024 11:20:31 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:20:31 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:20:31 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:20:31 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:20:31 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User john_doe topped up $1.00. New balance: $8358.00
+Nov 10, 2024 11:20:39 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: buy Item1 10
+Nov 10, 2024 11:20:39 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:20:39 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:20:39 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:20:39 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:20:39 PM SOMSServerJava.ClientHandler makePurchase
+INFO: User john_doe reserved purchase: Item1 x10 for $1000.00
+Nov 10, 2024 11:20:45 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view history
+Nov 10, 2024 11:20:45 PM SOMSServerJava.ClientHandler viewPurchaseHistory
+INFO: User john_doe viewed purchase history.
+Nov 10, 2024 11:20:47 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: exit
+Nov 10, 2024 11:20:48 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51684
+Nov 10, 2024 11:20:50 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51698
+Nov 10, 2024 11:21:09 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller1: add Item10 12 50
+Nov 10, 2024 11:21:09 PM SOMSServerJava.ClientHandler addItem
+INFO: Seller seller1 updated item: Item10 with price: $12.0 and additional quantity: 50
+Nov 10, 2024 11:21:09 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:21:09 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:21:09 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:21:09 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:21:27 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller1: view transactions
+Nov 10, 2024 11:21:27 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller seller1 viewed transaction history.
+Nov 10, 2024 11:21:42 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller1: exit
+Nov 10, 2024 11:21:42 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51698
+Nov 10, 2024 11:21:44 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51717
+Nov 10, 2024 11:21:58 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: add Item11 10 100
+Nov 10, 2024 11:21:58 PM SOMSServerJava.ClientHandler addItem
+INFO: Seller seller2 added new item: Item11 with price: $10.0 and quantity: 100
+Nov 10, 2024 11:21:58 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:21:58 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:21:58 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:21:58 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:22:01 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: exit
+Nov 10, 2024 11:22:01 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51717
+Nov 10, 2024 11:22:05 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51725
+Nov 10, 2024 11:22:32 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: buy item10 11
+Nov 10, 2024 11:22:32 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:22:32 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:22:32 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:22:32 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:22:32 PM SOMSServerJava.ClientHandler makePurchase
+INFO: User john_doe reserved purchase: Item10 x11 for $132.00
+Nov 10, 2024 11:22:38 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: exit
+Nov 10, 2024 11:22:38 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51725
+Nov 10, 2024 11:22:41 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51738
+Nov 10, 2024 11:23:05 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: view transactions
+Nov 10, 2024 11:23:05 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller seller2 viewed transaction history.
+Nov 10, 2024 11:23:21 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: complete 2 delivered
+Nov 10, 2024 11:23:21 PM SOMSServerJava.ClientHandler completeTransaction
+WARNING: Seller seller2 attempted to reprocess purchase ID: 2
+Nov 10, 2024 11:23:36 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: exit
+Nov 10, 2024 11:23:36 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51738
+Nov 10, 2024 11:23:39 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51758
+Nov 10, 2024 11:23:46 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view history
+Nov 10, 2024 11:23:46 PM SOMSServerJava.ClientHandler viewPurchaseHistory
+INFO: User john_doe viewed purchase history.
+Nov 10, 2024 11:23:52 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: exit
+Nov 10, 2024 11:23:52 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51758
+Nov 10, 2024 11:23:55 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51764
+Nov 10, 2024 11:24:06 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: complete 10 delivered
+Nov 10, 2024 11:24:06 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:24:06 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:24:06 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:24:06 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:24:06 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Seller seller2 fulfilled purchase ID: 10 and transferred $1000.0 to their account.
+Nov 10, 2024 11:24:12 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: complete 11 delivered
+Nov 10, 2024 11:24:12 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:24:12 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:24:12 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:24:12 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:24:12 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Seller seller2 fulfilled purchase ID: 11 and transferred $132.0 to their account.
+Nov 10, 2024 11:24:15 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: exit
+Nov 10, 2024 11:24:15 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51764
+Nov 10, 2024 11:24:17 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51772
+Nov 10, 2024 11:24:43 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: view history
+Nov 10, 2024 11:24:43 PM SOMSServerJava.ClientHandler viewPurchaseHistory
+INFO: User john_doe viewed purchase history.
+Nov 10, 2024 11:25:03 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: exit
+Nov 10, 2024 11:25:03 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51772
+Nov 10, 2024 11:25:05 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51790
+Nov 10, 2024 11:25:23 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: exit
+Nov 10, 2024 11:25:23 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51790
+Nov 10, 2024 11:25:51 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 10, 2024 11:25:51 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 11:25:51 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 11:25:51 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 11:25:51 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 10, 2024 11:25:51 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 10, 2024 11:25:51 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 10, 2024 11:25:53 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51808
+Nov 10, 2024 11:26:09 PM SOMSServerJava.ClientHandler run
+SEVERE: Client handler error: 
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:329)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:372)
+	at java.base/sun.nio.cs.StreamDecoder.lockedRead(StreamDecoder.java:215)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:169)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:188)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:160)
+	at java.base/java.io.BufferedReader.implReadLine(BufferedReader.java:370)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:347)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:436)
+	at SOMSServerJava.ClientHandler.handleCustomer(ClientHandler.java:146)
+	at SOMSServerJava.ClientHandler.run(ClientHandler.java:68)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Nov 10, 2024 11:26:09 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51808
+Nov 10, 2024 11:33:27 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Successfully loaded users from users.json
+Nov 10, 2024 11:33:27 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Successfully loaded accounts from accounts.json
+Nov 10, 2024 11:33:27 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Successfully loaded items from items.json
+Nov 10, 2024 11:33:27 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Successfully loaded purchases from purchases.json
+Nov 10, 2024 11:33:27 PM SOMSServerJava.SOMSUtils validateUserAccountConsistency
+INFO: All users have corresponding accounts.
+Nov 10, 2024 11:33:27 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 10, 2024 11:33:27 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 10, 2024 11:33:31 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51967
+Nov 10, 2024 11:35:03 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: top up 1
+Nov 10, 2024 11:35:03 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:35:03 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:35:03 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:35:03 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:35:03 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User john_doe topped up $1.00. New balance: $7227.00
+Nov 10, 2024 11:35:10 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: top up -1
+Nov 10, 2024 11:35:10 PM SOMSServerJava.ClientHandler topUpAmount
+WARNING: User john_doe attempted to top up a non-positive amount: $-1.0
+Nov 10, 2024 11:35:14 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: top up 1
+Nov 10, 2024 11:35:14 PM SOMSServerJava.SOMSUtils saveUsers
+INFO: Successfully saved users to users.json
+Nov 10, 2024 11:35:14 PM SOMSServerJava.SOMSUtils saveAccounts
+INFO: Successfully saved accounts to accounts.json
+Nov 10, 2024 11:35:14 PM SOMSServerJava.SOMSUtils saveItems
+INFO: Successfully saved items to items.json
+Nov 10, 2024 11:35:14 PM SOMSServerJava.SOMSUtils savePurchases
+INFO: Successfully saved purchases to purchases.json
+Nov 10, 2024 11:35:14 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User john_doe topped up $1.00. New balance: $7228.00
+Nov 10, 2024 11:35:16 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: exit
+Nov 10, 2024 11:35:16 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51967

@@ -3,11 +3,15 @@ package SOMSServerJava;
 import java.io.*;
 import java.net.Socket;
 import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
+/**
+ * Handles client connections and processes commands based on user roles.
+ */
 public class ClientHandler implements Runnable {
     private static final Logger logger = Logger.getLogger(ClientHandler.class.getName());
     private final Socket clientSocket;
@@ -16,6 +20,15 @@ public class ClientHandler implements Runnable {
     private final Map<String, Item> items;
     private final Map<String, Map<Integer, Purchase>> purchases;
 
+    /**
+     * Constructs a new ClientHandler.
+     *
+     * @param socket     The client socket.
+     * @param users      Map of userID to User objects.
+     * @param accounts   Map of accountNumber to Account objects.
+     * @param items      Map of itemName to Item objects.
+     * @param purchases  Map of userID to their purchases.
+     */
     public ClientHandler(Socket socket, Map<String, User> users, Map<Integer, Account> accounts,
                          Map<String, Item> items, Map<String, Map<Integer, Purchase>> purchases) {
         this.clientSocket = socket;
@@ -25,6 +38,9 @@ public class ClientHandler implements Runnable {
         this.purchases = purchases;
     }
 
+    /**
+     * The main run method for handling client interactions.
+     */
     @Override
     public void run() {
         try (
@@ -76,6 +92,13 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Authenticates a user based on userID and password.
+     *
+     * @param userID   The userID entered by the client.
+     * @param password The password entered by the client.
+     * @return True if authentication is successful; otherwise, false.
+     */
     private boolean authenticate(String userID, String password) {
         if (users.containsKey(userID)) {
             User user = users.get(userID);
@@ -84,7 +107,29 @@ public class ClientHandler implements Runnable {
         return false;
     }
 
+    /**
+     * Handles customer-specific commands.
+     *
+     * @param out  The PrintWriter to send responses to the client.
+     * @param in   The BufferedReader to read client commands.
+     * @param user The authenticated User object.
+     * @throws IOException If an I/O error occurs.
+     */
     private void handleCustomer(PrintWriter out, BufferedReader in, User user) throws IOException {
+        // Send Top 5 Sellers
+        List<TopSeller> topSellers = getTopSellers();
+        if (!topSellers.isEmpty()) {
+            out.println("Top 5 Sellers by Number of Transactions:");
+            int rank = 1;
+            for (TopSeller seller : topSellers) {
+                out.println(rank + ". " + seller.getSellerName() + " (ID: " + seller.getSellerID() + ") - " + seller.getTransactionCount() + " transactions");
+                rank++;
+            }
+        } else {
+            out.println("No seller transactions available to display.");
+        }
+        // out.println("---END---");
+
         displayAvailableItems(out);
 
         // Send Customer Command Panel
@@ -116,6 +161,13 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Processes customer commands and executes appropriate actions.
+     *
+     * @param command The command string received from the client.
+     * @param out     The PrintWriter to send responses to the client.
+     * @param user    The authenticated User object.
+     */
     private void processCustomerCommand(String command, PrintWriter out, User user) {
         logger.info("Processing command from user " + user.getUserID() + ": " + command);
 
@@ -212,6 +264,12 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Displays the current balance of the user's account.
+     *
+     * @param out  The PrintWriter to send responses to the client.
+     * @param user The authenticated User object.
+     */
     private void viewCredits(PrintWriter out, User user) {
         int accountNumber = user.getAccountNumber();
         Account account = accounts.get(accountNumber);
@@ -226,6 +284,11 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Displays all available items for purchase.
+     *
+     * @param out The PrintWriter to send responses to the client.
+     */
     private void displayAvailableItems(PrintWriter out) {
         if (items.isEmpty()) {
             out.println("No items are currently available.");
@@ -245,6 +308,14 @@ public class ClientHandler implements Runnable {
         out.println("---END---");
     }
 
+    /**
+     * Processes a purchase request from a customer.
+     *
+     * @param out       The PrintWriter to send responses to the client.
+     * @param user      The authenticated User object.
+     * @param itemName  The name of the item to purchase.
+     * @param quantity  The quantity of the item to purchase.
+     */
     private void makePurchase(PrintWriter out, User user, String itemName, int quantity) {
         if (quantity <= 0) {
             out.println("Quantity must be greater than zero.");
@@ -316,6 +387,13 @@ public class ClientHandler implements Runnable {
         logger.info("User " + user.getUserID() + " reserved purchase: " + item.getName() + " x" + quantity + " for $" + String.format("%.2f", totalCost));
     }
 
+    /**
+     * Adds funds to the user's account.
+     *
+     * @param out    The PrintWriter to send responses to the client.
+     * @param user   The authenticated User object.
+     * @param amount The amount to add to the account.
+     */
     private void topUpAmount(PrintWriter out, User user, double amount) {
         if (amount <= 0) {
             out.println("Top-up amount must be positive.");
@@ -345,6 +423,12 @@ public class ClientHandler implements Runnable {
         logger.info("User " + user.getUserID() + " topped up $" + String.format("%.2f", amount) + ". New balance: $" + String.format("%.2f", account.getBalance()));
     }
 
+    /**
+     * Displays the purchase history of the user.
+     *
+     * @param out  The PrintWriter to send responses to the client.
+     * @param user The authenticated User object.
+     */
     private void viewPurchaseHistory(PrintWriter out, User user) {
         Map<Integer, Purchase> userPurchases = purchases.get(user.getUserID());
         if (userPurchases == null || userPurchases.isEmpty()) {
@@ -376,6 +460,14 @@ public class ClientHandler implements Runnable {
         logger.info("User " + user.getUserID() + " viewed purchase history.");
     }
 
+    /**
+     * Handles seller-specific commands.
+     *
+     * @param out  The PrintWriter to send responses to the client.
+     * @param in   The BufferedReader to read client commands.
+     * @param user The authenticated User object.
+     * @throws IOException If an I/O error occurs.
+     */
     private void handleSeller(PrintWriter out, BufferedReader in, User user) throws IOException {
         // Send Seller Command Panel
         out.println("Available Commands for Sellers:");
@@ -404,6 +496,13 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Processes seller commands and executes appropriate actions.
+     *
+     * @param command The command string received from the client.
+     * @param out     The PrintWriter to send responses to the client.
+     * @param user    The authenticated User object.
+     */
     private void processSellerCommand(String command, PrintWriter out, User user) {
         logger.info("Processing command from seller " + user.getUserID() + ": " + command);
 
@@ -517,11 +616,11 @@ public class ClientHandler implements Runnable {
     /**
      * Adds or updates an item in the inventory.
      *
-     * @param out       PrintWriter to send responses to the client.
-     * @param itemName  Name of the item.
-     * @param price     Price of the item.
-     * @param quantity  Quantity of the item.
-     * @param user      The seller user performing the action.
+     * @param out       The PrintWriter to send responses to the client.
+     * @param itemName  The name of the item.
+     * @param price     The price of the item.
+     * @param quantity  The quantity of the item.
+     * @param user      The seller performing the action.
      */
     private void addItem(PrintWriter out, String itemName, double price, int quantity, User user) {
         if (price <= 0 || quantity <= 0) {
@@ -553,10 +652,10 @@ public class ClientHandler implements Runnable {
     /**
      * Completes a transaction by marking it as delivered or unfulfilled.
      *
-     * @param out         PrintWriter to send responses to the client.
-     * @param purchaseId  ID of the purchase to complete.
-     * @param status      Status to mark the purchase as ("delivered" or "unfulfilled").
-     * @param user        The seller user performing the action.
+     * @param out         The PrintWriter to send responses to the client.
+     * @param purchaseId  The ID of the purchase to complete.
+     * @param status      The status to mark the purchase as ("delivered" or "unfulfilled").
+     * @param user        The seller performing the action.
      */
     private void completeTransaction(PrintWriter out, int purchaseId, String status, User user) {
         boolean found = false;
@@ -652,6 +751,83 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Retrieves the top 5 sellers based on the number of transactions.
+     *
+     * @return A list of TopSeller objects representing the top 5 sellers.
+     */
+    private List<TopSeller> getTopSellers() {
+        Map<String, Integer> sellerTransactionCount = new HashMap<>();
+
+        // Iterate through all purchases to count transactions per seller
+        for (Map<Integer, Purchase> userPurchases : purchases.values()) {
+            for (Purchase purchase : userPurchases.values()) {
+                String sellerID = purchase.getSellerID();
+                if (sellerID == null || sellerID.equalsIgnoreCase("pending") || sellerID.equalsIgnoreCase("unfulfilled")) {
+                    continue; // Ignore pending or unfulfilled transactions
+                }
+                sellerTransactionCount.put(sellerID, sellerTransactionCount.getOrDefault(sellerID, 0) + 1);
+            }
+        }
+
+        // Create a list of TopSeller objects
+        List<TopSeller> topSellersList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : sellerTransactionCount.entrySet()) {
+            String sellerID = entry.getKey();
+            int transactionCount = entry.getValue();
+            User seller = users.get(sellerID);
+            if (seller != null) {
+                topSellersList.add(new TopSeller(sellerID, seller.getName(), transactionCount));
+            }
+        }
+
+        // Sort the list in descending order of transaction count
+        topSellersList.sort((s1, s2) -> Integer.compare(s2.getTransactionCount(), s1.getTransactionCount()));
+
+        // Return the top 5 sellers or fewer if not enough sellers exist
+        return topSellersList.stream().limit(5).collect(Collectors.toList());
+    }
+
+    /**
+     * Represents a top seller with their ID, name, and transaction count.
+     */
+    private static class TopSeller {
+        private final String sellerID;
+        private final String sellerName;
+        private final int transactionCount;
+
+        /**
+         * Constructs a new TopSeller.
+         *
+         * @param sellerID         The ID of the seller.
+         * @param sellerName       The name of the seller.
+         * @param transactionCount The number of transactions completed by the seller.
+         */
+        public TopSeller(String sellerID, String sellerName, int transactionCount) {
+            this.sellerID = sellerID;
+            this.sellerName = sellerName;
+            this.transactionCount = transactionCount;
+        }
+
+        public String getSellerID() {
+            return sellerID;
+        }
+
+        public String getSellerName() {
+            return sellerName;
+        }
+
+        public int getTransactionCount() {
+            return transactionCount;
+        }
+    }
+
+    /**
+     * Displays the transaction history of the seller.
+     *
+     * @param out    The PrintWriter to send responses to the client.
+     * @param seller The authenticated Seller User object.
+     */
     private void viewTransactionHistory(PrintWriter out, User seller) {
         String sellerID = seller.getUserID();
         StringBuilder sb = new StringBuilder();
