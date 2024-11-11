@@ -1,4 +1,9 @@
 {
+  "item16": {
+    "name": "item16",
+    "price": 100.0,
+    "quantityAvailable": 80
+  },
   "item15": {
     "name": "item15",
     "price": 10.0,
@@ -52,7 +57,7 @@
   "Item1": {
     "name": "Item1",
     "price": 100.0,
-    "quantityAvailable": 40
+    "quantityAvailable": 42
   },
   "Item2": {
     "name": "Item2",

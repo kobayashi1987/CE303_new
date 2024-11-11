@@ -23,3 +23,7 @@
 
 # run the client:
    java -cp "out:libs/gson-2.11.0.jar" SOMSClientJava.ClientProgram
+   
+2024.11.12:
+
+When running the seller's function, the buyer must be in the user's database. Otherwise, the seller's function will not work.
