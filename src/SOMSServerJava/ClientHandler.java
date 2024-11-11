@@ -23,11 +23,11 @@ public class ClientHandler implements Runnable {
     /**
      * Constructs a new ClientHandler.
      *
-     * @param socket     The client socket.
-     * @param users      Map of userID to User objects.
-     * @param accounts   Map of accountNumber to Account objects.
-     * @param items      Map of itemName to Item objects.
-     * @param purchases  Map of userID to their purchases.
+     * @param socket    The client socket.
+     * @param users     Map of userID to User objects.
+     * @param accounts  Map of accountNumber to Account objects.
+     * @param items     Map of itemName to Item objects.
+     * @param purchases Map of userID to their purchases.
      */
     public ClientHandler(Socket socket, Map<String, User> users, Map<Integer, Account> accounts,
                          Map<String, Item> items, Map<String, Map<Integer, Purchase>> purchases) {
@@ -60,6 +60,19 @@ public class ClientHandler implements Runnable {
             if (authenticate(userID, password)) {
                 out.println("Authentication successful.");
                 out.println("---END---");
+
+//                // Send Top 5 Sellers
+//                List<TopSeller> topSellers = getTopSellers();
+//                if (!topSellers.isEmpty()) {
+//                    out.println("Top 5 Sellers by Number of Transactions:");
+//                    int rank = 1;
+//                    for (TopSeller seller : topSellers) {
+//                        out.println(rank + ". " + seller.getSellerName() + " (ID: " + seller.getSellerID() + ") - " + seller.getTransactionCount() + " transactions");
+//                        rank++;
+//                    }
+//                } else {
+//                    out.println("No seller transactions available to display.");
+//                }
 
                 User user = users.get(userID);
                 if (user.getRole().equalsIgnoreCase("customer")) {
@@ -311,10 +324,10 @@ public class ClientHandler implements Runnable {
     /**
      * Processes a purchase request from a customer.
      *
-     * @param out       The PrintWriter to send responses to the client.
-     * @param user      The authenticated User object.
-     * @param itemName  The name of the item to purchase.
-     * @param quantity  The quantity of the item to purchase.
+     * @param out      The PrintWriter to send responses to the client.
+     * @param user     The authenticated User object.
+     * @param itemName The name of the item to purchase.
+     * @param quantity The quantity of the item to purchase.
      */
     private void makePurchase(PrintWriter out, User user, String itemName, int quantity) {
         if (quantity <= 0) {
@@ -472,7 +485,7 @@ public class ClientHandler implements Runnable {
         // Send Seller Command Panel
         out.println("Available Commands for Sellers:");
         out.println("1. add [itemName] [price] [quantity] - Add or update an item in inventory.");
-        out.println("2. complete [purchaseId] [delivered|unfulfilled] - Mark a purchase as delivered or unfulfilled.");
+        out.println("2. complete [buyerID][purchaseId] [delivered|unfulfilled] - Mark a purchase as delivered or unfulfilled.");
         out.println("3. view transactions - View all your transaction history.");
         out.println("4. exit - Exit the application.");
         out.println("---END---"); // End of command panel
@@ -496,12 +509,13 @@ public class ClientHandler implements Runnable {
         }
     }
 
+
     /**
      * Processes seller commands and executes appropriate actions.
      *
      * @param command The command string received from the client.
      * @param out     The PrintWriter to send responses to the client.
-     * @param user    The authenticated User object.
+     * @param user    The authenticated User object representing the seller.
      */
     private void processSellerCommand(String command, PrintWriter out, User user) {
         logger.info("Processing command from seller " + user.getUserID() + ": " + command);
@@ -513,89 +527,180 @@ public class ClientHandler implements Runnable {
             return;
         }
 
+        // Split the command into action and parameters
         String[] parts = trimmedCommand.split("\\s+", 2);
         String action = parts[0].toLowerCase();
 
         switch (action) {
             case "add":
-                if (parts.length < 2) {
-                    out.println("Usage: add [itemName] [price] [quantity]");
-                    out.println("---END---");
-                    break;
-                }
-                String[] addParams = parts[1].split("\\s+");
-                if (addParams.length < 3) {
-                    out.println("Usage: add [itemName] [price] [quantity]");
-                    out.println("---END---");
-                    break;
-                }
-                String itemName = addParams[0];
-                String priceStr = addParams[1];
-                String quantityStr = addParams[2];
-                try {
-                    double price = Double.parseDouble(priceStr);
-                    int quantity = Integer.parseInt(quantityStr);
-                    addItem(out, itemName, price, quantity, user);
-                } catch (NumberFormatException e) {
-                    out.println("Invalid price or quantity. Please enter numeric values.");
-                    out.println("---END---");
-                }
+                // Handle the 'add' command
+                handleAddCommand(parts, out, user);
                 break;
 
             case "complete":
-                if (parts.length < 2) {
-                    out.println("Usage: complete [purchaseId] [delivered|unfulfilled]");
-                    out.println("---END---");
-                    break;
-                }
-                String[] completeParams = parts[1].split("\\s+");
-                if (completeParams.length < 2) {
-                    out.println("Usage: complete [purchaseId] [delivered|unfulfilled]");
-                    out.println("---END---");
-                    break;
-                }
-                String purchaseIdStr = completeParams[0];
-                String status = completeParams[1].toLowerCase();
-                try {
-                    int purchaseId = Integer.parseInt(purchaseIdStr);
-                    if (!status.equals("delivered") && !status.equals("unfulfilled")) {
-                        out.println("Invalid status. Use 'delivered' or 'unfulfilled'.");
-                        out.println("---END---");
-                        break;
-                    }
-                    completeTransaction(out, purchaseId, status, user);
-                } catch (NumberFormatException e) {
-                    out.println("Invalid purchase ID. Please enter a numeric value.");
-                    out.println("---END---");
-                }
+                // Handle the 'complete' command with enhanced parameters
+                handleCompleteCommand(parts, out, user);
                 break;
 
             case "view":
-                if (parts.length < 2) {
-                    out.println("Usage: view transactions");
-                    out.println("---END---");
-                    break;
-                }
-                String subAction = parts[1].toLowerCase();
-                if (subAction.equals("transactions")) {
-                    viewTransactionHistory(out, user);
-                } else {
-                    out.println("Unknown view command. Usage: view transactions");
-                    out.println("---END---");
-                    logger.warning("Unknown sub-action for view command from seller: " + user.getUserID() + " - " + subAction);
-                }
+                // Handle the 'view' command
+                handleViewCommand(parts, out, user);
                 break;
 
             case "exit":
-                // Handled in the loop
+                // Handle the 'exit' command
+                handleExitCommand(out, user);
                 break;
 
             default:
+                // Handle unknown commands
                 out.println("Unknown command.");
                 out.println("---END---");
                 logger.warning("Unknown command from seller: " + user.getUserID() + " - " + command);
                 break;
         }
+    }
+
+    /**
+     * Handles the 'complete' command issued by the seller.
+     *
+     * @param parts  The split command parts.
+     * @param out    The PrintWriter to send responses to the client.
+     * @param user   The authenticated User object representing the seller.
+     */
+    private void handleCompleteCommand(String[] parts, PrintWriter out, User user) {
+        if (parts.length < 2) {
+            out.println("Usage: complete [buyerID] [purchaseId] [delivered|unfulfilled]");
+            out.println("---END---");
+            return;
+        }
+
+        // Split the parameters into buyerID, purchaseId, and status
+        String[] completeParams = parts[1].split("\\s+");
+        if (completeParams.length < 3) {
+            out.println("Usage: complete [buyerID] [purchaseId] [delivered|unfulfilled]");
+            out.println("---END---");
+            return;
+        }
+
+        String buyerID = completeParams[0];
+        String purchaseIdStr = completeParams[1];
+        String status = completeParams[2].toLowerCase();
+
+        // Validate status input
+        if (!status.equals("delivered") && !status.equals("unfulfilled")) {
+            out.println("Invalid status. Use 'delivered' or 'unfulfilled'.");
+            out.println("---END---");
+            return;
+        }
+
+        // Validate and parse purchaseId
+        int purchaseId;
+        try {
+            purchaseId = Integer.parseInt(purchaseIdStr);
+            if (purchaseId <= 0) {
+                throw new NumberFormatException("Purchase ID must be positive.");
+            }
+        } catch (NumberFormatException e) {
+            out.println("Invalid purchase ID. Please enter a positive numeric value.");
+            out.println("---END---");
+            return;
+        }
+
+        // Proceed to complete the transaction
+        completeTransaction(out, buyerID, purchaseId, status, user);
+    }
+
+    /**
+     * Handles the 'add' command issued by the seller.
+     *
+     * @param parts  The split command parts.
+     * @param out    The PrintWriter to send responses to the client.
+     * @param user   The authenticated User object representing the seller.
+     */
+    private void handleAddCommand(String[] parts, PrintWriter out, User user) {
+        if (parts.length < 2) {
+            out.println("Usage: add [itemName] [price] [quantity]");
+            out.println("---END---");
+            return;
+        }
+
+        String[] addParams = parts[1].split("\\s+");
+        if (addParams.length < 3) {
+            out.println("Usage: add [itemName] [price] [quantity]");
+            out.println("---END---");
+            return;
+        }
+
+        String itemName = addParams[0];
+        String priceStr = addParams[1];
+        String quantityStr = addParams[2];
+
+        double price;
+        int quantity;
+
+        // Validate and parse price
+        try {
+            price = Double.parseDouble(priceStr);
+            if (price <= 0) {
+                throw new NumberFormatException("Price must be positive.");
+            }
+        } catch (NumberFormatException e) {
+            out.println("Invalid price. Please enter a positive numeric value.");
+            out.println("---END---");
+            return;
+        }
+
+        // Validate and parse quantity
+        try {
+            quantity = Integer.parseInt(quantityStr);
+            if (quantity <= 0) {
+                throw new NumberFormatException("Quantity must be positive.");
+            }
+        } catch (NumberFormatException e) {
+            out.println("Invalid quantity. Please enter a positive integer value.");
+            out.println("---END---");
+            return;
+        }
+
+        // Proceed to add or update the item
+        addItem(out, itemName, price, quantity, user);
+    }
+
+    /**
+     * Handles the 'view' command issued by the seller.
+     *
+     * @param parts  The split command parts.
+     * @param out    The PrintWriter to send responses to the client.
+     * @param user   The authenticated User object representing the seller.
+     */
+    private void handleViewCommand(String[] parts, PrintWriter out, User user) {
+        if (parts.length < 2) {
+            out.println("Usage: view [transactions]");
+            out.println("---END---");
+            return;
+        }
+
+        String subAction = parts[1].toLowerCase();
+        if (subAction.equals("transactions")) {
+            viewTransactionHistory(out, user);
+        } else {
+            out.println("Unknown view command. Usage: view transactions");
+            out.println("---END---");
+            logger.warning("Unknown sub-action for view command from seller: " + user.getUserID() + " - " + subAction);
+        }
+    }
+
+    /**
+     * Handles the 'exit' command issued by the seller.
+     *
+     * @param out    The PrintWriter to send responses to the client.
+     * @param user   The authenticated User object representing the seller.
+     */
+    private void handleExitCommand(PrintWriter out, User user) {
+        out.println("Goodbye!");
+        out.println("---END---");
+        logger.info("Seller " + user.getUserID() + " has exited the application.");
     }
 
     /**
@@ -616,11 +721,11 @@ public class ClientHandler implements Runnable {
     /**
      * Adds or updates an item in the inventory.
      *
-     * @param out       The PrintWriter to send responses to the client.
-     * @param itemName  The name of the item.
-     * @param price     The price of the item.
-     * @param quantity  The quantity of the item.
-     * @param user      The seller performing the action.
+     * @param out      The PrintWriter to send responses to the client.
+     * @param itemName The name of the item.
+     * @param price    The price of the item.
+     * @param quantity The quantity of the item.
+     * @param user     The seller performing the action.
      */
     private void addItem(PrintWriter out, String itemName, double price, int quantity, User user) {
         if (price <= 0 || quantity <= 0) {
@@ -649,144 +754,6 @@ public class ClientHandler implements Runnable {
         out.println("---END---");
     }
 
-    /**
-     * Completes a transaction by marking it as delivered or unfulfilled.
-     *
-     * @param out         The PrintWriter to send responses to the client.
-     * @param purchaseId  The ID of the purchase to complete.
-     * @param status      The status to mark the purchase as ("delivered" or "unfulfilled").
-     * @param user        The seller performing the action.
-     */
-    private void completeTransaction(PrintWriter out, int purchaseId, String status, User user) {
-        boolean found = false;
-        String buyerID = null;
-        Purchase purchase = null;
-
-        // Find the purchase across all users
-        for (Map.Entry<String, Map<Integer, Purchase>> entry : purchases.entrySet()) {
-            if (entry.getValue().containsKey(purchaseId)) {
-                purchase = entry.getValue().get(purchaseId);
-                buyerID = entry.getKey();
-                found = true;
-                break;
-            }
-        }
-
-        if (!found || purchase == null) {
-            out.println("Purchase ID not found.");
-            out.println("---END---");
-            logger.warning("Seller " + user.getUserID() + " attempted to complete non-existent purchase ID: " + purchaseId);
-            return;
-        }
-
-        synchronized (purchase) {
-            if (!purchase.getStatus().equals("pending")) {
-                out.println("Purchase already processed.");
-                out.println("---END---");
-                logger.warning("Seller " + user.getUserID() + " attempted to reprocess purchase ID: " + purchaseId);
-                return;
-            }
-
-            if (status.equals("delivered")) {
-                // Transfer funds to seller
-                double amount = purchase.getTotalCost();
-                int sellerAccountNumber = user.getAccountNumber();
-                Account sellerAccount = accounts.get(sellerAccountNumber);
-                if (sellerAccount == null) {
-                    out.println("Seller account not found.");
-                    out.println("---END---");
-                    logger.severe("Seller " + user.getUserID() + " account not found.");
-                    return;
-                }
-
-                synchronized (sellerAccount) {
-                    sellerAccount.addFunds(amount);
-                }
-
-                // Update purchase status
-                purchase.setStatus("fulfilled");
-                purchase.setSellerID(user.getUserID());
-
-                // Persist data
-                SOMSUtils.saveAllData(users, accounts, items, purchases);
-
-                out.println("Purchase ID " + purchaseId + " marked as delivered. $" + String.format("%.2f", amount) + " transferred to your account.");
-                out.println("---END---");
-                logger.info("Seller " + user.getUserID() + " fulfilled purchase ID: " + purchaseId + " and transferred $" + amount + " to their account.");
-            } else if (status.equals("unfulfilled")) {
-                // Return funds to customer
-                double amount = purchase.getTotalCost();
-                int customerAccountNumber = users.get(buyerID).getAccountNumber();
-                Account customerAccount = accounts.get(customerAccountNumber);
-                if (customerAccount == null) {
-                    out.println("Customer account not found.");
-                    out.println("---END---");
-                    logger.severe("Customer " + buyerID + " account not found.");
-                    return;
-                }
-
-                synchronized (customerAccount) {
-                    customerAccount.releaseFunds(amount);
-                }
-
-                // Update purchase status
-                purchase.setStatus("unfulfilled");
-                purchase.setSellerID("unfulfilled");
-
-                // Restore item quantity
-                synchronized (items) {
-                    Item item = getItemByName(purchase.getItemName());
-                    if (item != null) {
-                        item.increaseQuantity(purchase.getQuantity());
-                    }
-                }
-
-                // Persist data
-                SOMSUtils.saveAllData(users, accounts, items, purchases);
-
-                out.println("Purchase ID " + purchaseId + " marked as unfulfilled. $" + String.format("%.2f", amount) + " returned to the customer.");
-                out.println("---END---");
-                logger.info("Seller " + user.getUserID() + " marked purchase ID: " + purchaseId + " as unfulfilled and returned $" + amount + " to customer " + buyerID + ".");
-            }
-        }
-    }
-
-    /**
-     * Retrieves the top 5 sellers based on the number of transactions.
-     *
-     * @return A list of TopSeller objects representing the top 5 sellers.
-     */
-    private List<TopSeller> getTopSellers() {
-        Map<String, Integer> sellerTransactionCount = new HashMap<>();
-
-        // Iterate through all purchases to count transactions per seller
-        for (Map<Integer, Purchase> userPurchases : purchases.values()) {
-            for (Purchase purchase : userPurchases.values()) {
-                String sellerID = purchase.getSellerID();
-                if (sellerID == null || sellerID.equalsIgnoreCase("pending") || sellerID.equalsIgnoreCase("unfulfilled")) {
-                    continue; // Ignore pending or unfulfilled transactions
-                }
-                sellerTransactionCount.put(sellerID, sellerTransactionCount.getOrDefault(sellerID, 0) + 1);
-            }
-        }
-
-        // Create a list of TopSeller objects
-        List<TopSeller> topSellersList = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : sellerTransactionCount.entrySet()) {
-            String sellerID = entry.getKey();
-            int transactionCount = entry.getValue();
-            User seller = users.get(sellerID);
-            if (seller != null) {
-                topSellersList.add(new TopSeller(sellerID, seller.getName(), transactionCount));
-            }
-        }
-
-        // Sort the list in descending order of transaction count
-        topSellersList.sort((s1, s2) -> Integer.compare(s2.getTransactionCount(), s1.getTransactionCount()));
-
-        // Return the top 5 sellers or fewer if not enough sellers exist
-        return topSellersList.stream().limit(5).collect(Collectors.toList());
-    }
 
     /**
      * Represents a top seller with their ID, name, and transaction count.
@@ -821,6 +788,53 @@ public class ClientHandler implements Runnable {
             return transactionCount;
         }
     }
+
+    // Remove initialization of all sellers with zero transactions
+// and count only those with fulfilled transactions
+    private List<TopSeller> getTopSellers() {
+        Map<String, Integer> sellerTransactionCount = new HashMap<>();
+
+        // Iterate through all purchases to count transactions per seller
+        for (Map<Integer, Purchase> userPurchases : purchases.values()) {
+            for (Purchase purchase : userPurchases.values()) {
+                String sellerID = purchase.getSellerID();
+                if (sellerID == null || sellerID.equalsIgnoreCase("pending") || sellerID.equalsIgnoreCase("unfulfilled")) {
+                    continue; // Ignore pending or unfulfilled transactions
+                }
+                sellerTransactionCount.put(sellerID, sellerTransactionCount.getOrDefault(sellerID, 0) + 1);
+            }
+        }
+
+        logger.info("Seller Transaction Counts: " + sellerTransactionCount);
+
+        // Create a list of TopSeller objects
+        List<TopSeller> topSellersList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : sellerTransactionCount.entrySet()) {
+            String sellerID = entry.getKey();
+            int transactionCount = entry.getValue();
+            User seller = users.get(sellerID);
+            if (seller != null) {
+                topSellersList.add(new TopSeller(sellerID, seller.getName(), transactionCount));
+            } else {
+                logger.warning("Seller with ID " + sellerID + " not found in users map.");
+            }
+        }
+
+        // Sort the list in descending order of transaction count
+        topSellersList.sort((s1, s2) -> Integer.compare(s2.getTransactionCount(), s1.getTransactionCount()));
+
+        logger.info("Sorted Top Sellers: " + topSellersList.stream()
+                .map(s -> s.getSellerName() + ": " + s.getTransactionCount())
+                .collect(Collectors.joining(", ")));
+
+        // Return the top 5 sellers or fewer if not enough sellers exist
+        List<TopSeller> top5Sellers = topSellersList.stream().limit(5).collect(Collectors.toList());
+        logger.info("Final Top 5 Sellers: " + top5Sellers.stream()
+                .map(s -> s.getSellerName() + ": " + s.getTransactionCount())
+                .collect(Collectors.joining(", ")));
+        return top5Sellers;
+    }
+
 
     /**
      * Displays the transaction history of the seller.
@@ -863,5 +877,264 @@ public class ClientHandler implements Runnable {
         out.println(sb.toString());
         out.println("---END---");
         logger.info("Seller " + seller.getUserID() + " viewed transaction history.");
+    }
+
+
+//    private void completeTransaction(PrintWriter out, String buyerID, int purchaseId, String status, User user) {
+//        boolean found = false;
+//        Purchase purchase = null;
+//
+//        // Validate buyerID exists
+//        if (!purchases.containsKey(buyerID)) {
+//            out.println("Buyer ID not found.");
+//            out.println("---END---");
+//            logger.warning("Seller " + user.getUserID() + " attempted to complete a purchase for non-existent buyer ID: " + buyerID);
+//            return;
+//        }
+//
+//        Map<Integer, Purchase> buyerPurchases = purchases.get(buyerID);
+//        if (buyerPurchases.containsKey(purchaseId)) {
+//            purchase = buyerPurchases.get(purchaseId);
+//            found = true;
+//        }
+//
+//        if (!found || purchase == null) {
+//            out.println("Purchase ID not found for the specified buyer.");
+//            out.println("---END---");
+//            logger.warning("Seller " + user.getUserID() + " attempted to complete non-existent purchase ID: " + purchaseId + " for buyer ID: " + buyerID);
+//            return;
+//        }
+//
+//        synchronized (purchase) {
+//            if (!purchase.getStatus().equals("pending")) {
+//                out.println("Purchase already processed.");
+//                out.println("---END---");
+//                logger.warning("Seller " + user.getUserID() + " attempted to reprocess purchase ID: " + purchaseId + " for buyer ID: " + buyerID);
+//                return;
+//            }
+//
+//            if (status.equals("delivered")) {
+//                // Transfer funds to seller
+//                double amount = purchase.getTotalCost();
+//                int sellerAccountNumber = user.getAccountNumber();
+//                Account sellerAccount = accounts.get(sellerAccountNumber);
+//                if (sellerAccount == null) {
+//                    out.println("Seller account not found.");
+//                    out.println("---END---");
+//                    logger.severe("Seller " + user.getUserID() + " account not found.");
+//                    return;
+//                }
+//
+//                synchronized (sellerAccount) {
+//                    sellerAccount.addFunds(amount);
+//                }
+//
+//                // Update purchase status
+//                purchase.setStatus("fulfilled");
+//                purchase.setSellerID(user.getUserID());
+//
+//                // Persist data
+//                SOMSUtils.saveAllData(users, accounts, items, purchases);
+//
+//                out.println("Purchase ID " + purchaseId + " for buyer ID " + buyerID + " marked as delivered. $" + String.format("%.2f", amount) + " transferred to your account.");
+//                out.println("---END---");
+//                logger.info("Seller " + user.getUserID() + " fulfilled purchase ID: " + purchaseId + " for buyer ID: " + buyerID + " and transferred $" + amount + " to their account.");
+//            } else if (status.equals("unfulfilled")) {
+//                // Return funds to customer
+//                double amount = purchase.getTotalCost();
+//                int customerAccountNumber = users.get(buyerID).getAccountNumber();
+//                Account customerAccount = accounts.get(customerAccountNumber);
+//                if (customerAccount == null) {
+//                    out.println("Customer account not found.");
+//                    out.println("---END---");
+//                    logger.severe("Customer " + buyerID + " account not found.");
+//                    return;
+//                }
+//
+//                synchronized (customerAccount) {
+//                    customerAccount.releaseFunds(amount);
+//                }
+//
+//                // Update purchase status
+//                purchase.setStatus("unfulfilled");
+//                purchase.setSellerID("unfulfilled");
+//
+//                // Restore item quantity
+//                synchronized (items) {
+//                    Item item = getItemByName(purchase.getItemName());
+//                    if (item != null) {
+//                        item.increaseQuantity(purchase.getQuantity());
+//                    }
+//                }
+//
+//                // Persist data
+//                SOMSUtils.saveAllData(users, accounts, items, purchases);
+//
+//                out.println("Purchase ID " + purchaseId + " for buyer ID " + buyerID + " marked as unfulfilled. $" + String.format("%.2f", amount) + " returned to the customer.");
+//                out.println("---END---");
+//                logger.info("Seller " + user.getUserID() + " marked purchase ID: " + purchaseId + " for buyer ID: " + buyerID + " as unfulfilled and returned $" + amount + " to customer.");
+//            }
+//        }
+//    }
+
+    /**
+     * Completes a transaction by marking it as delivered or unfulfilled.
+     *
+     * @param out        The PrintWriter to send responses to the client.
+     * @param buyerID    The ID of the buyer associated with the purchase.
+     * @param purchaseId The ID of the purchase to complete.
+     * @param status     The status to mark the purchase as ("delivered" or "unfulfilled").
+     * @param user       The seller performing the action.
+     */
+    private void completeTransaction(PrintWriter out, String buyerID, int purchaseId, String status, User user) {
+        logger.info("Attempting to complete transaction. Buyer ID: " + buyerID + ", Purchase ID: " + purchaseId + ", Status: " + status);
+
+        Purchase purchase = null;
+
+        // Validate buyerID exists
+        if (!purchases.containsKey(buyerID)) {
+            out.println("Buyer ID not found.");
+            out.println("---END---");
+            logger.warning("Seller " + user.getUserID() + " attempted to complete a purchase for non-existent buyer ID: " + buyerID);
+            return;
+        }
+
+        Map<Integer, Purchase> buyerPurchases = purchases.get(buyerID);
+        if (buyerPurchases == null || !buyerPurchases.containsKey(purchaseId)) {
+            out.println("Purchase ID not found for the specified buyer.");
+            out.println("---END---");
+            logger.warning("Seller " + user.getUserID() + " attempted to complete non-existent purchase ID: " + purchaseId + " for buyer ID: " + buyerID);
+            return;
+        }
+
+        purchase = buyerPurchases.get(purchaseId);
+
+        // Ensure purchase is not null
+        if (purchase == null) {
+            out.println("Purchase details are unavailable.");
+            out.println("---END---");
+            logger.warning("Purchase details are null for Purchase ID: " + purchaseId + " and Buyer ID: " + buyerID);
+            return;
+        }
+
+        synchronized (purchase) {
+            if (!purchase.getStatus().equalsIgnoreCase("pending")) {
+                out.println("Purchase already processed.");
+                out.println("---END---");
+                logger.warning("Purchase ID " + purchaseId + " for Buyer ID " + buyerID + " is already " + purchase.getStatus() + ".");
+                return;
+            }
+
+            if (status.equals("delivered")) {
+                // Handle 'delivered' status
+                handleDeliveredStatus(out, purchase, user, buyerID);
+            } else if (status.equals("unfulfilled")) {
+                // Handle 'unfulfilled' status
+                handleUnfulfilledStatus(out, purchase, user, buyerID);
+            }
+        }
+    }
+
+    /**
+     * Handles the 'delivered' status for a completed transaction.
+     *
+     * @param out        The PrintWriter to send responses to the client.
+     * @param purchase   The Purchase object being processed.
+     * @param user       The seller performing the action.
+     * @param buyerID    The ID of the buyer associated with the purchase.
+     */
+    private void handleDeliveredStatus(PrintWriter out, Purchase purchase, User user, String buyerID) {
+        double amount = purchase.getTotalCost();
+        int sellerAccountNumber = user.getAccountNumber();
+        Account sellerAccount = accounts.get(sellerAccountNumber);
+
+        if (sellerAccount == null) {
+            out.println("Seller account not found.");
+            out.println("---END---");
+            logger.severe("Seller " + user.getUserID() + " account not found.");
+            return;
+        }
+
+        // Transfer funds to seller's account
+        synchronized (sellerAccount) {
+            sellerAccount.addFunds(amount);
+        }
+
+        // Update purchase status and sellerID
+        purchase.setStatus("fulfilled");
+        purchase.setSellerID(user.getUserID());
+
+        // Persist data
+        SOMSUtils.saveAllData(users, accounts, items, purchases);
+
+        // Notify seller
+        out.println("Purchase ID " + purchase.getPurchaseId() + " for buyer ID " + buyerID + " marked as delivered. $" + String.format("%.2f", amount) + " transferred to your account.");
+        out.println("---END---");
+        logger.info("Seller " + user.getUserID() + " fulfilled purchase ID: " + purchase.getPurchaseId() + " for buyer ID: " + buyerID + " and transferred $" + amount + " to their account.");
+    }
+
+    private void handleUnfulfilledStatus(PrintWriter out, Purchase purchase, User user, String buyerID) {
+
+        // Declare and initialize 'amount' before using it
+        double amount = purchase.getTotalCost();
+
+
+        // Log the attempt to mark as unfulfilled
+        logger.info("Seller " + user.getUserID() + " is attempting to mark Purchase ID " + purchase.getPurchaseId() +
+                " for Buyer ID " + buyerID + " as unfulfilled.");
+
+       out.println("Purchase ID " + purchase.getPurchaseId() + " for buyer ID " + buyerID + " marked as unfulfilled. $" +
+                String.format("%.2f", amount) + " returned to the customer.");
+
+        User customer = users.get(buyerID);
+        if (customer == null) {
+            out.println("Buyer ID not found.");
+            out.println("---END---");
+            logger.severe("Buyer ID " + buyerID + " not found.");
+            return;
+        }
+
+        // Get customer's account number and validate account exists
+        int customerAccountNumber = customer.getAccountNumber();
+        Account customerAccount = accounts.get(customerAccountNumber);
+        if (customerAccount == null) {
+            out.println("Customer account not found.");
+            out.println("---END---");
+            logger.severe("Customer account number " + customerAccountNumber + " for Buyer ID " + buyerID + " not found.");
+            return;
+        }
+
+        // Return funds to customer's account
+        synchronized (customerAccount) {
+            customerAccount.releaseFunds(amount);
+        }
+        logger.info("Released $" + String.format("%.2f", amount) + " to Customer account number " + customerAccountNumber + ".");
+
+        // Update purchase status
+        purchase.setStatus("unfulfilled");
+        purchase.setSellerID("unfulfilled"); // Ensure this aligns with your application's logic
+        logger.info("Updated Purchase ID " + purchase.getPurchaseId() + " status to 'unfulfilled'.");
+
+        // Restore item quantity in inventory
+        synchronized (items) {
+            Item item = getItemByName(purchase.getItemName());
+            if (item != null) {
+                item.increaseQuantity(purchase.getQuantity());
+                logger.info("Restored quantity for item: " + purchase.getItemName() + ", Quantity: " + purchase.getQuantity());
+            } else {
+                logger.warning("Item \"" + purchase.getItemName() + "\" not found during quantity restoration.");
+            }
+        }
+
+        // Persist data
+        SOMSUtils.saveAllData(users, accounts, items, purchases);
+        logger.info("Persisted data after marking Purchase ID " + purchase.getPurchaseId() + " as unfulfilled.");
+
+        // Notify seller
+        out.println("Purchase ID " + purchase.getPurchaseId() + " for buyer ID " + buyerID + " marked as unfulfilled. $" +
+                String.format("%.2f", amount) + " returned to the customer.");
+        out.println("---END---");
+        logger.info("Seller " + user.getUserID() + " successfully marked Purchase ID " + purchase.getPurchaseId() +
+                " as unfulfilled and returned $" + String.format("%.2f", amount) + " to the customer.");
     }
 }

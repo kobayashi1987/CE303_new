@@ -23,6 +23,8 @@ public class SOMS {
     private final Map<String, Map<Integer, Purchase>> purchases = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
+
+        // Create a new SOMS server and start it
         SOMS server = new SOMS();
         server.startServer();
     }
