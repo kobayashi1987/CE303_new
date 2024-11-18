@@ -47,22 +47,32 @@
   "Item7": {
     "name": "Item7",
     "price": 100.0,
-    "quantityAvailable": 79
+    "quantityAvailable": 81
   },
   "Item8": {
     "name": "Item8",
     "price": 55.0,
-    "quantityAvailable": 65
+    "quantityAvailable": 47
   },
   "Item1": {
     "name": "Item1",
     "price": 100.0,
-    "quantityAvailable": 52
+    "quantityAvailable": 54
   },
   "Item2": {
     "name": "Item2",
     "price": 150.0,
-    "quantityAvailable": 33
+    "quantityAvailable": 36
+  },
+  "item23": {
+    "name": "item23",
+    "price": 15.0,
+    "quantityAvailable": 150
+  },
+  "item22": {
+    "name": "item22",
+    "price": 10.0,
+    "quantityAvailable": 100
   },
   "item21": {
     "name": "item21",
@@ -92,6 +102,6 @@
   "item9": {
     "name": "item9",
     "price": 10.0,
-    "quantityAvailable": 72
+    "quantityAvailable": 60
   }
 }
