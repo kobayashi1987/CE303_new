@@ -27,7 +27,7 @@
   "Item5": {
     "name": "Item5",
     "price": 300.0,
-    "quantityAvailable": 10
+    "quantityAvailable": 20
   },
   "Item6": {
     "name": "Item6",
@@ -57,12 +57,22 @@
   "Item1": {
     "name": "Item1",
     "price": 100.0,
-    "quantityAvailable": 42
+    "quantityAvailable": 52
   },
   "Item2": {
     "name": "Item2",
     "price": 150.0,
     "quantityAvailable": 33
+  },
+  "item21": {
+    "name": "item21",
+    "price": 10.0,
+    "quantityAvailable": 100
+  },
+  "item20": {
+    "name": "item20",
+    "price": 10.0,
+    "quantityAvailable": 10000
   },
   "Item11": {
     "name": "Item11",

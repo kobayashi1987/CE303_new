@@ -3992,3 +3992,165 @@ Nov 12, 2024 2:34:32 AM SOMSServerJava.ClientHandler processCustomerCommand
 INFO: Processing command from user john_doe: exit
 Nov 12, 2024 2:34:32 AM SOMSServerJava.ClientHandler run
 INFO: Client disconnected: /127.0.0.1:57476
+Nov 16, 2024 2:10:41 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 16, 2024 2:10:41 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 16, 2024 2:10:47 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49660
+Nov 16, 2024 2:11:00 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: view transactions
+Nov 16, 2024 2:11:00 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller seller2 viewed transaction history.
+Nov 16, 2024 2:11:19 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: complete john_doe 11 delivered
+Nov 16, 2024 2:11:19 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Attempting to complete transaction. Buyer ID: john_doe, Purchase ID: 11, Status: delivered
+Nov 16, 2024 2:11:19 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 16, 2024 2:11:19 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 16, 2024 2:11:19 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 16, 2024 2:11:19 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 16, 2024 2:11:19 PM SOMSServerJava.ClientHandler handleDeliveredStatus
+INFO: Seller seller2 fulfilled purchase ID: 0 for buyer ID: john_doe and transferred $132.0 to their account.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: complete john_doe 10 unfulfilled
+Nov 16, 2024 2:11:29 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Attempting to complete transaction. Buyer ID: john_doe, Purchase ID: 10, Status: unfulfilled
+Nov 16, 2024 2:11:29 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Seller seller2 is attempting to mark Purchase ID 0 for Buyer ID john_doe as unfulfilled.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Released $1000.00 to Customer account number 1001.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Updated Purchase ID 0 status to 'unfulfilled'.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Restored quantity for item: Item1, Quantity: 10
+Nov 16, 2024 2:11:29 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Persisted data after marking Purchase ID 0 as unfulfilled.
+Nov 16, 2024 2:11:29 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Seller seller2 successfully marked Purchase ID 0 as unfulfilled and returned $1000.00 to the customer.
+Nov 16, 2024 2:11:47 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: add item20 10 10000
+Nov 16, 2024 2:11:47 PM SOMSServerJava.ClientHandler addItem
+INFO: Seller seller2 added new item: item20 with price: $10.0 and quantity: 10000
+Nov 16, 2024 2:11:47 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 16, 2024 2:11:47 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 16, 2024 2:11:47 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 16, 2024 2:11:47 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 16, 2024 2:11:50 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: exit
+Nov 16, 2024 2:11:50 PM SOMSServerJava.ClientHandler handleExitCommand
+INFO: Seller seller2 has exited the application.
+Nov 16, 2024 2:11:50 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49660
+Nov 16, 2024 2:11:53 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49682
+Nov 16, 2024 2:11:58 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=4, seller2=20, seller3=2, admin_user=1}
+Nov 16, 2024 2:11:58 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID seller1 not found in users map.
+Nov 16, 2024 2:11:58 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID seller2 not found in users map.
+Nov 16, 2024 2:11:58 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID seller3 not found in users map.
+Nov 16, 2024 2:11:58 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: null: 1
+Nov 16, 2024 2:11:58 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: null: 1
+Nov 16, 2024 2:12:01 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: top up 11111
+Nov 16, 2024 2:12:01 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 16, 2024 2:12:01 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 16, 2024 2:12:01 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 16, 2024 2:12:01 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 16, 2024 2:12:01 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User john_doe topped up $11111.00. New balance: $117959.00
+Nov 16, 2024 2:12:05 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: exit
+Nov 16, 2024 2:12:05 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49682
+Nov 18, 2024 7:11:51 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 18, 2024 7:11:51 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 18, 2024 7:11:57 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50359
+Nov 18, 2024 7:12:13 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: add item21 10 100
+Nov 18, 2024 7:12:13 PM SOMSServerJava.ClientHandler addItem
+INFO: Seller seller2 added new item: item21 with price: $10.0 and quantity: 100
+Nov 18, 2024 7:12:13 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 18, 2024 7:12:13 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 18, 2024 7:12:13 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 18, 2024 7:12:13 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 18, 2024 7:12:20 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: view transactions
+Nov 18, 2024 7:12:20 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller seller2 viewed transaction history.
+Nov 18, 2024 7:12:47 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: complete john_doe 7 delivered
+Nov 18, 2024 7:12:47 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Attempting to complete transaction. Buyer ID: john_doe, Purchase ID: 7, Status: delivered
+Nov 18, 2024 7:12:47 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 18, 2024 7:12:47 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 18, 2024 7:12:47 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 18, 2024 7:12:47 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 18, 2024 7:12:47 PM SOMSServerJava.ClientHandler handleDeliveredStatus
+INFO: Seller seller2 fulfilled purchase ID: 0 for buyer ID: john_doe and transferred $100.0 to their account.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: complete john_doe 9 unfulfilled
+Nov 18, 2024 7:12:56 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Attempting to complete transaction. Buyer ID: john_doe, Purchase ID: 9, Status: unfulfilled
+Nov 18, 2024 7:12:56 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Seller seller2 is attempting to mark Purchase ID 0 for Buyer ID john_doe as unfulfilled.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Released $3000.00 to Customer account number 1001.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Updated Purchase ID 0 status to 'unfulfilled'.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Restored quantity for item: Item5, Quantity: 10
+Nov 18, 2024 7:12:56 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Persisted data after marking Purchase ID 0 as unfulfilled.
+Nov 18, 2024 7:12:56 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Seller seller2 successfully marked Purchase ID 0 as unfulfilled and returned $3000.00 to the customer.
+Nov 18, 2024 7:12:58 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller seller2: exit
+Nov 18, 2024 7:12:58 PM SOMSServerJava.ClientHandler handleExitCommand
+INFO: Seller seller2 has exited the application.
+Nov 18, 2024 7:12:58 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50359
