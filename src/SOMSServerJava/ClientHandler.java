@@ -148,19 +148,9 @@ public class ClientHandler implements Runnable {
      * @throws IOException If an I/O error occurs.
      */
     private void handleCustomer(PrintWriter out, BufferedReader in, User user) throws IOException {
-        // Send Top 5 Sellers
-        List<TopSeller> topSellers = getTopSellers();
-        if (!topSellers.isEmpty()) {
-            out.println("Top 5 Sellers by Number of Transactions:");
-            int rank = 1;
-            for (TopSeller seller : topSellers) {
-                out.println(rank + ". " + seller.getSellerName() + " (ID: " + seller.getSellerID() + ") - " + seller.getTransactionCount() + " transactions");
-                rank++;
-            }
-        } else {
-            out.println("No seller transactions available to display.");
-        }
-        out.println("---END---"); // Ensure delimiter is sent
+
+        // Display Top 5 Sellers
+        displayTopSellers(out);
 
         displayAvailableItems(out);
 
@@ -356,7 +346,10 @@ public class ClientHandler implements Runnable {
             return;
         }
 
-        Item item = getItemByName(itemName);
+        // Normalize item name
+        String normalizedItemName = itemName.toLowerCase();
+
+        Item item = items.get(normalizedItemName);
         if (item == null) {
             out.println("Item \"" + itemName + "\" does not exist.");
             out.println("---END---");
@@ -419,8 +412,6 @@ public class ClientHandler implements Runnable {
         out.println("---END---");
         logger.info("User " + user.getUserID() + " reserved purchase: " + item.getName() + " x" + quantity + " for $" + String.format("%.2f", totalCost));
     }
-
-
 
     /**
      * Generates a unique purchase ID based on existing purchases.
@@ -493,12 +484,20 @@ public class ClientHandler implements Runnable {
 
         for (Map.Entry<Integer, Purchase> entry : userPurchases.entrySet()) {
             Purchase purchase = entry.getValue();
+            String purchaseSellerID = purchase.getSellerID();
+
+            // Add null check for sellerID
+            String sellerDisplay = "N/A";
+            if (purchaseSellerID != null && !purchaseSellerID.equalsIgnoreCase("unfulfilled")) {
+                sellerDisplay = purchaseSellerID;
+            }
+
             sb.append(String.format("%-5d %-20s %-10d %-20s %-15s %-10.2f %-10s\n",
                     purchase.getPurchaseId(),
                     purchase.getItemName(),
                     purchase.getQuantity(),
                     purchase.getPurchaseDate().toString(),
-                    (purchase.getSellerID() != null) ? purchase.getSellerID() : "N/A",
+                    sellerDisplay,
                     purchase.getTotalCost(),
                     purchase.getStatus()));
         }
@@ -727,9 +726,9 @@ public class ClientHandler implements Runnable {
             sellerAccount.addFunds(amount);
         }
 
-        // Update purchase status and sellerID
+        // Update purchase status
         purchase.setStatus("fulfilled");
-        purchase.setSellerID(user.getUserID());
+        // No need to update sellerID since it was already set during purchase
 
         // Persist data
         SOMSUtils.saveAllData(users, accounts, items, purchases);
@@ -917,9 +916,6 @@ public class ClientHandler implements Runnable {
         out.println("---END---");
     }
 
-
-
-
     /**
      * Handles the 'view' command issued by the seller.
      *
@@ -963,13 +959,147 @@ public class ClientHandler implements Runnable {
      * @return The Item object if found; otherwise, null.
      */
     private Item getItemByName(String itemName) {
-        for (Map.Entry<String, Item> entry : items.entrySet()) {
-            if (entry.getKey().equalsIgnoreCase(itemName)) {
-                return entry.getValue();
+        String normalizedItemName = itemName.toLowerCase();
+        return items.get(normalizedItemName);
+    }
+
+    /**
+     * Displays the transaction history of the seller.
+     *
+     * @param out    The PrintWriter to send responses to the client.
+     * @param seller The authenticated Seller User object.
+     */
+    private void viewTransactionHistory(PrintWriter out, User seller) {
+        String sellerID = seller.getUserID();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Transaction History:\n");
+        sb.append(String.format("%-5s %-20s %-10s %-20s %-15s %-10s %-15s\n",
+                "ID", "Item Name", "Quantity", "Date", "Buyer", "Cost($)", "Status"));
+        sb.append("----------------------------------------------------------------------------------------------\n");
+
+        boolean hasTransactions = false;
+
+        for (Map.Entry<String, Map<Integer, Purchase>> entry : purchases.entrySet()) {
+            String buyerID = entry.getKey();
+            for (Map.Entry<Integer, Purchase> purchaseEntry : entry.getValue().entrySet()) {
+                Purchase purchase = purchaseEntry.getValue();
+                String purchaseSellerID = purchase.getSellerID();
+
+                // Add null check for sellerID
+                if (purchaseSellerID != null && purchaseSellerID.equalsIgnoreCase(sellerID)) {
+                    sb.append(String.format("%-5d %-20s %-10d %-20s %-15s %-10.2f %-15s\n",
+                            purchase.getPurchaseId(),
+                            purchase.getItemName(),
+                            purchase.getQuantity(),
+                            purchase.getPurchaseDate().toString(),
+                            buyerID,
+                            purchase.getTotalCost(),
+                            purchase.getStatus()));
+                    hasTransactions = true;
+                }
             }
         }
-        return null;
+
+        if (!hasTransactions) {
+            sb.append("No transactions found.");
+        }
+
+        out.println(sb.toString());
+        out.println("---END---");
+        logger.info("Seller " + seller.getUserID() + " viewed transaction history.");
     }
+
+
+    // Top 5 seller functions
+
+    /**
+     * Retrieves the top 5 sellers based on the number of fulfilled transactions.
+     *
+     * @return A list of TopSeller objects representing the top 5 sellers.
+     */
+    private List<TopSeller> getTopSellers() {
+        Map<String, Integer> sellerTransactionCount = new HashMap<>();
+
+        // Iterate through all purchases to count fulfilled transactions per seller
+        for (Map<Integer, Purchase> userPurchases : purchases.values()) {
+            for (Purchase purchase : userPurchases.values()) {
+                // Check if the purchase status is 'fulfilled' (case-insensitive)
+                if ("fulfilled".equalsIgnoreCase(purchase.getStatus())) {
+                    String sellerID = purchase.getSellerID();
+
+                    if (sellerID != null) {
+                        // Normalize sellerID to lowercase to match users map keys
+                        String normalizedSellerID = sellerID.toLowerCase();
+
+                        // Increment the transaction count for the seller
+                        sellerTransactionCount.put(normalizedSellerID,
+                                sellerTransactionCount.getOrDefault(normalizedSellerID, 0) + 1);
+                    }
+                }
+            }
+        }
+
+        logger.info("Seller Transaction Counts: " + sellerTransactionCount);
+
+        // Create a list of TopSeller objects
+        List<TopSeller> topSellersList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : sellerTransactionCount.entrySet()) {
+            String sellerID = entry.getKey();
+            int transactionCount = entry.getValue();
+
+            // Retrieve the seller from the users map using the normalized sellerID
+            User seller = users.get(sellerID);
+
+            if (seller != null && seller.getName() != null) {
+                topSellersList.add(new TopSeller(sellerID, seller.getName(), transactionCount));
+            } else {
+                logger.warning("Seller with ID '" + sellerID + "' not found in users map or has no name.");
+            }
+        }
+
+        // Sort the list in descending order of transaction count
+        topSellersList.sort((s1, s2) -> Integer.compare(s2.getTransactionCount(), s1.getTransactionCount()));
+
+        logger.info("Sorted Top Sellers: " + topSellersList.stream()
+                .map(s -> s.getSellerName() + ": " + s.getTransactionCount())
+                .collect(Collectors.joining(", ")));
+
+        // Return the top 5 sellers or fewer if not enough sellers exist
+        List<TopSeller> top5Sellers = topSellersList.stream().limit(5).collect(Collectors.toList());
+        logger.info("Final Top 5 Sellers: " + top5Sellers.stream()
+                .map(s -> s.getSellerName() + ": " + s.getTransactionCount())
+                .collect(Collectors.joining(", ")));
+        return top5Sellers;
+    }
+
+
+
+
+    /**
+     * Retrieves and displays the top 5 sellers based on fulfilled transactions.
+     *
+     * @param out The PrintWriter to send responses to the client.
+     */
+    private void displayTopSellers(PrintWriter out) {
+        List<TopSeller> topSellers = getTopSellers();
+
+        if (!topSellers.isEmpty()) {
+            out.println("Top 5 Sellers by Number of Fulfilled Transactions:");
+            int rank = 1;
+            for (TopSeller seller : topSellers) {
+                out.println(rank + ". " + seller.getSellerName() + " (ID: " + seller.getSellerID() + ") - " + seller.getTransactionCount() + " transactions");
+                rank++;
+            }
+        } else {
+            out.println("No fulfilled transactions available to display top sellers.");
+        }
+
+        out.println("---END---"); // Ensure the delimiter is sent
+    }
+
+
+
+
 
     /**
      * Represents a top seller with their ID, name, and transaction count.
@@ -1003,97 +1133,5 @@ public class ClientHandler implements Runnable {
         public int getTransactionCount() {
             return transactionCount;
         }
-    }
-
-    /**
-     * Retrieves the top 5 sellers based on the number of fulfilled transactions.
-     *
-     * @return A list of TopSeller objects.
-     */
-    private List<TopSeller> getTopSellers() {
-        Map<String, Integer> sellerTransactionCount = new HashMap<>();
-
-        // Iterate through all purchases to count transactions per seller
-        for (Map<Integer, Purchase> userPurchases : purchases.values()) {
-            for (Purchase purchase : userPurchases.values()) {
-                String sellerID = purchase.getSellerID();
-                if (sellerID == null || sellerID.equalsIgnoreCase("pending") || sellerID.equalsIgnoreCase("unfulfilled")) {
-                    continue; // Ignore pending or unfulfilled transactions
-                }
-                sellerTransactionCount.put(sellerID, sellerTransactionCount.getOrDefault(sellerID, 0) + 1);
-            }
-        }
-
-        logger.info("Seller Transaction Counts: " + sellerTransactionCount);
-
-        // Create a list of TopSeller objects
-        List<TopSeller> topSellersList = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : sellerTransactionCount.entrySet()) {
-            String sellerID = entry.getKey();
-            int transactionCount = entry.getValue();
-            User seller = users.get(sellerID);
-            if (seller != null && seller.getName() != null) {
-                topSellersList.add(new TopSeller(sellerID, seller.getName(), transactionCount));
-            } else {
-                logger.warning("Seller with ID " + sellerID + " not found in users map or has no name.");
-            }
-        }
-
-        // Sort the list in descending order of transaction count
-        topSellersList.sort((s1, s2) -> Integer.compare(s2.getTransactionCount(), s1.getTransactionCount()));
-
-        logger.info("Sorted Top Sellers: " + topSellersList.stream()
-                .map(s -> s.getSellerName() + ": " + s.getTransactionCount())
-                .collect(Collectors.joining(", ")));
-
-        // Return the top 5 sellers or fewer if not enough sellers exist
-        List<TopSeller> top5Sellers = topSellersList.stream().limit(5).collect(Collectors.toList());
-        logger.info("Final Top 5 Sellers: " + top5Sellers.stream()
-                .map(s -> s.getSellerName() + ": " + s.getTransactionCount())
-                .collect(Collectors.joining(", ")));
-        return top5Sellers;
-    }
-
-    /**
-     * Displays the transaction history of the seller.
-     *
-     * @param out    The PrintWriter to send responses to the client.
-     * @param seller The authenticated Seller User object.
-     */
-    private void viewTransactionHistory(PrintWriter out, User seller) {
-        String sellerID = seller.getUserID();
-        StringBuilder sb = new StringBuilder();
-        sb.append("Transaction History:\n");
-        sb.append(String.format("%-5s %-20s %-10s %-20s %-15s %-10s %-15s\n",
-                "ID", "Item Name", "Quantity", "Date", "Buyer", "Cost($)", "Status"));
-        sb.append("----------------------------------------------------------------------------------------------\n");
-
-        boolean hasTransactions = false;
-
-        for (Map.Entry<String, Map<Integer, Purchase>> entry : purchases.entrySet()) {
-            String buyerID = entry.getKey();
-            for (Map.Entry<Integer, Purchase> purchaseEntry : entry.getValue().entrySet()) {
-                Purchase purchase = purchaseEntry.getValue();
-                if (purchase.getSellerID().equalsIgnoreCase(sellerID)) { // Only include fulfilled transactions
-                    sb.append(String.format("%-5d %-20s %-10d %-20s %-15s %-10.2f %-15s\n",
-                            purchase.getPurchaseId(),
-                            purchase.getItemName(),
-                            purchase.getQuantity(),
-                            purchase.getPurchaseDate().toString(),
-                            buyerID,
-                            purchase.getTotalCost(),
-                            purchase.getStatus()));
-                    hasTransactions = true;
-                }
-            }
-        }
-
-        if (!hasTransactions) {
-            sb.append("No transactions found.");
-        }
-
-        out.println(sb.toString());
-        out.println("---END---");
-        logger.info("Seller " + seller.getUserID() + " viewed transaction history.");
     }
 }

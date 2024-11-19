@@ -1,6 +1,6 @@
 {
   "jane_smith": {
-    "userID": "buyer2",
+    "userID": "jane_smith",
     "password": "123",
     "role": "customer",
     "accountNumber": 1003
@@ -19,31 +19,31 @@
   },
   "david_yellow": {
     "userID": "david_yellow",
-    "password": "davidssecurepwd",
+    "password": "123",
     "role": "customer",
     "accountNumber": 1008
   },
   "mike_brown": {
     "userID": "mike_brown",
-    "password": "mikespassword",
+    "password": "123",
     "role": "customer",
     "accountNumber": 1004
   },
   "bob_white": {
     "userID": "bob_white",
-    "password": "bobssecurepwd",
+    "password": "123",
     "role": "seller",
     "accountNumber": 1006
   },
   "eve_purple": {
-    "userID": "eve_purple",
-    "password": "evespwd",
+    "userID": "seller4",
+    "password": "123",
     "role": "seller",
     "accountNumber": 1009
   },
   "frank_orange": {
-    "userID": "frank_orange",
-    "password": "frankspwd",
+    "userID": "seller3",
+    "password": "123",
     "role": "seller",
     "accountNumber": 1010
   },
@@ -54,7 +54,7 @@
     "accountNumber": 1002
   },
   "alice_green": {
-    "userID": "seller2",
+    "userID": "alice_green",
     "password": "123",
     "role": "seller",
     "accountNumber": 1005

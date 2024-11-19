@@ -3,6 +3,9 @@ package SOMSServerJava;
 
 import java.time.LocalDateTime;
 
+
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Purchase represents a transaction made by a customer.
  */
@@ -12,7 +15,7 @@ public class Purchase {
     private String itemName;
     private int quantity;
     private LocalDateTime purchaseDate;
-    private String sellerID; // "pending" initially
+    private String sellerID;
     private double totalCost;
     private String status; // "pending", "fulfilled", "unfulfilled"
 
@@ -41,6 +44,7 @@ public class Purchase {
         this.sellerID = sellerID;
         this.totalCost = totalCost;
         setStatus(status);
+
     }
 
     // Getters and Setters

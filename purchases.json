@@ -6,7 +6,7 @@
       "itemName": "Item6",
       "quantity": 5,
       "purchaseDate": "2024-11-11T23:39:52.088105",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 1500.0,
       "status": "pending"
     },
@@ -16,7 +16,7 @@
       "itemName": "Item7",
       "quantity": 5,
       "purchaseDate": "2024-11-11T23:39:56.5804",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 500.0,
       "status": "pending"
     },
@@ -26,7 +26,7 @@
       "itemName": "Item8",
       "quantity": 5,
       "purchaseDate": "2024-11-11T23:40:00.485892",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 275.0,
       "status": "fulfilled"
     },
@@ -36,7 +36,7 @@
       "itemName": "item9",
       "quantity": 5,
       "purchaseDate": "2024-11-11T23:40:03.749721",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 50.0,
       "status": "pending"
     },
@@ -46,7 +46,7 @@
       "itemName": "Item10",
       "quantity": 5,
       "purchaseDate": "2024-11-11T23:40:09.968178",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 60.0,
       "status": "pending"
     },
@@ -56,7 +56,7 @@
       "itemName": "Item8",
       "quantity": 10,
       "purchaseDate": "2024-11-11T23:45:50.203738",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 550.0,
       "status": "fulfilled"
     },
@@ -66,7 +66,7 @@
       "itemName": "item9",
       "quantity": 10,
       "purchaseDate": "2024-11-11T23:45:53.778924",
-      "sellerID": "seller2",
+      "sellerID": "alice_green",
       "totalCost": 100.0,
       "status": "fulfilled"
     },
@@ -76,7 +76,7 @@
       "itemName": "Item10",
       "quantity": 5,
       "purchaseDate": "2024-11-11T23:45:59.968265",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 60.0,
       "status": "fulfilled"
     },
@@ -86,7 +86,7 @@
       "itemName": "Item7",
       "quantity": 12,
       "purchaseDate": "2024-11-11T22:08:29.143816",
-      "sellerID": "unfulfilled",
+      "sellerID": "alice_green",
       "totalCost": 1200.0,
       "status": "unfulfilled"
     },
@@ -96,7 +96,7 @@
       "itemName": "item11",
       "quantity": 5,
       "purchaseDate": "2024-11-11T23:46:06.478928",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 50.0,
       "status": "pending"
     },
@@ -106,7 +106,7 @@
       "itemName": "item9",
       "quantity": 10,
       "purchaseDate": "2024-11-11T22:08:10.181238",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 100.0,
       "status": "pending"
     },
@@ -116,7 +116,7 @@
       "itemName": "Item6",
       "quantity": 16,
       "purchaseDate": "2024-11-11T22:08:36.475727",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 4800.0,
       "status": "pending"
     },
@@ -126,7 +126,7 @@
       "itemName": "Item8",
       "quantity": 10,
       "purchaseDate": "2024-11-11T22:08:18.305785",
-      "sellerID": "customer",
+      "sellerID": "alice_green",
       "totalCost": 550.0,
       "status": "pending"
     }
@@ -148,7 +148,7 @@
       "itemName": "itemS1",
       "quantity": 11,
       "purchaseDate": "2024-11-19T15:09:44.14223",
-      "sellerID": "unfulfilled",
+      "sellerID": "frank_orange",
       "totalCost": 121.0,
       "status": "unfulfilled"
     },
@@ -218,9 +218,9 @@
       "itemName": "itemS4",
       "quantity": 28,
       "purchaseDate": "2024-11-19T16:34:46.882678",
-      "sellerID": "unfulfilled",
+      "sellerID": "frank_orange",
       "totalCost": 280.0,
-      "status": "unfulfilled"
+      "status": "fulfilled"
     }
   },
   "john_doe": {
@@ -230,9 +230,9 @@
       "itemName": "Item1",
       "quantity": 2,
       "purchaseDate": "2024-04-27T14:30:00",
-      "sellerID": "seller1",
+      "sellerID": "frank_orange",
       "totalCost": 200.0,
-      "status": "pending"
+      "status": "fulfilled"
     },
     "2": {
       "purchaseId": 2,
@@ -250,9 +250,9 @@
       "itemName": "Item2",
       "quantity": 3,
       "purchaseDate": "2024-11-09T23:28:04.43454",
-      "sellerID": "seller2",
+      "sellerID": "frank_orange",
       "totalCost": 450.0,
-      "status": "pending"
+      "status": "fulfilled"
     },
     "4": {
       "purchaseId": 4,
@@ -260,9 +260,9 @@
       "itemName": "Item7",
       "quantity": 2,
       "purchaseDate": "2024-11-09T23:47:35.269519",
-      "sellerID": "unfulfilled",
+      "sellerID": "frank_orange",
       "totalCost": 200.0,
-      "status": "pending"
+      "status": "fulfilled"
     },
     "5": {
       "purchaseId": 5,
@@ -270,9 +270,9 @@
       "itemName": "Item7",
       "quantity": 2,
       "purchaseDate": "2024-11-09T23:47:43.6496",
-      "sellerID": "unfulfilled",
+      "sellerID": "frank_orange",
       "totalCost": 200.0,
-      "status": "unfulfilled"
+      "status": "fulfilled"
     },
     "6": {
       "purchaseId": 6,
@@ -320,7 +320,7 @@
       "itemName": "Item1",
       "quantity": 10,
       "purchaseDate": "2024-11-10T23:20:39.182471",
-      "sellerID": "unfulfilled",
+      "sellerID": "alice_green",
       "totalCost": 1000.0,
       "status": "pending"
     },
@@ -380,7 +380,7 @@
       "itemName": "item9",
       "quantity": 12,
       "purchaseDate": "2024-11-18T20:53:53.880657",
-      "sellerID": "pending",
+      "sellerID": "alice_green",
       "totalCost": 120.0,
       "status": "pending"
     },
@@ -390,7 +390,7 @@
       "itemName": "item9",
       "quantity": 50,
       "purchaseDate": "2024-11-19T14:12:42.061185",
-      "sellerID": "pending",
+      "sellerID": "alice_green",
       "totalCost": 500.0,
       "status": "pending"
     },
@@ -400,7 +400,7 @@
       "itemName": "item21",
       "quantity": 21,
       "purchaseDate": "2024-11-19T14:28:13.730236",
-      "sellerID": "pending",
+      "sellerID": "alice_green",
       "totalCost": 210.0,
       "status": "pending"
     },
@@ -410,7 +410,7 @@
       "itemName": "Item3",
       "quantity": 10,
       "purchaseDate": "2024-11-19T14:40:12.746233",
-      "sellerID": "pending",
+      "sellerID": "alice_green",
       "totalCost": 2000.0,
       "status": "pending"
     },
@@ -420,7 +420,7 @@
       "itemName": "Item1",
       "quantity": 4,
       "purchaseDate": "2024-11-19T14:40:41.395206",
-      "sellerID": "pending",
+      "sellerID": "alice_green",
       "totalCost": 400.0,
       "status": "pending"
     },
@@ -430,77 +430,63 @@
       "itemName": "itemS1",
       "quantity": 12,
       "purchaseDate": "2024-11-19T15:37:27.116323",
-      "sellerID": "seller2",
+      "sellerID": "alice_green",
       "totalCost": 132.0,
-      "status": "pending"
+      "status": "fulfilled"
     }
   },
-  "customer2": {
+  "david_yellow": {
     "1": {
       "purchaseId": 0,
-      "userID": "customer2",
+      "userID": "david_yellow",
       "itemName": "Smartphone",
       "quantity": 1,
       "purchaseDate": "2024-11-02T09:00:00",
-      "sellerID": "seller3",
+      "sellerID": "alice_green",
       "totalCost": 800.0,
       "status": "fulfilled"
     },
     "2": {
       "purchaseId": 0,
-      "userID": "customer2",
+      "userID": "david_yellow",
       "itemName": "Keyboard",
       "quantity": 1,
       "purchaseDate": "2024-11-04T16:45:00",
-      "sellerID": "seller3",
+      "sellerID": "alice_green",
       "totalCost": 150.0,
       "status": "fulfilled"
     }
   },
-  "customer3": {
+  "mike_brown": {
     "1": {
       "purchaseId": 0,
-      "userID": "customer3",
+      "userID": "mike_brown",
       "itemName": "Monitor",
       "quantity": 2,
       "purchaseDate": "2024-11-05T11:30:00",
-      "sellerID": "seller2",
+      "sellerID": "alice_green",
       "totalCost": 500.0,
-      "status": "fulfilled"
-    }
-  },
-  "buyer2": {
-    "12": {
-      "purchaseId": 12,
-      "userID": "buyer2",
-      "itemName": "Item10",
-      "quantity": 5,
-      "purchaseDate": "2024-11-11T23:45:59.968265",
-      "sellerID": "seller2",
-      "totalCost": 60.0,
-      "status": "pending"
-    }
-  },
-  "customer1": {
-    "1": {
-      "purchaseId": 0,
-      "userID": "customer",
-      "itemName": "Laptop",
-      "quantity": 1,
-      "purchaseDate": "2024-11-01T10:15:30",
-      "sellerID": "seller2",
-      "totalCost": 1200.0,
       "status": "fulfilled"
     },
     "2": {
-      "purchaseId": 0,
-      "userID": "customer",
-      "itemName": "Headphones",
-      "quantity": 2,
-      "purchaseDate": "2024-11-03T14:20:00",
-      "sellerID": "seller2",
-      "totalCost": 300.0,
+      "purchaseId": 2,
+      "userID": "mike_brown",
+      "itemName": "itemS4",
+      "quantity": 15,
+      "purchaseDate": "2024-11-19T21:34:08.827937",
+      "sellerID": "alice_green",
+      "totalCost": 150.0,
       "status": "pending"
+    },
+    "3": {
+      "purchaseId": 3,
+      "userID": "mike_brown",
+      "itemName": "itemS4",
+      "quantity": 17,
+      "purchaseDate": "2024-11-19T21:37:51.085274",
+      "sellerID": "alice_green",
+      "totalCost": 170.0,
+      "status": "fulfilled"
     }
   }
 }

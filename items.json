@@ -68,8 +68,8 @@
   "items4": {
     "name": "itemS4",
     "price": 10.0,
-    "quantityAvailable": 82,
-    "sellerID": "seller2"
+    "quantityAvailable": 50,
+    "sellerID": "alice_green"
   },
   "item11": {
     "name": "item11",
