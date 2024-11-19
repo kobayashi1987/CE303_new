@@ -64,16 +64,23 @@ public class ClientProgram {
                 System.out.println(roleMessage);
             }
 
-            // Read Top 5 Sellers
-            String topSellers = readMultiLineResponse(client);
-            if (topSellers != null) {
-                System.out.println(topSellers);
-            }
+            // Read Additional Messages Based on Role
+            // For Customer: Top Sellers and Available Items
+            // For Seller: Command Panel only
+            boolean isSeller = roleMessage.toLowerCase().contains("seller");
 
-            // Read Available Items
-            String availableItems = readMultiLineResponse(client);
-            if (availableItems != null) {
-                System.out.println(availableItems);
+            if (!isSeller) {
+                // For Customers: Read Top Sellers
+                String topSellers = readMultiLineResponse(client);
+                if (topSellers != null && !topSellers.isEmpty()) {
+                    System.out.println(topSellers);
+                }
+
+                // Read Available Items
+                String availableItems = readMultiLineResponse(client);
+                if (availableItems != null && !availableItems.isEmpty()) {
+                    System.out.println(availableItems);
+                }
             }
 
             // Read Command Panel
@@ -82,21 +89,8 @@ public class ClientProgram {
                 System.out.println(commandPanel);
             }
 
-            // Command loop
-            String response;
-            while (true) {
-                System.out.print("Enter a command: ");
-                String command = scanner.nextLine();
-                client.sendCommand(command);
-                response = readMultiLineResponse(client);
-                if (response != null) {
-                    System.out.println(response);
-                }
-
-                if (response != null && response.equalsIgnoreCase("Goodbye!")) {
-                    break;
-                }
-            }
+            // Prompt for Commands
+            enterCommandLoop(client, scanner);
 
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Client error: ", e);
@@ -121,6 +115,29 @@ public class ClientProgram {
             sb.append(line).append("\n");
         }
         return sb.toString().trim();
+    }
+
+    /**
+     * Handles the command loop where the user can enter commands.
+     *
+     * @param client  The client instance to communicate with the server.
+     * @param scanner The scanner to read user input.
+     * @throws IOException If an I/O error occurs.
+     */
+    private static void enterCommandLoop(Client client, Scanner scanner) throws IOException {
+        while (true) {
+            System.out.print("Enter a command: ");
+            String command = scanner.nextLine();
+            client.sendCommand(command);
+            String response = readMultiLineResponse(client);
+            if (response != null && !response.isEmpty()) {
+                System.out.println(response);
+            }
+
+            if (response != null && response.equalsIgnoreCase("Goodbye!")) {
+                break;
+            }
+        }
     }
 
     /**
