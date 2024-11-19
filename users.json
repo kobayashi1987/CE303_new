@@ -32,19 +32,19 @@
   "bob_white": {
     "userID": "bob_white",
     "password": "bobssecurepwd",
-    "role": "customer",
+    "role": "seller",
     "accountNumber": 1006
   },
   "eve_purple": {
     "userID": "eve_purple",
     "password": "evespwd",
-    "role": "customer",
+    "role": "seller",
     "accountNumber": 1009
   },
   "frank_orange": {
     "userID": "frank_orange",
     "password": "frankspwd",
-    "role": "customer",
+    "role": "seller",
     "accountNumber": 1010
   },
   "admin_user": {

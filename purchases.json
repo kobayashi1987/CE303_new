@@ -1,5 +1,158 @@
 {
-  "jane_smith": {},
+  "jane_smith": {
+    "5": {
+      "purchaseId": 5,
+      "userID": "jane_smith",
+      "itemName": "Item6",
+      "quantity": 5,
+      "purchaseDate": "2024-11-11T23:39:52.088105",
+      "sellerID": "customer",
+      "totalCost": 1500.0,
+      "status": "pending"
+    },
+    "6": {
+      "purchaseId": 6,
+      "userID": "jane_smith",
+      "itemName": "Item7",
+      "quantity": 5,
+      "purchaseDate": "2024-11-11T23:39:56.5804",
+      "sellerID": "customer",
+      "totalCost": 500.0,
+      "status": "pending"
+    },
+    "7": {
+      "purchaseId": 7,
+      "userID": "jane_smith",
+      "itemName": "Item8",
+      "quantity": 5,
+      "purchaseDate": "2024-11-11T23:40:00.485892",
+      "sellerID": "customer",
+      "totalCost": 275.0,
+      "status": "fulfilled"
+    },
+    "8": {
+      "purchaseId": 8,
+      "userID": "jane_smith",
+      "itemName": "item9",
+      "quantity": 5,
+      "purchaseDate": "2024-11-11T23:40:03.749721",
+      "sellerID": "customer",
+      "totalCost": 50.0,
+      "status": "pending"
+    },
+    "9": {
+      "purchaseId": 9,
+      "userID": "jane_smith",
+      "itemName": "Item10",
+      "quantity": 5,
+      "purchaseDate": "2024-11-11T23:40:09.968178",
+      "sellerID": "customer",
+      "totalCost": 60.0,
+      "status": "pending"
+    },
+    "10": {
+      "purchaseId": 10,
+      "userID": "jane_smith",
+      "itemName": "Item8",
+      "quantity": 10,
+      "purchaseDate": "2024-11-11T23:45:50.203738",
+      "sellerID": "customer",
+      "totalCost": 550.0,
+      "status": "fulfilled"
+    },
+    "11": {
+      "purchaseId": 11,
+      "userID": "jane_smith",
+      "itemName": "item9",
+      "quantity": 10,
+      "purchaseDate": "2024-11-11T23:45:53.778924",
+      "sellerID": "seller2",
+      "totalCost": 100.0,
+      "status": "fulfilled"
+    },
+    "12": {
+      "purchaseId": 12,
+      "userID": "jane_smith",
+      "itemName": "Item10",
+      "quantity": 5,
+      "purchaseDate": "2024-11-11T23:45:59.968265",
+      "sellerID": "customer",
+      "totalCost": 60.0,
+      "status": "fulfilled"
+    },
+    "13": {
+      "purchaseId": 13,
+      "userID": "jane_smith",
+      "itemName": "Item7",
+      "quantity": 12,
+      "purchaseDate": "2024-11-11T22:08:29.143816",
+      "sellerID": "unfulfilled",
+      "totalCost": 1200.0,
+      "status": "unfulfilled"
+    },
+    "14": {
+      "purchaseId": 14,
+      "userID": "jane_smith",
+      "itemName": "item11",
+      "quantity": 5,
+      "purchaseDate": "2024-11-11T23:46:06.478928",
+      "sellerID": "customer",
+      "totalCost": 50.0,
+      "status": "pending"
+    },
+    "15": {
+      "purchaseId": 15,
+      "userID": "jane_smith",
+      "itemName": "item9",
+      "quantity": 10,
+      "purchaseDate": "2024-11-11T22:08:10.181238",
+      "sellerID": "customer",
+      "totalCost": 100.0,
+      "status": "pending"
+    },
+    "444": {
+      "purchaseId": 0,
+      "userID": "buyer",
+      "itemName": "Item6",
+      "quantity": 16,
+      "purchaseDate": "2024-11-11T22:08:36.475727",
+      "sellerID": "customer",
+      "totalCost": 4800.0,
+      "status": "pending"
+    },
+    "222": {
+      "purchaseId": 0,
+      "userID": "buyer2",
+      "itemName": "Item8",
+      "quantity": 10,
+      "purchaseDate": "2024-11-11T22:08:18.305785",
+      "sellerID": "customer",
+      "totalCost": 550.0,
+      "status": "pending"
+    }
+  },
+  "charlie_black": {
+    "1": {
+      "purchaseId": 1,
+      "userID": "charlie_black",
+      "itemName": "item23",
+      "quantity": 100,
+      "purchaseDate": "2024-11-19T14:53:34.29252",
+      "sellerID": "pending",
+      "totalCost": 1000.0,
+      "status": "pending"
+    },
+    "2": {
+      "purchaseId": 2,
+      "userID": "charlie_black",
+      "itemName": "itemS1",
+      "quantity": 11,
+      "purchaseDate": "2024-11-19T15:09:44.14223",
+      "sellerID": "pending",
+      "totalCost": 121.0,
+      "status": "pending"
+    }
+  },
   "john_doe": {
     "1": {
       "purchaseId": 1,
@@ -27,7 +180,7 @@
       "itemName": "Item2",
       "quantity": 3,
       "purchaseDate": "2024-11-09T23:28:04.43454",
-      "sellerID": "unfulfilled",
+      "sellerID": "seller2",
       "totalCost": 450.0,
       "status": "pending"
     },
@@ -47,9 +200,9 @@
       "itemName": "Item7",
       "quantity": 2,
       "purchaseDate": "2024-11-09T23:47:43.6496",
-      "sellerID": "seller1",
+      "sellerID": "unfulfilled",
       "totalCost": 200.0,
-      "status": "pending"
+      "status": "unfulfilled"
     },
     "6": {
       "purchaseId": 6,
@@ -59,7 +212,7 @@
       "purchaseDate": "2024-11-10T21:51:32.608961",
       "sellerID": "seller1",
       "totalCost": 100.0,
-      "status": "pending"
+      "status": "fulfilled"
     },
     "7": {
       "purchaseId": 7,
@@ -67,9 +220,9 @@
       "itemName": "Item7",
       "quantity": 1,
       "purchaseDate": "2024-11-10T21:51:43.392902",
-      "sellerID": "unfulfilled",
+      "sellerID": "seller1",
       "totalCost": 100.0,
-      "status": "unfulfilled"
+      "status": "pending"
     },
     "8": {
       "purchaseId": 8,
@@ -87,7 +240,7 @@
       "itemName": "Item5",
       "quantity": 10,
       "purchaseDate": "2024-11-10T22:25:08.342953",
-      "sellerID": "unfulfilled",
+      "sellerID": "seller1",
       "totalCost": 3000.0,
       "status": "pending"
     },
@@ -107,7 +260,7 @@
       "itemName": "Item10",
       "quantity": 11,
       "purchaseDate": "2024-11-10T23:22:32.471195",
-      "sellerID": "seller2",
+      "sellerID": "seller1",
       "totalCost": 132.0,
       "status": "pending"
     },
@@ -117,7 +270,7 @@
       "itemName": "item9",
       "quantity": 3,
       "purchaseDate": "2024-11-11T23:19:37.332293",
-      "sellerID": "seller2",
+      "sellerID": "seller1",
       "totalCost": 30.0,
       "status": "pending"
     },
@@ -127,7 +280,7 @@
       "itemName": "item16",
       "quantity": 20,
       "purchaseDate": "2024-11-12T02:34:05.411992",
-      "sellerID": "pending",
+      "sellerID": "seller1",
       "totalCost": 2000.0,
       "status": "pending"
     },
@@ -137,7 +290,7 @@
       "itemName": "Item8",
       "quantity": 9,
       "purchaseDate": "2024-11-18T20:53:29.097277",
-      "sellerID": "pending",
+      "sellerID": "seller1",
       "totalCost": 495.0,
       "status": "pending"
     },
@@ -147,7 +300,7 @@
       "itemName": "Item8",
       "quantity": 9,
       "purchaseDate": "2024-11-18T20:53:39.759923",
-      "sellerID": "pending",
+      "sellerID": "seller1",
       "totalCost": 495.0,
       "status": "pending"
     },
@@ -200,137 +353,15 @@
       "sellerID": "pending",
       "totalCost": 400.0,
       "status": "pending"
-    }
-  },
-  "buyer": {
-    "5": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "Item6",
-      "quantity": 5,
-      "purchaseDate": "2024-11-11T23:39:52.088105",
-      "sellerID": "seller2",
-      "totalCost": 1500.0,
-      "status": "pending"
     },
-    "6": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "Item7",
-      "quantity": 5,
-      "purchaseDate": "2024-11-11T23:39:56.5804",
-      "sellerID": "seller2",
-      "totalCost": 500.0,
-      "status": "pending"
-    },
-    "7": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "Item8",
-      "quantity": 5,
-      "purchaseDate": "2024-11-11T23:40:00.485892",
-      "sellerID": "seller2",
-      "totalCost": 275.0,
-      "status": "fulfilled"
-    },
-    "8": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "item9",
-      "quantity": 5,
-      "purchaseDate": "2024-11-11T23:40:03.749721",
-      "sellerID": "seller2",
-      "totalCost": 50.0,
-      "status": "pending"
-    },
-    "9": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "Item10",
-      "quantity": 5,
-      "purchaseDate": "2024-11-11T23:40:09.968178",
-      "sellerID": "seller2",
-      "totalCost": 60.0,
-      "status": "pending"
-    },
-    "10": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "Item8",
-      "quantity": 10,
-      "purchaseDate": "2024-11-11T23:45:50.203738",
-      "sellerID": "seller2",
-      "totalCost": 550.0,
-      "status": "fulfilled"
-    },
-    "11": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "item9",
-      "quantity": 10,
-      "purchaseDate": "2024-11-11T23:45:53.778924",
-      "sellerID": "seller2",
-      "totalCost": 100.0,
-      "status": "pending"
-    },
-    "12": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "Item10",
-      "quantity": 5,
-      "purchaseDate": "2024-11-11T23:45:59.968265",
-      "sellerID": "seller2",
-      "totalCost": 60.0,
-      "status": "fulfilled"
-    },
-    "333": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "Item7",
+    "22": {
+      "purchaseId": 22,
+      "userID": "john_doe",
+      "itemName": "itemS1",
       "quantity": 12,
-      "purchaseDate": "2024-11-11T22:08:29.143816",
+      "purchaseDate": "2024-11-19T15:37:27.116323",
       "sellerID": "seller2",
-      "totalCost": 1200.0,
-      "status": "pending"
-    },
-    "13": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "item11",
-      "quantity": 5,
-      "purchaseDate": "2024-11-11T23:46:06.478928",
-      "sellerID": "seller2",
-      "totalCost": 50.0,
-      "status": "fulfilled"
-    },
-    "111": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "item9",
-      "quantity": 10,
-      "purchaseDate": "2024-11-11T22:08:10.181238",
-      "sellerID": "seller2",
-      "totalCost": 100.0,
-      "status": "fulfilled"
-    },
-    "444": {
-      "purchaseId": 0,
-      "userID": "buyer",
-      "itemName": "Item6",
-      "quantity": 16,
-      "purchaseDate": "2024-11-11T22:08:36.475727",
-      "sellerID": "seller2",
-      "totalCost": 4800.0,
-      "status": "pending"
-    },
-    "222": {
-      "purchaseId": 0,
-      "userID": "buyer2",
-      "itemName": "Item8",
-      "quantity": 10,
-      "purchaseDate": "2024-11-11T22:08:18.305785",
-      "sellerID": "seller2",
-      "totalCost": 550.0,
+      "totalCost": 132.0,
       "status": "pending"
     }
   },
@@ -375,7 +406,7 @@
       "itemName": "Item10",
       "quantity": 5,
       "purchaseDate": "2024-11-11T23:45:59.968265",
-      "sellerID": "unfulfilled",
+      "sellerID": "seller2",
       "totalCost": 60.0,
       "status": "pending"
     }
