@@ -160,6 +160,16 @@
       "sellerID": "pending",
       "totalCost": 120.0,
       "status": "pending"
+    },
+    "17": {
+      "purchaseId": 17,
+      "userID": "john_doe",
+      "itemName": "item9",
+      "quantity": 50,
+      "purchaseDate": "2024-11-19T14:12:42.061185",
+      "sellerID": "pending",
+      "totalCost": 500.0,
+      "status": "pending"
     }
   },
   "buyer": {
