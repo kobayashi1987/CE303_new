@@ -404,7 +404,7 @@ public class ClientHandler implements Runnable {
         purchase.setItemName(item.getName());
         purchase.setQuantity(quantity);
         purchase.setPurchaseDate(LocalDateTime.now());
-        purchase.setSellerID("pending"); // Indicates awaiting seller confirmation
+        purchase.setSellerID(item.getSellerID()); // Set to item's sellerID
         purchase.setTotalCost(totalCost);
         purchase.setStatus("pending");
 
@@ -419,6 +419,8 @@ public class ClientHandler implements Runnable {
         out.println("---END---");
         logger.info("User " + user.getUserID() + " reserved purchase: " + item.getName() + " x" + quantity + " for $" + String.format("%.2f", totalCost));
     }
+
+
 
     /**
      * Generates a unique purchase ID based on existing purchases.
@@ -872,6 +874,7 @@ public class ClientHandler implements Runnable {
      * @param user     The seller performing the action.
      */
     private void addItem(PrintWriter out, String itemName, double price, int quantity, User user) {
+        // Validate price and quantity
         if (price <= 0 || quantity <= 0) {
             out.println("Price and quantity must be positive.");
             out.println("---END---");
@@ -879,24 +882,43 @@ public class ClientHandler implements Runnable {
             return;
         }
 
+        // Normalize item name to maintain consistency (e.g., all lowercase)
+        String normalizedItemName = itemName.toLowerCase();
+
         synchronized (items) {
-            if (items.containsKey(itemName)) {
-                Item existingItem = items.get(itemName);
+            if (items.containsKey(normalizedItemName)) {
+                Item existingItem = items.get(normalizedItemName);
+
+                // Check if the current seller is the owner of the item
+                if (!existingItem.getSellerID().equalsIgnoreCase(user.getUserID())) {
+                    out.println("You do not have permission to modify this item.");
+                    out.println("---END---");
+                    logger.warning("Seller " + user.getUserID() + " attempted to modify item not owned by them: " + itemName);
+                    return;
+                }
+
+                // Update price and quantity
                 existingItem.setPrice(price);
                 existingItem.increaseQuantity(quantity);
                 logger.info("Seller " + user.getUserID() + " updated item: " + itemName + " with price: $" + price + " and additional quantity: " + quantity);
             } else {
-                Item newItem = new Item(itemName, price, quantity);
-                items.put(itemName, newItem);
+                // Create a new item with sellerID assigned to the current seller
+                Item newItem = new Item(itemName, price, quantity, user.getUserID());
+                items.put(normalizedItemName, newItem);
                 logger.info("Seller " + user.getUserID() + " added new item: " + itemName + " with price: $" + price + " and quantity: " + quantity);
             }
         }
 
+        // Persist data after modification
         SOMSUtils.saveAllData(users, accounts, items, purchases);
 
+        // Send confirmation to the seller
         out.println("Item \"" + itemName + "\" added/updated successfully.");
         out.println("---END---");
     }
+
+
+
 
     /**
      * Handles the 'view' command issued by the seller.

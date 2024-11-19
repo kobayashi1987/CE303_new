@@ -91,11 +91,14 @@ public class Item {
     private String name;
     private double price;
     private int quantityAvailable;
+    private String sellerID;
 
     /**
      * Default constructor required for JSON deserialization.
      */
-    public Item() {}
+    public Item() {
+
+    }
 
     /**
      * Constructs a new Item.
@@ -104,10 +107,11 @@ public class Item {
      * @param price             The price of the item.
      * @param quantityAvailable The available quantity of the item.
      */
-    public Item(String name, double price, int quantityAvailable) {
+    public Item(String name, double price, int quantityAvailable, String sellerID) {
         this.name = name;
         this.price = price;
         this.quantityAvailable = quantityAvailable;
+        this.sellerID = sellerID;
     }
 
     // Getters and Setters
@@ -122,6 +126,11 @@ public class Item {
 
     public int getQuantityAvailable() {
         return quantityAvailable;
+    }
+
+    // get the seller ID
+    public String getSellerID() {
+        return sellerID;
     }
 
     public void setName(String name) {
