@@ -1072,9 +1072,6 @@ public class ClientHandler implements Runnable {
         return top5Sellers;
     }
 
-
-
-
     /**
      * Retrieves and displays the top 5 sellers based on fulfilled transactions.
      *
@@ -1096,10 +1093,6 @@ public class ClientHandler implements Runnable {
 
         out.println("---END---"); // Ensure the delimiter is sent
     }
-
-
-
-
 
     /**
      * Represents a top seller with their ID, name, and transaction count.

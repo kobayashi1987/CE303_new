@@ -8482,3 +8482,31 @@ Nov 20, 2024 9:21:43 AM SOMSServerJava.ClientHandler handleExitCommand
 INFO: Seller alice_green has exited the application.
 Nov 20, 2024 9:21:43 AM SOMSServerJava.ClientHandler run
 INFO: Client disconnected: /127.0.0.1:49611
+Nov 20, 2024 9:55:49 AM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 9:55:49 AM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 9:55:53 AM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 9:55:53 AM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 9:56:15 AM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 9:56:15 AM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 9:56:15 AM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 23 items from items.json.
+Nov 20, 2024 9:56:15 AM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 9:56:15 AM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 9:56:15 AM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 9:56:29 AM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49745
+Nov 20, 2024 9:56:35 AM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:49745
+Nov 20, 2024 9:56:35 AM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:49745
+Nov 20, 2024 9:56:35 AM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS

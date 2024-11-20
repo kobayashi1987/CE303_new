@@ -35,8 +35,8 @@
     "quantityAvailable": 66,
     "sellerID": "seller1"
   },
-  "Item11": {
-    "name": "Item11",
+  "item11": {
+    "name": "item11",
     "price": 10.0,
     "quantityAvailable": 100,
     "sellerID": "seller2"
@@ -83,38 +83,32 @@
     "quantityAvailable": 40,
     "sellerID": "alice_green"
   },
-  "item11": {
-    "name": "item11",
-    "price": 10.0,
-    "quantityAvailable": 95,
-    "sellerID": "seller2"
-  },
-  "Item5": {
-    "name": "Item5",
+  "item5": {
+    "name": "item5",
     "price": 300.0,
     "quantityAvailable": 20,
     "sellerID": "seller1"
   },
-  "Item6": {
-    "name": "Item6",
+  "item6": {
+    "name": "item6",
     "price": 300.0,
     "quantityAvailable": 4,
     "sellerID": "seller2"
   },
-  "Item3": {
-    "name": "Item3",
+  "item3": {
+    "name": "item3",
     "price": 200.0,
     "quantityAvailable": 10,
     "sellerID": "seller1"
   },
-  "Item4": {
-    "name": "Item4",
+  "item4": {
+    "name": "item4",
     "price": 250.0,
     "quantityAvailable": 5,
     "sellerID": "seller2"
   },
-  "Item7": {
-    "name": "Item7",
+  "item7": {
+    "name": "item7",
     "price": 100.0,
     "quantityAvailable": 96,
     "sellerID": "seller1"
@@ -125,8 +119,8 @@
     "quantityAvailable": 47,
     "sellerID": "seller2"
   },
-  "Item1": {
-    "name": "Item1",
+  "item1": {
+    "name": "item1",
     "price": 100.0,
     "quantityAvailable": 50,
     "sellerID": "seller1"
