@@ -27,3 +27,8 @@
 2024.11.12:
 
 When running the seller's function, the buyer must be in the user's database. Otherwise, the seller's function will not work.
+
+
+2024.11.20:
+
+in items.json, make sure all is lowercase. Otherwise, the program will not work.

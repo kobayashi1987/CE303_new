@@ -221,6 +221,66 @@
       "sellerID": "frank_orange",
       "totalCost": 280.0,
       "status": "fulfilled"
+    },
+    "10": {
+      "purchaseId": 10,
+      "userID": "charlie_black",
+      "itemName": "itemS4",
+      "quantity": 10,
+      "purchaseDate": "2024-11-20T09:18:31.38066",
+      "sellerID": "alice_green",
+      "totalCost": 100.0,
+      "status": "pending"
+    },
+    "11": {
+      "purchaseId": 11,
+      "userID": "charlie_black",
+      "itemName": "item2",
+      "quantity": 2,
+      "purchaseDate": "2024-11-20T09:19:41.374264",
+      "sellerID": "seller2",
+      "totalCost": 300.0,
+      "status": "pending"
+    },
+    "12": {
+      "purchaseId": 12,
+      "userID": "charlie_black",
+      "itemName": "item8",
+      "quantity": 8,
+      "purchaseDate": "2024-11-20T09:19:47.533177",
+      "sellerID": "seller1",
+      "totalCost": 800.0,
+      "status": "pending"
+    },
+    "13": {
+      "purchaseId": 13,
+      "userID": "charlie_black",
+      "itemName": "item9",
+      "quantity": 2,
+      "purchaseDate": "2024-11-20T09:20:00.546949",
+      "sellerID": "seller2",
+      "totalCost": 20.0,
+      "status": "pending"
+    },
+    "14": {
+      "purchaseId": 14,
+      "userID": "charlie_black",
+      "itemName": "items5",
+      "quantity": 10,
+      "purchaseDate": "2024-11-20T09:20:38.714295",
+      "sellerID": "alice_green",
+      "totalCost": 150.0,
+      "status": "fulfilled"
+    },
+    "15": {
+      "purchaseId": 15,
+      "userID": "charlie_black",
+      "itemName": "items5",
+      "quantity": 12,
+      "purchaseDate": "2024-11-20T09:20:42.306999",
+      "sellerID": "unfulfilled",
+      "totalCost": 180.0,
+      "status": "unfulfilled"
     }
   },
   "john_doe": {
