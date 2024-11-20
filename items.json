@@ -5,6 +5,12 @@
     "quantityAvailable": 34,
     "sellerID": "seller2"
   },
+  "item1": {
+    "name": "item1",
+    "price": 100.0,
+    "quantityAvailable": 50,
+    "sellerID": "seller1"
+  },
   "item23": {
     "name": "item23",
     "price": 10.0,
@@ -34,12 +40,6 @@
     "price": 11.0,
     "quantityAvailable": 66,
     "sellerID": "seller1"
-  },
-  "item11": {
-    "name": "item11",
-    "price": 10.0,
-    "quantityAvailable": 100,
-    "sellerID": "seller2"
   },
   "Item10": {
     "name": "Item10",
@@ -83,16 +83,40 @@
     "quantityAvailable": 40,
     "sellerID": "alice_green"
   },
-  "item5": {
-    "name": "item5",
-    "price": 300.0,
-    "quantityAvailable": 20,
+  "item11": {
+    "name": "item11",
+    "price": 10.0,
+    "quantityAvailable": 100,
+    "sellerID": "seller2"
+  },
+  "Item8": {
+    "name": "Item8",
+    "price": 55.0,
+    "quantityAvailable": 47,
+    "sellerID": "seller2"
+  },
+  "item8": {
+    "name": "item8",
+    "price": 100.0,
+    "quantityAvailable": 91,
     "sellerID": "seller1"
   },
-  "item6": {
-    "name": "item6",
-    "price": 300.0,
-    "quantityAvailable": 4,
+  "item7": {
+    "name": "item7",
+    "price": 100.0,
+    "quantityAvailable": 96,
+    "sellerID": "seller1"
+  },
+  "item9": {
+    "name": "item9",
+    "price": 10.0,
+    "quantityAvailable": 3,
+    "sellerID": "seller2"
+  },
+  "item4": {
+    "name": "item4",
+    "price": 250.0,
+    "quantityAvailable": 5,
     "sellerID": "seller2"
   },
   "item3": {
@@ -101,40 +125,16 @@
     "quantityAvailable": 10,
     "sellerID": "seller1"
   },
-  "item4": {
-    "name": "item4",
-    "price": 250.0,
-    "quantityAvailable": 5,
+  "item6": {
+    "name": "item6",
+    "price": 300.0,
+    "quantityAvailable": 4,
     "sellerID": "seller2"
   },
-  "item7": {
-    "name": "item7",
-    "price": 100.0,
-    "quantityAvailable": 96,
+  "item5": {
+    "name": "item5",
+    "price": 300.0,
+    "quantityAvailable": 20,
     "sellerID": "seller1"
-  },
-  "Item8": {
-    "name": "Item8",
-    "price": 55.0,
-    "quantityAvailable": 47,
-    "sellerID": "seller2"
-  },
-  "item1": {
-    "name": "item1",
-    "price": 100.0,
-    "quantityAvailable": 50,
-    "sellerID": "seller1"
-  },
-  "item8": {
-    "name": "item8",
-    "price": 100.0,
-    "quantityAvailable": 91,
-    "sellerID": "seller1"
-  },
-  "item9": {
-    "name": "item9",
-    "price": 10.0,
-    "quantityAvailable": 3,
-    "sellerID": "seller2"
   }
 }

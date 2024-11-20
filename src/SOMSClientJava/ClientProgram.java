@@ -31,7 +31,6 @@ public class ClientProgram {
             }
 
             // Prompt for UserID
-            System.out.print("Enter your userID: ");
             String userID = scanner.nextLine();
             client.sendCommand(userID);
 
@@ -42,7 +41,6 @@ public class ClientProgram {
             }
 
             // Prompt for Password
-            System.out.print("Enter your password: ");
             String password = scanner.nextLine();
             client.sendCommand(password);
 
