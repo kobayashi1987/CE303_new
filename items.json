@@ -26,7 +26,7 @@
   "item21": {
     "name": "item21",
     "price": 10.0,
-    "quantityAvailable": 70,
+    "quantityAvailable": 91,
     "sellerID": "seller1"
   },
   "item20": {
@@ -64,6 +64,12 @@
     "price": 10.0,
     "quantityAvailable": 1000,
     "sellerID": "seller2"
+  },
+  "items6": {
+    "name": "itemS6",
+    "price": 16.0,
+    "quantityAvailable": 128,
+    "sellerID": "alice_green"
   },
   "item13": {
     "name": "item13",

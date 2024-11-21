@@ -8616,3 +8616,559 @@ Nov 20, 2024 11:02:19 AM SOMSServerJava.SOMS startServer
 INFO: Server starting on port 12345
 Nov 20, 2024 11:02:19 AM SOMSServerJava.SOMS startServer
 INFO: Server started. Waiting for clients...
+Nov 20, 2024 11:45:36 AM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 11:45:36 AM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 11:45:36 AM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 23 items from items.json.
+Nov 20, 2024 11:45:36 AM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 11:45:36 AM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 11:45:36 AM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 11:45:40 AM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:51693
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler run
+INFO: Received userID: charlie_black from /127.0.0.1:51693
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: charlie_black from /127.0.0.1:51693
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: charlie_black - SUCCESS
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=16, seller2=4, frank_orange=6, alice_green=27}
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID seller1 not found in users map or has no name.
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID seller2 not found in users map or has no name.
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID frank_orange not found in users map or has no name.
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID alice_green not found in users map or has no name.
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: 
+Nov 20, 2024 11:45:55 AM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: 
+Nov 20, 2024 11:46:05 AM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:51693
+Nov 20, 2024 2:49:59 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 2:49:59 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 2:49:59 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 23 items from items.json.
+Nov 20, 2024 2:49:59 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 2:49:59 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 2:49:59 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 2:50:05 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49829
+Nov 20, 2024 2:50:10 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: john_doe from /127.0.0.1:49829
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: john_doe from /127.0.0.1:49829
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: john_doe - SUCCESS
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=3, seller2=2, frank_orange=5, alice_green=10}
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller1' not found in users map or has no name.
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller2' not found in users map or has no name.
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'frank_orange' not found in users map or has no name.
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'alice_green' not found in users map or has no name.
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: 
+Nov 20, 2024 2:50:12 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: 
+Nov 20, 2024 2:55:08 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49829
+Nov 20, 2024 2:55:19 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 2:55:19 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 2:55:19 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 23 items from items.json.
+Nov 20, 2024 2:55:19 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 2:55:19 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 2:55:19 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 2:55:32 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49834
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: charlie_black from /127.0.0.1:49834
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: charlie_black from /127.0.0.1:49834
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: charlie_black - SUCCESS
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=3, seller2=2, frank_orange=5, alice_green=10}
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller1' not found in users map or has no name.
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller2' not found in users map or has no name.
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'frank_orange' not found in users map or has no name.
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'alice_green' not found in users map or has no name.
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: 
+Nov 20, 2024 2:55:41 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: 
+Nov 20, 2024 2:56:03 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user charlie_black: top up 1
+Nov 20, 2024 2:56:03 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 20, 2024 2:56:03 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 20, 2024 2:56:03 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 20, 2024 2:56:03 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 20, 2024 2:56:03 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User charlie_black topped up $1.00. New balance: $2331793.00
+Nov 20, 2024 2:59:13 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49834
+Nov 20, 2024 2:59:22 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 2:59:23 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 2:59:23 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 23 items from items.json.
+Nov 20, 2024 2:59:23 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 2:59:23 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 2:59:23 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 2:59:27 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49924
+Nov 20, 2024 2:59:35 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: charlie_black from /127.0.0.1:49924
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: charlie_black from /127.0.0.1:49924
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: charlie_black - SUCCESS
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=3, seller2=2, frank_orange=5, alice_green=10}
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller1' not found in users map or has no name.
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller2' not found in users map or has no name.
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'frank_orange' not found in users map or has no name.
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'alice_green' not found in users map or has no name.
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: 
+Nov 20, 2024 2:59:36 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: 
+Nov 20, 2024 2:59:55 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49924
+Nov 20, 2024 2:59:57 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49935
+Nov 20, 2024 3:00:00 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:49935
+Nov 20, 2024 3:00:01 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:49935
+Nov 20, 2024 3:00:01 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS
+Nov 20, 2024 3:00:06 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: vew transactions
+Nov 20, 2024 3:00:06 PM SOMSServerJava.ClientHandler processSellerCommand
+WARNING: Unknown command from seller: alice_green - vew transactions
+Nov 20, 2024 3:00:12 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: view transactions
+Nov 20, 2024 3:00:12 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller alice_green viewed transaction history.
+Nov 20, 2024 3:00:26 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: complete john_doe 19 delivered
+Nov 20, 2024 3:00:26 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Attempting to complete transaction. Buyer ID: john_doe, Purchase ID: 19, Status: delivered
+Nov 20, 2024 3:00:26 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 20, 2024 3:00:26 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 20, 2024 3:00:26 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 20, 2024 3:00:26 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 20, 2024 3:00:26 PM SOMSServerJava.ClientHandler handleDeliveredStatus
+INFO: Seller alice_green fulfilled purchase ID: 19 for buyer ID: john_doe and transferred $2000.00 to their account.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: complete john_doe 18 unfulfilled
+Nov 20, 2024 3:00:42 PM SOMSServerJava.ClientHandler completeTransaction
+INFO: Attempting to complete transaction. Buyer ID: john_doe, Purchase ID: 18, Status: unfulfilled
+Nov 20, 2024 3:00:42 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Seller alice_green is attempting to mark Purchase ID 18 for Buyer ID john_doe as unfulfilled.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Released $210.00 to Customer account number 1001.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Updated Purchase ID 18 status to 'unfulfilled'.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Restored quantity for item: item21, Quantity: 21
+Nov 20, 2024 3:00:42 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Persisted data after marking Purchase ID 18 as unfulfilled.
+Nov 20, 2024 3:00:42 PM SOMSServerJava.ClientHandler handleUnfulfilledStatus
+INFO: Seller alice_green successfully marked Purchase ID 18 as unfulfilled and returned $210.00 to the customer.
+Nov 20, 2024 3:00:50 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: add itemS6 16 160
+Nov 20, 2024 3:00:50 PM SOMSServerJava.ClientHandler addItem
+INFO: Seller alice_green added new item: itemS6 with price: $16.0 and quantity: 160
+Nov 20, 2024 3:00:50 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 20, 2024 3:00:50 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 20, 2024 3:00:50 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 20, 2024 3:00:50 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 20, 2024 3:00:52 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: exit
+Nov 20, 2024 3:00:52 PM SOMSServerJava.ClientHandler handleExitCommand
+INFO: Seller alice_green has exited the application.
+Nov 20, 2024 3:00:52 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49935
+Nov 20, 2024 3:01:02 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49961
+Nov 20, 2024 3:01:05 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:49961
+Nov 20, 2024 3:01:07 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:49961
+Nov 20, 2024 3:01:07 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - FAILURE
+Nov 20, 2024 3:01:07 PM SOMSServerJava.ClientHandler run
+WARNING: Authentication failed for userID: alice_green
+Nov 20, 2024 3:01:07 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49961
+Nov 20, 2024 3:01:24 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49969
+Nov 20, 2024 3:01:28 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:49969
+Nov 20, 2024 3:01:29 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:49969
+Nov 20, 2024 3:01:29 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS
+Nov 20, 2024 3:01:34 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: switch role
+Nov 20, 2024 3:01:38 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49969
+Nov 20, 2024 3:01:53 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49980
+Nov 20, 2024 3:01:57 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:49980
+Nov 20, 2024 3:01:58 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:49980
+Nov 20, 2024 3:01:58 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS
+Nov 20, 2024 3:02:11 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49980
+Nov 20, 2024 3:02:17 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 3:02:17 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 3:02:17 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 24 items from items.json.
+Nov 20, 2024 3:02:17 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 3:02:17 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 3:02:17 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 3:02:20 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49990
+Nov 20, 2024 3:02:23 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:49990
+Nov 20, 2024 3:02:24 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:49990
+Nov 20, 2024 3:02:24 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS
+Nov 20, 2024 3:02:31 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:49990
+Nov 20, 2024 3:03:13 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 3:03:14 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 3:03:14 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 24 items from items.json.
+Nov 20, 2024 3:03:14 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 3:03:14 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 3:03:14 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 3:03:17 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50018
+Nov 20, 2024 3:03:21 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: charlie_black from /127.0.0.1:50018
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: charlie_black from /127.0.0.1:50018
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: charlie_black - SUCCESS
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=3, seller2=2, frank_orange=5, alice_green=11}
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller1' not found in users map or has no name.
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller2' not found in users map or has no name.
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'frank_orange' not found in users map or has no name.
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'alice_green' not found in users map or has no name.
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: 
+Nov 20, 2024 3:03:22 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: 
+Nov 20, 2024 3:03:28 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user charlie_black: view history
+Nov 20, 2024 3:03:28 PM SOMSServerJava.ClientHandler viewPurchaseHistory
+INFO: User charlie_black viewed purchase history.
+Nov 20, 2024 3:03:36 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50026
+Nov 20, 2024 3:03:40 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:50026
+Nov 20, 2024 3:03:41 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:50026
+Nov 20, 2024 3:03:41 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS
+Nov 20, 2024 3:03:47 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: view transactions
+Nov 20, 2024 3:03:47 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller alice_green viewed transaction history.
+Nov 20, 2024 3:03:57 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user charlie_black: buy items6 16
+Nov 20, 2024 3:03:57 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 20, 2024 3:03:57 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 20, 2024 3:03:57 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 20, 2024 3:03:57 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 20, 2024 3:03:57 PM SOMSServerJava.ClientHandler makePurchase
+INFO: User charlie_black reserved purchase: itemS6 x16 for $256.00
+Nov 20, 2024 3:04:00 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user charlie_black: exit
+Nov 20, 2024 3:04:00 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50018
+Nov 20, 2024 3:04:09 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: view transactions
+Nov 20, 2024 3:04:09 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller alice_green viewed transaction history.
+Nov 20, 2024 3:04:22 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50026
+Nov 20, 2024 3:04:28 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 3:04:28 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 3:04:28 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 24 items from items.json.
+Nov 20, 2024 3:04:28 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 3:04:28 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 3:04:28 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 3:04:32 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50046
+Nov 20, 2024 3:04:36 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:50046
+Nov 20, 2024 3:04:36 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:50046
+Nov 20, 2024 3:04:36 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS
+Nov 20, 2024 3:04:40 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: view transactions
+Nov 20, 2024 3:04:40 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller alice_green viewed transaction history.
+Nov 20, 2024 3:05:13 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: exit
+Nov 20, 2024 3:05:13 PM SOMSServerJava.ClientHandler handleExitCommand
+INFO: Seller alice_green has exited the application.
+Nov 20, 2024 3:05:13 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50046
+Nov 20, 2024 3:05:24 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50066
+Nov 20, 2024 3:05:28 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: john_doe from /127.0.0.1:50066
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: john_doe from /127.0.0.1:50066
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: john_doe - SUCCESS
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=3, seller2=2, frank_orange=5, alice_green=11}
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller1' not found in users map or has no name.
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller2' not found in users map or has no name.
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'frank_orange' not found in users map or has no name.
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'alice_green' not found in users map or has no name.
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: 
+Nov 20, 2024 3:05:29 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: 
+Nov 20, 2024 3:05:39 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: buy items6 16
+Nov 20, 2024 3:05:39 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 20, 2024 3:05:39 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 20, 2024 3:05:39 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 20, 2024 3:05:39 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 20, 2024 3:05:39 PM SOMSServerJava.ClientHandler makePurchase
+INFO: User john_doe reserved purchase: itemS6 x16 for $256.00
+Nov 20, 2024 3:05:43 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user john_doe: eixt
+Nov 20, 2024 3:05:43 PM SOMSServerJava.ClientHandler processCustomerCommand
+WARNING: Unknown command from user: john_doe - eixt
+Nov 20, 2024 3:05:56 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 3:05:56 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 3:05:56 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 24 items from items.json.
+Nov 20, 2024 3:05:56 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 3:05:56 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 3:05:56 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 3:06:03 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50079
+Nov 20, 2024 3:06:06 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:50079
+Nov 20, 2024 3:06:07 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:50079
+Nov 20, 2024 3:06:07 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS
+Nov 20, 2024 3:06:11 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: view transactions
+Nov 20, 2024 3:06:11 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller alice_green viewed transaction history.
+Nov 20, 2024 3:06:17 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: exit
+Nov 20, 2024 3:06:17 PM SOMSServerJava.ClientHandler handleExitCommand
+INFO: Seller alice_green has exited the application.
+Nov 20, 2024 3:06:17 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50079
+Nov 20, 2024 4:36:05 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 4:36:05 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 4:36:05 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 24 items from items.json.
+Nov 20, 2024 4:36:05 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 4:36:05 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 4:36:05 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 4:36:08 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50634
+Nov 20, 2024 4:36:19 PM SOMSServerJava.ClientHandler run
+INFO: Received action: login from /127.0.0.1:50634
+Nov 20, 2024 4:36:21 PM SOMSServerJava.ClientHandler handleLogin
+INFO: Received userID:  from /127.0.0.1:50634
+Nov 20, 2024 4:36:21 PM SOMSServerJava.ClientHandler handleLogin
+WARNING: Received empty UserID during login from client: /127.0.0.1:50634
+Nov 20, 2024 4:36:21 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50634
+Nov 20, 2024 4:37:28 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 20, 2024 4:37:28 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 20, 2024 4:37:28 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 24 items from items.json.
+Nov 20, 2024 4:37:28 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 20, 2024 4:37:28 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 20, 2024 4:37:28 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 20, 2024 4:37:32 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50687
+Nov 20, 2024 4:37:37 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: charlie_black from /127.0.0.1:50687
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: charlie_black from /127.0.0.1:50687
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: charlie_black - SUCCESS
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=3, seller2=2, frank_orange=5, alice_green=11}
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller1' not found in users map or has no name.
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller2' not found in users map or has no name.
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'frank_orange' not found in users map or has no name.
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'alice_green' not found in users map or has no name.
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: 
+Nov 20, 2024 4:37:38 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: 
+Nov 20, 2024 4:37:42 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user charlie_black: top up 22
+Nov 20, 2024 4:37:42 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 20, 2024 4:37:42 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 20, 2024 4:37:42 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 20, 2024 4:37:42 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 20, 2024 4:37:42 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User charlie_black topped up $22.00. New balance: $2331559.00
+Nov 20, 2024 4:37:46 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user charlie_black: top up 1
+Nov 20, 2024 4:37:46 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to users.json successfully.
+Nov 20, 2024 4:37:46 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to accounts.json successfully.
+Nov 20, 2024 4:37:46 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to items.json successfully.
+Nov 20, 2024 4:37:46 PM SOMSServerJava.SOMSUtils saveData
+INFO: Data saved to purchases.json successfully.
+Nov 20, 2024 4:37:46 PM SOMSServerJava.ClientHandler topUpAmount
+INFO: User charlie_black topped up $1.00. New balance: $2331560.00
+Nov 20, 2024 4:37:49 PM SOMSServerJava.ClientHandler processCustomerCommand
+INFO: Processing command from user charlie_black: exit
+Nov 20, 2024 4:37:49 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50687
+Nov 20, 2024 4:37:53 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50695
+Nov 20, 2024 4:37:56 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:50695
+Nov 20, 2024 4:37:57 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:50695
+Nov 20, 2024 4:37:57 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - SUCCESS
+Nov 20, 2024 4:38:03 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: view transactions
+Nov 20, 2024 4:38:03 PM SOMSServerJava.ClientHandler viewTransactionHistory
+INFO: Seller alice_green viewed transaction history.
+Nov 20, 2024 4:38:05 PM SOMSServerJava.ClientHandler processSellerCommand
+INFO: Processing command from seller alice_green: exit
+Nov 20, 2024 4:38:05 PM SOMSServerJava.ClientHandler handleExitCommand
+INFO: Seller alice_green has exited the application.
+Nov 20, 2024 4:38:05 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50695
