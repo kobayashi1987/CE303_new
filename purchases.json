@@ -108,7 +108,7 @@
       "purchaseDate": "2024-11-11T22:08:10.181238",
       "sellerID": "alice_green",
       "totalCost": 100.0,
-      "status": "pending"
+      "status": "fulfilled"
     },
     "444": {
       "purchaseId": 0,
@@ -512,6 +512,26 @@
       "purchaseDate": "2024-11-20T15:05:39.518794",
       "sellerID": "alice_green",
       "totalCost": 256.0,
+      "status": "pending"
+    },
+    "24": {
+      "purchaseId": 24,
+      "userID": "john_doe",
+      "itemName": "item5",
+      "quantity": 15,
+      "purchaseDate": "2024-11-22T16:05:41.167658",
+      "sellerID": "seller1",
+      "totalCost": 4500.0,
+      "status": "pending"
+    },
+    "25": {
+      "purchaseId": 25,
+      "userID": "john_doe",
+      "itemName": "item6",
+      "quantity": 1,
+      "purchaseDate": "2024-11-22T16:12:55.489078",
+      "sellerID": "seller2",
+      "totalCost": 300.0,
       "status": "pending"
     }
   },

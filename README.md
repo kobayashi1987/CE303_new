@@ -38,18 +38,18 @@ SOMS_Project/
 │       ├── Client.java
 │       └── ClientProgram.java
 └── out/
-    └── production/
-        ├── SOMSServerJava/
-        │   ├── Account.class
-        │   ├── ClientHandler.class
-        │   ├── Item.class
-        │   ├── Purchase.class
-        │   ├── SOMS.class
-        │   ├── SOMSUtils.class
-        │   └── User.class
-        └── SOMSClientJava/
-            ├── Client.class
-            └── ClientProgram.class
+    ├── production/
+    ├── SOMSServerJava/
+    │   ├── Account.class
+    │   ├── ClientHandler.class
+    │   ├── Item.class
+    │   ├── Purchase.class
+    │   ├── SOMS.class
+    │   ├── SOMSUtils.class
+    │   └── User.class
+    └── SOMSClientJava/
+        ├── Client.class
+        └── ClientProgram.class
 
 2024.11.04
 

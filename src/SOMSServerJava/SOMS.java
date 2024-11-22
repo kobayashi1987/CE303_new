@@ -50,6 +50,9 @@ public class SOMS {
         users.putAll(loadedUsers);
         accounts.putAll(loadedAccounts);
         items.putAll(loadedItems);
+
+
+
         purchases.putAll(loadedPurchases);
 
         // Validate consistency between users and accounts
