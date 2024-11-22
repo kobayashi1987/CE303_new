@@ -77,7 +77,7 @@ SOMS_Project/
    java -cp "out:libs/gson-2.11.0.jar" SOMSServerJava.SOMS
 
 Expected Server Output:
-```
+
 Nov 09, 2024 5:00:00 PM SOMSServerJava.SOMSUtils loadUsers
 INFO: Successfully loaded users from users.json
 Nov 09, 2024 5:00:00 PM SOMSServerJava.SOMSUtils loadAccounts
@@ -92,7 +92,7 @@ Nov 09, 2024 5:00:00 PM SOMSServerJava.SOMS main
 INFO: Server starting on port 12345
 Nov 09, 2024 5:00:00 PM SOMSServerJava.SOMS main
 INFO: Server started. Waiting for clients...
-```
+
 
 
 
@@ -100,7 +100,7 @@ INFO: Server started. Waiting for clients...
    java -cp "out:libs/gson-2.11.0.jar" SOMSClientJava.ClientProgram
    
 Sample Client Interactions:
-```
+
 Welcome to SOMS Server!
 Enter your userID: john_doe
 Enter your password: 123
