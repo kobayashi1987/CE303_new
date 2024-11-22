@@ -16,14 +16,14 @@ Prerequisites:
 Project Structure:
 
 SOMS_Project/
-├── accounts.json
-├── users.json
-├── items.json
-├── purchases.json
-├── libs/
-│   └── gson-2.11.0.jar
-├── src/
-│   ├── SOMSServerJava/
+|---accounts.json
+|---users.json
+|---items.json
+|--- purchases.json
+|--- libs/
+     |---gson-2.11.0.jar
+|---src/ 
+├── SOMSServerJava/
 │   │   ├── Account.java
 │   │   ├── ClientHandler.java
 │   │   ├── Item.java
@@ -34,19 +34,19 @@ SOMS_Project/
 │   └── SOMSClientJava/
 │       ├── Client.java
 │       └── ClientProgram.java
-└── out/
-└── production/
-├── SOMSServerJava/
-│   ├── Account.class
-│   ├── ClientHandler.class
-│   ├── Item.class
-│   ├── Purchase.class
-│   ├── SOMS.class
-│   ├── SOMSUtils.class
-│   └── User.class
-└── SOMSClientJava/
-├── Client.class
-└── ClientProgram.class
+|---out/
+       |--- production/
+       |---SOMSServerJava/
+         |--- Account.class
+         |--- ClientHandler.class
+         |---Item.class
+         |---Purchase.class
+         |---SOMS.class
+         |--- SOMSUtils.class
+         |---User.class
+      |---SOMSClientJava/
+          |---Client.class
+          |---ClientProgram.class
 
 
 2024.11.04

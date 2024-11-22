@@ -9172,3 +9172,49 @@ Nov 20, 2024 4:38:05 PM SOMSServerJava.ClientHandler handleExitCommand
 INFO: Seller alice_green has exited the application.
 Nov 20, 2024 4:38:05 PM SOMSServerJava.ClientHandler run
 INFO: Client disconnected: /127.0.0.1:50695
+Nov 22, 2024 2:48:33 PM SOMSServerJava.SOMSUtils loadUsers
+INFO: Loaded 10 users from users.json.
+Nov 22, 2024 2:48:33 PM SOMSServerJava.SOMSUtils loadAccounts
+INFO: Loaded 10 accounts from accounts.json.
+Nov 22, 2024 2:48:33 PM SOMSServerJava.SOMSUtils loadItems
+INFO: Loaded 24 items from items.json.
+Nov 22, 2024 2:48:33 PM SOMSServerJava.SOMSUtils loadPurchases
+INFO: Loaded purchases for 5 buyers from purchases.json.
+Nov 22, 2024 2:48:33 PM SOMSServerJava.SOMS startServer
+INFO: Server starting on port 12345
+Nov 22, 2024 2:48:33 PM SOMSServerJava.SOMS startServer
+INFO: Server started. Waiting for clients...
+Nov 22, 2024 2:49:44 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:49924
+Nov 22, 2024 2:50:56 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: john_doe from /127.0.0.1:49924
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: john_doe from /127.0.0.1:49924
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: john_doe - SUCCESS
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Seller Transaction Counts: {seller1=3, seller2=2, frank_orange=5, alice_green=11}
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller1' not found in users map or has no name.
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'seller2' not found in users map or has no name.
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'frank_orange' not found in users map or has no name.
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler getTopSellers
+WARNING: Seller with ID 'alice_green' not found in users map or has no name.
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Sorted Top Sellers: 
+Nov 22, 2024 2:50:58 PM SOMSServerJava.ClientHandler getTopSellers
+INFO: Final Top 5 Sellers: 
+Nov 22, 2024 3:00:05 PM SOMSServerJava.ClientHandler run
+INFO: Client connected: /127.0.0.1:50131
+Nov 22, 2024 3:00:10 PM SOMSServerJava.ClientHandler run
+INFO: Received userID: alice_green from /127.0.0.1:50131
+Nov 22, 2024 3:00:11 PM SOMSServerJava.ClientHandler run
+INFO: Received password from userID: alice_green from /127.0.0.1:50131
+Nov 22, 2024 3:00:11 PM SOMSServerJava.ClientHandler authenticate
+INFO: Authentication attempt for userID: alice_green - FAILURE
+Nov 22, 2024 3:00:11 PM SOMSServerJava.ClientHandler run
+WARNING: Authentication failed for userID: alice_green
+Nov 22, 2024 3:00:11 PM SOMSServerJava.ClientHandler run
+INFO: Client disconnected: /127.0.0.1:50131
