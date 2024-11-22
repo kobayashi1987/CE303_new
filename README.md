@@ -15,8 +15,8 @@ Prerequisites:
 
 Project Structure:
 
-SOMS_Project/
-|---accounts.json
+SOMS_Project/         \
+|---accounts.json     \
 |---users.json
 |---items.json
 |--- purchases.json
